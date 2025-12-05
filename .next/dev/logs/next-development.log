@@ -1,0 +1,784 @@
+[00:00:13.805] Server  LOG      ✓ Ready in 9.2s
+[00:01:11.659] Server  LOG      ○ Compiling / ...
+[00:01:15.639] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:15.639] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:15.639] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938115503}
+[00:01:20.096] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938119963}
+[00:01:20.399] Browser LOG     🚨Packages loaded successfully: {"data":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}],"message":"Packages retrieved","meta":{"limit":10,"page":1,"total":2,"totalPage":1},"statusCode":200,"success":true}
+[00:01:20.685] Browser LOG     🚨Packages loaded successfully: {"data":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}],"message":"Packages retrieved","meta":{"limit":10,"page":1,"total":2,"totalPage":1},"statusCode":200,"success":true}
+[00:04:17.671] Server  LOG      ✓ Compiled in 150ms
+[00:04:18.254] Browser ERROR   ./app/packages/page.tsx:20:73
+Parsing ecmascript source code failed
+  18 |         const response = await api.getPackages()
+  19 |         dispatch(fetchPackagesSuccess(response.data))
+> 20 |         console.log("🚨Packages loaded successfully:", response.data.)
+     |                                                                         ^
+  21 |       } catch (err) {
+  22 |         const errorMessage = err instanceof Error ? err.message : "Failed to fetch packages"
+  23 |         dispatch(fetchPackagesError(errorMessage))
+
+Expected ident
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:04:25.142] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:25.142] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:04:25.142] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938305016}
+[00:04:25.446] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:04:49.021] Server  LOG      ✓ Compiled in 78ms
+[00:04:52.415] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:52.415] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:04:52.415] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938332281}
+[00:04:52.747] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:04:52.748] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:04:52.748] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+[00:05:29.814] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:29.826] Server  LOG      ✓ Compiled in 62ms
+[00:05:31.255] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:05:31.255] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:05:31.255] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938370621}
+[00:05:31.255] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:05:31.255] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:05:31.255] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+[00:10:04.726] Server  LOG      ✓ Compiled in 71ms
+[00:10:05.248] Browser ERROR   ./components/PackageCard.tsx:34:20
+Parsing ecmascript source code failed
+  32 |             <div className="flex items-center gap-2 text-sm text-muted-foreground">
+  33 |               <MapPin size={16} />
+> 34 |               {pkg.}
+     |                    ^
+  35 |             </div>
+  36 |           )}
+  37 |           <div className="flex items-center gap-2 text-lg font-bold text-primary">
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:10:07.258] Browser ERROR   ./components/PackageCard.tsx:34:20
+Parsing ecmascript source code failed
+  32 |             <div className="flex items-center gap-2 text-sm text-muted-foreground">
+  33 |               <MapPin size={16} />
+> 34 |               {pkg.}
+     |                    ^
+  35 |             </div>
+  36 |           )}
+  37 |           <div className="flex items-center gap-2 text-lg font-bold text-primary">
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:10:10.800] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:12.255] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:10:12.255] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:10:12.255] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938651630}
+[00:10:12.255] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:10:12.255] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:10:12.255] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+[00:10:47.259] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:47.504] Server  LOG      ✓ Compiled in 50ms
+[00:10:48.245] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:10:48.245] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:10:48.245] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938688028}
+[00:10:49.250] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:10:49.251] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:10:49.251] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+[00:11:26.674] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:11:26.685] Server  LOG      ✓ Compiled in 62ms
+[00:11:28.156] Server  LOG      ✓ Compiled in 82ms
+[00:11:29.252] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:29.252] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:11:29.252] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938727524}
+[00:11:29.252] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:11:29.252] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:11:29.252] Browser ERROR   uncaughtError: Error: Objects are not valid as a React child (found: object with keys {_id, title, summary, description, images, destination, costFrom, currency, durationDays, capacity, availableSeats, startDate, endDate, departureLocation, arrivalLocation, included, excluded, amenities, itinerary, minAge, maxAge, division, packageType, tags, isActive, createdAt, updatedAt, slug}). If you meant to render a collection of children, use an array instead.
+[00:11:29.252] Browser ERROR   ./components/PackageCard.tsx:39:18
+Parsing ecmascript source code failed
+  37 |           <div className="flex items-center gap-2 text-lg font-bold text-primary">
+  38 |             <DollarSign size={16} />
+> 39 |             {pkg.}
+     |                  ^
+  40 |           </div>
+  41 |         </div>
+  42 |         <Link href={`/packages/${pkg.slug}`} className="mt-auto">
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:11:30.862] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:11:32.248] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:32.248] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:11:32.248] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764938731631}
+[00:11:32.248] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:11:32.248] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:11:33.057] Server  LOG      ✓ Compiled in 52ms
+[00:11:33.247] Browser ERROR   ./components/PackageCard.tsx:39:18
+Parsing ecmascript source code failed
+  37 |           <div className="flex items-center gap-2 text-lg font-bold text-primary">
+  38 |             <DollarSign size={16} />
+> 39 |             {pkg.}
+     |                  ^
+  40 |           </div>
+  41 |         </div>
+  42 |         <Link href={`/packages/${pkg.slug}`} className="mt-auto">
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:13:27.733] Server  LOG      ✓ Compiled in 65ms
+[00:13:28.256] Browser ERROR   ./components/PackageCard.tsx:31:17
+Parsing ecmascript source code failed
+  29 |       <CardContent className="flex-1 flex flex-col justify-between">
+  30 |         <div className="space-y-2 mb-4">
+> 31 |           {pkg. && (
+     |                 ^^
+  32 |             <div className="flex items-center gap-2 text-sm text-muted-foreground">
+  33 |               <MapPin size={16} />
+  34 |               {pkg.duration}
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:13:30.251] Browser ERROR   ./components/PackageCard.tsx:31:17
+Parsing ecmascript source code failed
+  29 |       <CardContent className="flex-1 flex flex-col justify-between">
+  30 |         <div className="space-y-2 mb-4">
+> 31 |           {pkg. && (
+     |                 ^^
+  32 |             <div className="flex items-center gap-2 text-sm text-muted-foreground">
+  33 |               <MapPin size={16} />
+  34 |               {pkg.duration}
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:13:34.691] Server  LOG      ✓ Compiled in 59ms
+[00:13:35.246] Browser ERROR   ./components/PackageCard.tsx:34:20
+Parsing ecmascript source code failed
+  32 |             <div className="flex items-center gap-2 text-sm text-muted-foreground">
+  33 |               <MapPin size={16} />
+> 34 |               {pkg.}
+     |                    ^
+  35 |             </div>
+  36 |           )}
+  37 |           <div className="flex items-center gap-2 text-lg font-bold text-primary">
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:13:37.255] Browser ERROR   ./components/PackageCard.tsx:34:20
+Parsing ecmascript source code failed
+  32 |             <div className="flex items-center gap-2 text-sm text-muted-foreground">
+  33 |               <MapPin size={16} />
+> 34 |               {pkg.}
+     |                    ^
+  35 |             </div>
+  36 |           )}
+  37 |           <div className="flex items-center gap-2 text-lg font-bold text-primary">
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:18:19.729] Server  LOG      ✓ Compiled in 63ms
+[00:18:21.813] Server  LOG      ✓ Compiled in 59ms
+[00:18:27.861] Server  LOG      ✓ Compiled in 62ms
+[00:18:35.020] Server  LOG      ✓ Compiled in 59ms
+[00:18:35.256] Browser ERROR   uncaughtError: Error: Objects are not valid as a React child (found: object with keys {_id, title, summary, description, images, destination, costFrom, currency, durationDays, capacity, availableSeats, startDate, endDate, departureLocation, arrivalLocation, included, excluded, amenities, itinerary, minAge, maxAge, division, packageType, tags, isActive, createdAt, updatedAt, slug}). If you meant to render a collection of children, use an array instead.
+[00:18:36.300] Server  LOG      ✓ Compiled in 64ms
+[00:18:37.246] Browser ERROR   ./components/PackageCard.tsx:39:18
+Parsing ecmascript source code failed
+  37 |           <div className="flex items-center gap-2 text-lg font-bold text-primary">
+  38 |             <DollarSign size={16} />
+> 39 |             {pkg.}
+     |                  ^
+  40 |           </div>
+  41 |         </div>
+  42 |         <Link href={`/packages/${pkg.slug}`} className="mt-auto">
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/PackageCard.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/PackageCard.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:18:37.553] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:18:38.767] Server  LOG      ✓ Compiled in 62ms
+[00:18:39.257] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:18:39.257] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:18:39.257] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939158186}
+[00:18:40.255] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:18:40.255] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:18:41.014] Server  LOG      ✓ Compiled in 57ms
+[00:18:52.323] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:18:52.323] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:18:52.323] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939172193}
+[00:18:52.624] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:18:52.624] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:19:02.299] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:19:02.299] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:19:02.299] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939182164}
+[00:19:02.567] Browser LOG     🚨Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:19:02.567] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:19:03.153] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939183016}
+[00:19:04.153] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939184024}
+[00:19:24.274] Server  LOG      ✓ Compiled in 73ms
+[00:19:25.255] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. [object Object]
+[00:19:25.541] Server  LOG      ✓ Compiled in 62ms
+[00:19:26.256] Browser ERROR   ./app/packages/page.tsx:59:37
+Parsing ecmascript source code failed
+  57 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  58 |             {items.map((pkg) => (
+> 59 |               <PackageCard key={pkg.} package={pkg} />
+     |                                     ^
+  60 |             ))}
+  61 |           </div>
+  62 |         ) : (
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:19:33.455] Server  LOG      ✓ Compiled in 70ms
+[00:20:51.899] Server  LOG      ✓ Compiled in 52ms
+[00:21:11.190] Server  LOG      ✓ Compiled in 63ms
+[00:21:12.254] Browser ERROR   ./app/packages/page.tsx:56:26
+Parsing ecmascript source code failed
+  54 |           <div className="flex items-center justify-center py-12">
+  55 |             <Loader2 className="animate-spin text-primary" size={32} />
+> 56 |         ) : items.length > 0 ? (
+     |                          ^
+  57 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  58 |             {items.map((pkg) => (
+  59 |               <PackageCard key={pkg.id} package={pkg as PackageType} />
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:21:21.249] Browser ERROR   ./app/packages/page.tsx:56:26
+Parsing ecmascript source code failed
+  54 |           <div className="flex items-center justify-center py-12">
+  55 |             <Loader2 className="animate-spin text-primary" size={32} />
+> 56 |         ) : items.length > 0 ? (
+     |                          ^
+  57 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  58 |             {items.map((pkg) => (
+  59 |               <PackageCard key={pkg.id} package={pkg as PackageType} />
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:21:23.248] Browser ERROR   ./app/packages/page.tsx:56:26
+Parsing ecmascript source code failed
+  54 |           <div className="flex items-center justify-center py-12">
+  55 |             <Loader2 className="animate-spin text-primary" size={32} />
+> 56 |         ) : items.length > 0 ? (
+     |                          ^
+  57 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  58 |             {items.map((pkg) => (
+  59 |               <PackageCard key={pkg.id} package={pkg as PackageType} />
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:21:35.257] Browser ERROR   ./app/packages/page.tsx:56:26
+Parsing ecmascript source code failed
+  54 |           <div className="flex items-center justify-center py-12">
+  55 |             <Loader2 className="animate-spin text-primary" size={32} />
+> 56 |         ) : items.length > 0 ? (
+     |                          ^
+  57 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  58 |             {items.map((pkg) => (
+  59 |               <PackageCard key={pkg.id} package={pkg as PackageType} />
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:21:37.257] Browser ERROR   ./app/packages/page.tsx:56:26
+Parsing ecmascript source code failed
+  54 |           <div className="flex items-center justify-center py-12">
+  55 |             <Loader2 className="animate-spin text-primary" size={32} />
+> 56 |         ) : items.length > 0 ? (
+     |                          ^
+  57 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  58 |             {items.map((pkg) => (
+  59 |               <PackageCard key={pkg.id} package={pkg as PackageType} />
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:21:39.191] Server  LOG      ✓ Compiled in 50ms
+[00:21:40.254] Browser ERROR   ./app/packages/page.tsx:59:37
+Parsing ecmascript source code failed
+  57 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  58 |             {items.map((pkg) => (
+> 59 |               <PackageCard key={pkg.} package={pkg} />
+     |                                     ^
+  60 |             ))}
+  61 |           </div>
+  62 |         ) : (
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:21:41.256] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. [object Object]
+[00:21:41.256] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. [object Object]
+[00:21:42.019] Server  LOG      ✓ Compiled in 52ms
+[00:21:44.342] Server  LOG      ✓ Compiled in 51ms
+[00:21:49.513] Server  LOG      ✓ Compiled in 59ms
+[00:22:19.496] Server  LOG      ✓ Compiled in 67ms
+[00:25:06.107] Server  LOG      ✓ Compiled in 178ms
+[00:25:53.263] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:25:53.263] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:25:53.263] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939593134}
+[00:25:53.971] Browser LOG      Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:25:53.971] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:25:58.323] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:25:58.323] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:25:58.323] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939598185}
+[00:25:59.008] Browser LOG      Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:25:59.008] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:26:54.101] Server  LOG      ✓ Compiled in 70ms
+[00:26:55.937] Server  LOG      ✓ Compiled in 73ms
+[00:26:56.255] Browser ERROR   uncaughtError: ReferenceError: c is not defined
+[00:26:58.319] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:26:58.596] Server  LOG      ✓ Compiled in 70ms
+[00:26:59.247] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:59.247] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:26:59.247] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939658831}
+[00:26:59.247] Browser LOG      Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:26:59.247] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:26:59.452] Server  LOG      ✓ Compiled in 77ms
+[00:27:00.244] Browser LOG      PackagesPage render:  {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:00.244] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render:  {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:04.050] Server  LOG      ✓ Compiled in 65ms
+[00:27:04.256] Browser LOG      PackagesPage render: f {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:04.256] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: f {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:07.271] Server  LOG      ✓ Compiled in 67ms
+[00:27:08.252] Browser LOG      PackagesPage render: from  {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:08.252] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from  {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:10.395] Server  LOG      ✓ Compiled in 65ms
+[00:27:11.252] Browser LOG      PackagesPage render: fr {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:11.252] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: fr {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:12.579] Server  LOG      ✓ Compiled in 95ms
+[00:27:13.245] Browser LOG      PackagesPage render: from Redux store {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:13.245] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:14.857] Server  LOG      ✓ Compiled in 61ms
+[00:27:15.254] Browser LOG      PackagesPage render: from Redux store {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:15.254] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store {"error":null,"isLoading":false,"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:27:58.774] Server  LOG      ✓ Compiled in 66ms
+[00:27:59.251] Browser ERROR   uncaughtError: ReferenceError: item is not defined
+[00:28:00.252] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:28:00.526] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\[root-of-the-server]__f4e96c74._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:28:00.527] Server  ERROR    ⨯ ReferenceError: iteme is not defined
+[00:28:00.541] Server  LOG      ✓ Compiled in 70ms
+[00:28:01.247] Browser ERROR   uncaughtError: ReferenceError: iteme is not defined
+[00:28:02.624] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:28:02.856] Server  LOG      PackagesPage render: from Redux store {}
+[00:28:02.864] Server  LOG      ✓ Compiled in 66ms
+[00:28:03.568] Browser LOG      PackagesPage render: from Redux store {"items":[]}
+[00:28:03.568] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store {"items":[]}
+[00:28:03.568] Browser LOG      PackagesPage render: from Redux store {"items":[]}
+[00:28:03.568] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store {"items":[]}
+[00:28:03.568] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:28:03.568] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:28:03.568] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939723441}
+[00:28:03.837] Browser LOG      Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:28:03.837] Browser LOG      PackagesPage render: from Redux store {"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:28:03.837] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store {"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:28:03.837] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `PackagesPage`. 
+[00:28:21.996] Server  LOG      ✓ Compiled in 64ms
+[00:28:22.250] Browser ERROR   ./app/packages/page.tsx:16:64
+Parsing ecmascript source code failed
+  14 |
+  15 |
+> 16 |   console.log(" PackagesPage render: from Redux store", { items.})
+     |                                                                ^
+  17 |
+  18 |   useEffect(() => {
+  19 |     const fetchPackages = async () => {
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:28:27.258] Browser ERROR   ./app/packages/page.tsx:16:64
+Parsing ecmascript source code failed
+  14 |
+  15 |
+> 16 |   console.log(" PackagesPage render: from Redux store", { items.item})
+     |                                                                ^
+  17 |
+  18 |   useEffect(() => {
+  19 |     const fetchPackages = async () => {
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:28:30.246] Browser ERROR   ./app/packages/page.tsx:16:64
+Parsing ecmascript source code failed
+  14 |
+  15 |
+> 16 |   console.log(" PackagesPage render: from Redux store", { items.items})
+     |                                                                ^
+  17 |
+  18 |   useEffect(() => {
+  19 |     const fetchPackages = async () => {
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:28:37.255] Browser ERROR   ./app/packages/page.tsx:16:64
+Parsing ecmascript source code failed
+  14 |
+  15 |
+> 16 |   console.log(" PackagesPage render: from Redux store", { items.})
+     |                                                                ^
+  17 |
+  18 |   useEffect(() => {
+  19 |     const fetchPackages = async () => {
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:28:40.257] Browser ERROR   ./app/packages/page.tsx:16:64
+Parsing ecmascript source code failed
+  14 |
+  15 |
+> 16 |   console.log(" PackagesPage render: from Redux store", { items.length, isLoading, error })
+     |                                                                ^
+  17 |
+  18 |   useEffect(() => {
+  19 |     const fetchPackages = async () => {
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:28:42.254] Browser ERROR   ./app/packages/page.tsx:16:64
+Parsing ecmascript source code failed
+  14 |
+  15 |
+> 16 |   console.log(" PackagesPage render: from Redux store", { items.length, })
+     |                                                                ^
+  17 |
+  18 |   useEffect(() => {
+  19 |     const fetchPackages = async () => {
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:28:48.252] Browser LOG      PackagesPage render: from Redux store {"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:28:48.252] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store {"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:28:48.252] Browser LOG      PackagesPage render: from Redux store {"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:28:48.252] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store {"items":[{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]}
+[00:28:51.570] Server  LOG      ✓ Compiled in 70ms
+[00:28:52.248] Browser ERROR   ./app/packages/page.tsx:16:64
+Parsing ecmascript source code failed
+  14 |
+  15 |
+> 16 |   console.log(" PackagesPage render: from Redux store", { items)
+     |                                                                ^
+  17 |
+  18 |   useEffect(() => {
+  19 |     const fetchPackages = async () => {
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:28:54.249] Browser LOG      PackagesPage render: from Redux store [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:28:54.249] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:28:54.249] Browser LOG      PackagesPage render: from Redux store [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:28:54.249] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:29:05.958] Server  LOG      ✓ Compiled in 64ms
+[00:29:06.257] Browser ERROR   ./app/packages/page.tsx:16:64
+Parsing ecmascript source code failed
+  14 |
+  15 |
+> 16 |   console.log(" PackagesPage render: from Redux store",  items.)
+     |                                                                ^
+  17 |
+  18 |   useEffect(() => {
+  19 |     const fetchPackages = async () => {
+
+Expected ident
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:29:10.257] Browser LOG      PackagesPage render: from Redux store undefined
+[00:29:10.257] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store undefined
+[00:29:10.257] Browser LOG      PackagesPage render: from Redux store undefined
+[00:29:10.257] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store undefined
+[00:29:10.810] Server  LOG      ✓ Compiled in 65ms
+[00:29:11.077] Browser LOG      PackagesPage render: from Redux store 2
+[00:29:11.077] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store 2
+[00:29:42.175] Server  LOG      ✓ Compiled in 65ms
+[00:29:43.253] Browser ERROR   ./app/packages/page.tsx:63:37
+Parsing ecmascript source code failed
+  61 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  62 |             {items.map((pkg) => (
+> 63 |               <PackageCard key={pkg.} package={pkg} />
+     |                                     ^
+  64 |             ))}
+  65 |           </div>
+  66 |         ) : (
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:29:49.252] Browser LOG      PackagesPage render: from Redux store 2
+[00:29:49.252] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store 2
+[00:29:49.252] Browser LOG      PackagesPage render: from Redux store 2
+[00:29:49.252] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store 2
+[00:32:10.044] Server  LOG      ✓ Compiled in 52ms
+[00:32:10.248] Browser ERROR   ./app/packages/page.tsx:63:37
+Parsing ecmascript source code failed
+  61 |           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  62 |             {items.map((pkg) => (
+> 63 |               <PackageCard key={pkg.} package={pkg} />
+     |                                     ^
+  64 |             ))}
+  65 |           </div>
+  66 |         ) : (
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./app/packages/page.tsx [Client Component Browser]
+    ./app/packages/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/packages/page.tsx [Client Component SSR]
+    ./app/packages/page.tsx [Server Component]
+[00:32:15.253] Browser LOG      PackagesPage render: from Redux store 2
+[00:32:15.253] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store 2
+[00:32:15.253] Browser LOG      PackagesPage render: from Redux store 2
+[00:32:15.253] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store 2
+[00:32:22.644] Server  LOG      PackagesPage render: from Redux store 0
+[00:32:23.267] Browser LOG      PackagesPage render: from Redux store 0
+[00:32:23.267] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store 0
+[00:32:23.267] Browser LOG      PackagesPage render: from Redux store 0
+[00:32:23.267] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store 0
+[00:32:23.267] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:32:23.267] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/packages","route":"/packages"}
+[00:32:23.267] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/packages color: rgb(120, 120, 120) color: inherit {"dp":"/packages","o":"http://localhost:3000/packages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764939983142}
+[00:32:23.552] Browser LOG      Packages loaded successfully: [{"_id":"692ec6b0bbb7167ef31d4ce3","amenities":["WiFi","Guide"],"arrivalLocation":"Paris","availableSeats":13,"capacity":15,"costFrom":2000,"createdAt":"2025-12-02T11:00:00.327Z","currency":"USD","departureLocation":"Dhaka","description":"Visit Paris, Rome, and London with family-friendly activities.","destination":"Europe","division":"64a7b1f2f12c3d4567890def","durationDays":10,"endDate":"2026-05-20T00:00:00.000Z","excluded":["Flights","Personal expenses"],"images":[],"included":["Hotel stays","Breakfast","Local transport"],"isActive":true,"itinerary":["Day 1: Arrival in Paris","Day 2: City Tour","Day 3: Disneyland","Day 4: Travel to Rome","Day 5: Rome Sightseeing","Day 6: Travel to London","Day 7: London Tour","Day 8: Free day","Day 9: Shopping","Day 10: Return"],"maxAge":70,"minAge":5,"packageType":"64a7b1e2f12c3d4567890abd","slug":"europe-family-tour","startDate":"2026-05-10T00:00:00.000Z","summary":"10-day family-friendly Europe trip","tags":["family","holiday","europe"],"title":"Europe Family Tour","updatedAt":"2025-12-04T09:54:36.849Z"},{"_id":"692e9d023c42b0847d09f31c","amenities":["WiFi","Pool"],"arrivalLocation":"Bangkok","availableSeats":16,"capacity":20,"costFrom":500,"createdAt":"2025-12-02T08:02:10.650Z","currency":"USD","departureLocation":"Dhaka","description":"Explore Bangkok, Chiang Mai, and the islands.","destination":"Thailand","division":"64a7b1f2f12c3d4567890def","durationDays":5,"endDate":"2026-01-20T00:00:00.000Z","excluded":["Flights"],"images":[],"included":["Hotel stays","Breakfast"],"isActive":true,"itinerary":["Day 1: Arrival","Day 2: City Tour"],"maxAge":60,"minAge":14,"packageType":"64a7b1e2f12c3d4567890abc","slug":"amazing-thailand-trip","startDate":"2026-01-15T00:00:00.000Z","summary":"5-day adventure in Thailand","tags":["adventure","family"],"title":"Amazing Thailand Trip","updatedAt":"2025-12-03T19:34:52.784Z"}]
+[00:32:23.552] Browser LOG      PackagesPage render: from Redux store 2
+[00:32:23.552] Browser LOG     [2;38;2;124;124;124m%s[0m  PackagesPage render: from Redux store 2
