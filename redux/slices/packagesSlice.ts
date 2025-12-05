@@ -1,37 +1,7 @@
 "use client"
 
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
-
-interface Package {
-  _id: string
-  title: string
-  summary: string
-  description: string
-  images: string[]
-  destination: string
-  costFrom: number
-  currency: string
-  durationDays: number
-  capacity: number
-  availableSeats: number
-  startDate: string
-  endDate: string
-  departureLocation: string
-  arrivalLocation: string
-  included: string[]
-  excluded: string[]
-  amenities: string[]
-  itinerary: string[]
-  minAge: number
-  maxAge: number
-  division: string
-  packageType: string
-  tags: string[]
-  isActive: boolean
-  createdAt: string
-  updatedAt: string
-  slug: string
-}
+import type { Package } from "@/lib/types"
 
 interface PackagesState {
   items: Package[]

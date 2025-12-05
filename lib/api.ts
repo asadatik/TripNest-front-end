@@ -43,8 +43,8 @@ export const api = {
     apiClient.post("/auth/register", { email, password, name }),
 
   // Packages endpoints
-  getPackages: () => apiClient.get("/package"),
-  getPackageBySlug: (slug: string) => apiClient.get(`/package/${slug}`),
+  getPackages: () => apiClient.get("/packages"),
+  getPackageBySlug: (slug: string) => apiClient.get(`/packages/${slug}`),
 
   // Admin - Users
   getUsers: () => apiClient.get("/admin/users"),

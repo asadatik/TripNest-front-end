@@ -36,7 +36,6 @@ export interface Package {
   slug: string
 }
 
-
 export interface AuthResponse {
   user: User
   token: string
@@ -54,7 +53,7 @@ export interface Booking {
   packageId: string
   packageTitle: string
   userName: string
-  status: "PENDING" | "CONFIRMED" | "CANCELLED"
+  status: "PENDING" | "CONFIRMED" | "CANCELLED" | "COMPLETED"
   createdAt: string
   totalPrice: number
 }
@@ -64,7 +63,7 @@ export interface Payment {
   bookingId: string
   userId: string
   amount: number
-  status: "PENDING" | "SUCCESS" | "FAILED"
+  status: "UNPAID" | "PAID" | "REFUNDED" | "FAILED"
   stripePaymentId?: string
   createdAt: string
 }

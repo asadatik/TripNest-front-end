@@ -80,7 +80,7 @@ export default function UserBookings() {
 
       {error && (
         <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive flex items-start gap-2">
-          <AlertCircle size={20} className="mt-0.5 flex-shrink-0" />
+          <AlertCircle size={20} className="mt-0.5 shrink-0" />
           <div>
             <p className="font-medium">Error loading bookings</p>
             <p className="text-sm">{error}</p>

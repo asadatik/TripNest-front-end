@@ -8,7 +8,7 @@ import { api } from "@/lib/api"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import PackageCard from "@/components/PackageCard"
-import { Pointer as Spinner } from "lucide-react"
+import { Loader2 } from "lucide-react"
 
 export default function UserDashboard() {
   const dispatch = useAppDispatch()
@@ -20,7 +20,8 @@ export default function UserDashboard() {
       dispatch(fetchPackagesStart())
       try {
         const response = await api.getPackages()
-        dispatch(fetchPackagesSuccess(response.data))
+        const packages = Array.isArray(response.data) ? response.data : response.data.data || []
+        dispatch(fetchPackagesSuccess(packages))
       } catch (err) {
         dispatch(fetchPackagesError(err instanceof Error ? err.message : "Failed to fetch packages"))
       }
@@ -85,14 +86,14 @@ export default function UserDashboard() {
 
         {isLoading ? (
           <div className="flex justify-center py-12">
-            <Spinner className="animate-spin" size={32} />
+            <Loader2 className="animate-spin" size={32} />
           </div>
         ) : packages.length === 0 ? (
           <p className="text-muted-foreground text-center py-8">No packages available</p>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {packages.slice(0, 3).map((pkg) => (
-              <PackageCard key={pkg.id} package={pkg} />
+              <PackageCard key={pkg._id} package={pkg} />
             ))}
           </div>
         )}

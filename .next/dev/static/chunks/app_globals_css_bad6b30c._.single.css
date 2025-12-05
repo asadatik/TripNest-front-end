@@ -748,6 +748,10 @@
     margin-right: calc(var(--spacing) * 2);
   }
 
+  .mb-1 {
+    margin-bottom: calc(var(--spacing) * 1);
+  }
+
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -1011,6 +1015,10 @@
     max-height: var(--radix-select-content-available-height);
   }
 
+  .max-h-\[80vh\] {
+    max-height: 80vh;
+  }
+
   .max-h-\[300px\] {
     max-height: 300px;
   }
@@ -1169,6 +1177,10 @@
 
   .min-w-10 {
     min-width: calc(var(--spacing) * 10);
+  }
+
+  .min-w-12 {
+    min-width: calc(var(--spacing) * 12);
   }
 
   .min-w-\[8rem\] {
@@ -1345,6 +1357,10 @@
 
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .grid-cols-\[0_1fr\] {
@@ -2124,6 +2140,11 @@
   .leading-normal {
     --tw-leading: var(--leading-normal);
     line-height: var(--leading-normal);
+  }
+
+  .leading-relaxed {
+    --tw-leading: var(--leading-relaxed);
+    line-height: var(--leading-relaxed);
   }
 
   .leading-snug {
@@ -4265,6 +4286,18 @@
 
   .nth-last-2\:-mt-1:nth-last-child(2) {
     margin-top: calc(var(--spacing) * -1);
+  }
+
+  @supports ((-webkit-backdrop-filter: var(--tw)) or (backdrop-filter: var(--tw))) {
+    .supports-backdrop-filter\:bg-background\/60 {
+      background-color: var(--background);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .supports-backdrop-filter\:bg-background\/60 {
+        background-color: color-mix(in oklab, var(--background) 60%, transparent);
+      }
+    }
   }
 
   @supports ((-webkit-backdrop-filter: var(--tw)) or (backdrop-filter: var(--tw))) {

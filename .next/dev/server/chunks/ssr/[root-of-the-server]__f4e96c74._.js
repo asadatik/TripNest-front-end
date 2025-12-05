@@ -114,8 +114,8 @@ const api = {
             name
         }),
     // Packages endpoints
-    getPackages: ()=>apiClient.get("/package"),
-    getPackageBySlug: (slug)=>apiClient.get(`/package/${slug}`),
+    getPackages: ()=>apiClient.get("/packages"),
+    getPackageBySlug: (slug)=>apiClient.get(`/packages/${slug}`),
     // Admin - Users
     getUsers: ()=>apiClient.get("/admin/users"),
     updateUserRole: (userId, role)=>apiClient.patch(`/admin/users/${userId}`, {
