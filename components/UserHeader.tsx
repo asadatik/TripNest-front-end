@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { logout } from "@/redux/slices/authSlice"
+import { logoutUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { LogOut } from "lucide-react"
@@ -12,7 +12,7 @@ export default function UserHeader() {
   const { user } = useAppSelector((state) => state.auth)
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logoutUser())
   }
 
   return (

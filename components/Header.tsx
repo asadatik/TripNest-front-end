@@ -1,21 +1,25 @@
 "use client"
 
-import React from "react"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { logout } from "@/redux/slices/authSlice"
+import { logoutUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { LogOut, Menu, LayoutDashboard } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 export default function Header() {
+  const router = useRouter()
   const dispatch = useAppDispatch()
-  const { user, isLoggedIn } = useAppSelector((state) => state.auth)
+  const { user, isAuthenticated, isLoading } = useAppSelector((state) => state.auth)
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleLogout = () => {
-    dispatch(logout())
+  const handleLogout = async () => {
+    const result = await dispatch(logoutUser())
+    if (result.meta.requestStatus === "fulfilled") {
+      router.push("/")
+    }
   }
 
   const dashboardHref = user?.role === "ADMIN" ? "/admin/dashboard" : "/user/dashboard"
@@ -39,11 +43,11 @@ export default function Header() {
 
         {/* Auth Section */}
         <div className="flex items-center gap-4">
-          {isLoggedIn && user ? (
+          {isAuthenticated && user ? (
             <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="gap-2 bg-transparent">
-                  {user.name}
+                  {user.name || user.email}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -54,7 +58,7 @@ export default function Header() {
                     Dashboard
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={handleLogout} className="gap-2">
+                <DropdownMenuItem onClick={handleLogout} disabled={isLoading} className="gap-2">
                   <LogOut size={16} />
                   Logout
                 </DropdownMenuItem>
@@ -86,7 +90,7 @@ export default function Header() {
                 <DropdownMenuItem asChild>
                   <Link href="/packages">Packages</Link>
                 </DropdownMenuItem>
-                {isLoggedIn && (
+                {isAuthenticated && (
                   <DropdownMenuItem asChild>
                     <Link href={dashboardHref}>Dashboard</Link>
                   </DropdownMenuItem>

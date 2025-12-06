@@ -306,23 +306,22 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Providers$2e$t
 const metadata = {
     title: "TripNest - Travel Packages",
     description: "Discover amazing travel packages and create unforgettable memories",
-    generator: "v0.app",
+    generator: "Next.js",
+    authors: [
+        {
+            name: "Your Name",
+            url: "https://yourwebsite.com"
+        }
+    ],
+    keywords: [
+        "Travel",
+        "Packages",
+        "TripNest",
+        "Vacation",
+        "Holidays"
+    ],
     icons: {
-        icon: [
-            {
-                url: "/icon-light-32x32.png",
-                media: "(prefers-color-scheme: light)"
-            },
-            {
-                url: "/icon-dark-32x32.png",
-                media: "(prefers-color-scheme: dark)"
-            },
-            {
-                url: "/icon.svg",
-                type: "image/svg+xml"
-            }
-        ],
-        apple: "/apple-icon.png"
+        icon: "/favicon.ico"
     }
 };
 function RootLayout({ children }) {
@@ -335,7 +334,7 @@ function RootLayout({ children }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/app/layout.tsx",
-                            lineNumber: 45,
+                            lineNumber: 35,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -343,34 +342,34 @@ function RootLayout({ children }) {
                             children: children
                         }, void 0, false, {
                             fileName: "[project]/app/layout.tsx",
-                            lineNumber: 46,
+                            lineNumber: 36,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Footer$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/app/layout.tsx",
-                            lineNumber: 47,
+                            lineNumber: 37,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/layout.tsx",
-                    lineNumber: 44,
+                    lineNumber: 34,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$analytics$2f$dist$2f$next$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Analytics"], {}, void 0, false, {
                     fileName: "[project]/app/layout.tsx",
-                    lineNumber: 49,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/layout.tsx",
-            lineNumber: 43,
+            lineNumber: 33,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/layout.tsx",
-        lineNumber: 42,
+        lineNumber: 32,
         columnNumber: 5
     }, this);
 }

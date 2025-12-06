@@ -26,20 +26,21 @@ import { Trash2, Edit2, Loader2, AlertCircle } from "lucide-react"
 
 export default function AdminUsers() {
   const dispatch = useAppDispatch()
-  const { users, isLoading, error } = useAppSelector((state) => state.users)
-  const [selectedUser, setSelectedUser] = useState<(typeof users)[0] | null>(null)
+  const { users = [], isLoading, error } = useAppSelector((state) => state.users)
+  const [selectedUser, setSelectedUser] = useState<typeof users[0] | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [newRole, setNewRole] = useState<"USER" | "ADMIN">("USER")
 
+  // Fetch users
   useEffect(() => {
     const fetchUsers = async () => {
       dispatch(fetchUsersStart())
       try {
         const response = await api.getUsers()
-        dispatch(fetchUsersSuccess(response.data))
-        console.log("🚨Users loaded:", response.data)
-      } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : "Failed to fetch users"
+        dispatch(fetchUsersSuccess(response.data.data)) // <-- backend response: data array
+        console.log("🚨Users loaded:", response.data.data)
+      } catch (err: any) {
+        const errorMessage = err.response?.data?.message || err.message || "Failed to fetch users"
         dispatch(fetchUsersError(errorMessage))
         console.error("🚨Error fetching users:", errorMessage)
       }
@@ -50,10 +51,11 @@ export default function AdminUsers() {
     }
   }, [dispatch, users.length])
 
+  // Update user role
   const handleUpdateRole = async () => {
     if (!selectedUser) return
     try {
-      await api.updateUserRole(selectedUser.id, newRole)
+      await api.updateUserRole(selectedUser.id, newRole) // <- make sure _id matches backend
       const updatedUser = { ...selectedUser, role: newRole }
       dispatch(updateUserSuccess(updatedUser))
       setIsDialogOpen(false)
@@ -63,11 +65,12 @@ export default function AdminUsers() {
     }
   }
 
-  const handleDelete = async (userId: string) => {
+  // Delete user
+  const handleDelete = async (_id: string) => {
     try {
-      await api.deleteUser(userId)
-      dispatch(deleteUserSuccess(userId))
-      console.log("🚨User deleted:", userId)
+      await api.deleteUser(_id)
+      dispatch(deleteUserSuccess(_id))
+      console.log("🚨User deleted:", _id)
     } catch (err) {
       console.error("🚨Failed to delete user:", err)
     }
@@ -82,7 +85,7 @@ export default function AdminUsers() {
 
       {error && (
         <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive flex items-start gap-2">
-          <AlertCircle size={20} className="mt-0.5 flex-shrink-0" />
+          <AlertCircle size={20} className="mt-0.5 shrink-0" />
           <div>
             <p className="font-medium">Error loading users</p>
             <p className="text-sm">{error}</p>
@@ -114,18 +117,20 @@ export default function AdminUsers() {
                 </TableHeader>
                 <TableBody>
                   {users.map((user) => (
-                    <TableRow key={user.id}>
+                    <TableRow key={user.email}>
                       <TableCell className="font-medium">{user.name}</TableCell>
                       <TableCell>{user.email}</TableCell>
                       <TableCell>
                         <span
-                          className={`px-2 py-1 rounded text-sm font-medium ${user.role === "ADMIN" ? "bg-blue-100 text-blue-800" : "bg-gray-100 text-gray-800"}`}
+                          className={`px-2 py-1 rounded text-sm font-medium ${
+                            user.role === "ADMIN" ? "bg-blue-100 text-blue-800" : "bg-gray-100 text-gray-800"
+                          }`}
                         >
                           {user.role}
                         </span>
                       </TableCell>
                       <TableCell className="text-right space-x-2">
-                        <Dialog open={isDialogOpen && selectedUser?.id === user.id} onOpenChange={setIsDialogOpen}>
+                        <Dialog open={isDialogOpen && selectedUser?.email === user.email} onOpenChange={setIsDialogOpen}>
                           <DialogTrigger asChild>
                             <Button
                               variant="outline"
@@ -133,6 +138,7 @@ export default function AdminUsers() {
                               onClick={() => {
                                 setSelectedUser(user)
                                 setNewRole(user.role)
+                                setIsDialogOpen(true)
                               }}
                               className="gap-1"
                             >
@@ -161,7 +167,7 @@ export default function AdminUsers() {
                             </div>
                           </DialogContent>
                         </Dialog>
-                        <Button variant="destructive" size="sm" onClick={() => handleDelete(user.id)} className="gap-1">
+                        <Button variant="destructive" size="sm" onClick={() => handleDelete(user.email)} className="gap-1">
                           <Trash2 size={14} />
                           Delete
                         </Button>

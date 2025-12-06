@@ -1,17 +1,15 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { registerStart, registerSuccess, registerError } from "@/redux/slices/authSlice"
-import { api } from "@/lib/api"
+import { registerUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { AlertCircle, Loader2 } from "lucide-react"
+import { AlertCircle, CheckCircle, Loader2 } from "lucide-react"
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -21,28 +19,22 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
+  const [successMessage, setSuccessMessage] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (password !== confirmPassword) {
-      dispatch(registerError("Passwords do not match"))
       return
     }
 
-    dispatch(registerStart())
+    const result = await dispatch(registerUser({ name, email, password }))
 
-    try {
-      const response = await api.register(email, password, name)
-      const { user, token } = response.data
-
-      localStorage.setItem("authToken", token)
-      dispatch(registerSuccess(user))
-      router.push("/user/dashboard")
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Registration failed. Please try again."
-      dispatch(registerError(errorMessage))
-      console.error("🚨Registration error:", errorMessage)
+    if (result.meta.requestStatus === "fulfilled") {
+      setSuccessMessage("Account created successfully! Redirecting to login...")
+      setTimeout(() => {
+        router.push("/auth/login")
+      }, 2000)
     }
   }
 
@@ -58,6 +50,13 @@ export default function RegisterPage() {
             <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md flex items-start gap-2 text-destructive">
               <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
               <span className="text-sm">{error}</span>
+            </div>
+          )}
+
+          {successMessage && (
+            <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-md flex items-start gap-2 text-green-700">
+              <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
+              <span className="text-sm">{successMessage}</span>
             </div>
           )}
 
@@ -120,6 +119,9 @@ export default function RegisterPage() {
                 required
                 disabled={isLoading}
               />
+              {password && confirmPassword && password !== confirmPassword && (
+                <p className="text-xs text-destructive mt-1">Passwords do not match</p>
+              )}
             </div>
 
             <Button type="submit" className="w-full" disabled={isLoading}>

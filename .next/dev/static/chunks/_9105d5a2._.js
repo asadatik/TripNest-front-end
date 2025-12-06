@@ -34,81 +34,8 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/redux/slices/authSlice.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+"[project]/redux/slices/authSlice.ts [app-client] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-__turbopack_context__.s([
-    "clearError",
-    ()=>clearError,
-    "default",
-    ()=>__TURBOPACK__default__export__,
-    "loginError",
-    ()=>loginError,
-    "loginStart",
-    ()=>loginStart,
-    "loginSuccess",
-    ()=>loginSuccess,
-    "logout",
-    ()=>logout,
-    "registerError",
-    ()=>registerError,
-    "registerStart",
-    ()=>registerStart,
-    "registerSuccess",
-    ()=>registerSuccess
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@reduxjs/toolkit/dist/redux-toolkit.modern.mjs [app-client] (ecmascript) <locals>");
-"use client";
-;
-const initialState = {
-    user: null,
-    isLoading: false,
-    error: null,
-    isLoggedIn: false
-};
-const authSlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createSlice"])({
-    name: "auth",
-    initialState,
-    reducers: {
-        loginStart (state) {
-            state.isLoading = true;
-            state.error = null;
-        },
-        loginSuccess (state, action) {
-            state.isLoading = false;
-            state.user = action.payload;
-            state.isLoggedIn = true;
-        },
-        loginError (state, action) {
-            state.isLoading = false;
-            state.error = action.payload;
-            state.isLoggedIn = false;
-        },
-        registerStart (state) {
-            state.isLoading = true;
-            state.error = null;
-        },
-        registerSuccess (state, action) {
-            state.isLoading = false;
-            state.user = action.payload;
-            state.isLoggedIn = true;
-        },
-        registerError (state, action) {
-            state.isLoading = false;
-            state.error = action.payload;
-        },
-        logout (state) {
-            state.user = null;
-            state.isLoggedIn = false;
-            state.error = null;
-        },
-        clearError (state) {
-            state.error = null;
-        }
-    }
-});
-const { loginStart, loginSuccess, loginError, registerStart, registerSuccess, registerError, logout, clearError } = authSlice.actions;
-const __TURBOPACK__default__export__ = authSlice.reducer;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -1135,25 +1062,59 @@ __turbopack_context__.s([
     ()=>Providers
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-redux/dist/react-redux.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/redux/store.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$authSlice$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/redux/slices/authSlice.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/redux/hooks.ts [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
 ;
+;
+;
+function AuthHydrator({ children }) {
+    _s();
+    const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppDispatch"])();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "AuthHydrator.useEffect": ()=>{
+            dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$authSlice$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setAuthFromStorage"])());
+        }
+    }["AuthHydrator.useEffect"], [
+        dispatch
+    ]);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+        children: children
+    }, void 0, false);
+}
+_s(AuthHydrator, "DKdeqxp2QYw2p6z8/ErYMRK/Ubo=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$hooks$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppDispatch"]
+    ];
+});
+_c = AuthHydrator;
 function Providers({ children }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Provider"], {
         store: __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["store"],
-        children: children
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AuthHydrator, {
+            children: children
+        }, void 0, false, {
+            fileName: "[project]/components/Providers.tsx",
+            lineNumber: 23,
+            columnNumber: 7
+        }, this)
     }, void 0, false, {
         fileName: "[project]/components/Providers.tsx",
-        lineNumber: 9,
-        columnNumber: 10
+        lineNumber: 22,
+        columnNumber: 5
     }, this);
 }
-_c = Providers;
-var _c;
-__turbopack_context__.k.register(_c, "Providers");
+_c1 = Providers;
+var _c, _c1;
+__turbopack_context__.k.register(_c, "AuthHydrator");
+__turbopack_context__.k.register(_c1, "Providers");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

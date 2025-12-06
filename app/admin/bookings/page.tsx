@@ -2,46 +2,44 @@
 
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { fetchBookingsStart, fetchBookingsSuccess, fetchBookingsError } from "@/redux/slices/bookingsSlice"
+import { 
+  fetchBookingsStart, 
+  fetchBookingsSuccess, 
+  fetchBookingsError 
+} from "@/redux/slices/bookingsSlice"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { Pointer as Spinner } from "lucide-react"
+import { Loader2 as Spinner, AlertCircle } from "lucide-react"
+import { api } from "@/lib/api"
 
 export default function AdminBookings() {
   const dispatch = useAppDispatch()
   const { bookings, isLoading, error } = useAppSelector((state) => state.bookings)
 
+  console.log("🚨 Initial bookings state:", bookings)
+
   useEffect(() => {
     const fetchBookings = async () => {
+      console.log("🚨 Fetching bookings...")
       dispatch(fetchBookingsStart())
+
       try {
-        // Mock data - replace with actual API call
-        const mockBookings = [
-          {
-            id: "1",
-            userId: "1",
-            packageId: "1",
-            packageTitle: "Beach Paradise",
-            userName: "John Doe",
-            status: "CONFIRMED" as const,
-            createdAt: new Date().toISOString(),
-            totalPrice: 2999,
-          },
-          {
-            id: "2",
-            userId: "2",
-            packageId: "2",
-            packageTitle: "Mountain Adventure",
-            userName: "Jane Smith",
-            status: "PENDING" as const,
-            createdAt: new Date().toISOString(),
-            totalPrice: 3499,
-          },
-        ]
-        dispatch(fetchBookingsSuccess(mockBookings))
-      } catch (err) {
-        dispatch(fetchBookingsError(err instanceof Error ? err.message : "Failed to fetch bookings"))
+        const response = await api.getBookings() // <-- backend GET endpoint
+        console.log("🚨 Response from backend:", response.data.data)
+        
+        if (response.data && response.data.data) {
+          dispatch(fetchBookingsSuccess(response.data.data))
+          console.log("🚨 Bookings saved to Redux state")
+        } else {
+          dispatch(fetchBookingsError("No bookings data received"))
+          console.error("🚨 No data in response")
+        }
+      } catch (err: any) {
+        const errorMessage =
+          err.response?.data?.message || err.message || "Failed to fetch bookings"
+        dispatch(fetchBookingsError(errorMessage))
+        console.error("🚨 Error fetching bookings:", errorMessage)
       }
     }
 
@@ -71,7 +69,10 @@ export default function AdminBookings() {
       </div>
 
       {error && (
-        <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive">{error}</div>
+        <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive flex items-center gap-2">
+          <AlertCircle size={20} />
+          <span>{error}</span>
+        </div>
       )}
 
       <Card>
@@ -99,14 +100,18 @@ export default function AdminBookings() {
                 </TableHeader>
                 <TableBody>
                   {bookings.map((booking) => (
-                    <TableRow key={booking.id}>
-                      <TableCell className="font-medium">{booking.userName}</TableCell>
-                      <TableCell>{booking.packageTitle}</TableCell>
-                      <TableCell>${booking.totalPrice}</TableCell>
+                    <TableRow key={booking._id}>
+                      <TableCell className="font-medium">{booking.member.name || "N/A"}</TableCell>
+                      <TableCell>{booking.package.title || "N/A"}</TableCell>
+                      <TableCell>${booking.totalAmount || 0}</TableCell>
                       <TableCell>
-                        <Badge className={getStatusColor(booking.status)}>{booking.status}</Badge>
+                        <Badge className={getStatusColor(booking.status)}>
+                          {booking.status}
+                        </Badge>
                       </TableCell>
-                      <TableCell>{new Date(booking.createdAt).toLocaleDateString()}</TableCell>
+                      <TableCell>
+                        {booking.createdAt ? new Date(booking.createdAt).toLocaleDateString() : "N/A"}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

@@ -1,8 +1,20 @@
 export interface User {
-  id: string
-  email: string
+  _id: string
   name: string
-  role?: "USER" | "ADMIN"
+  email: string
+  role: "USER" | "ADMIN"
+  status: "ACTIVE" | "INACTIVE" | "SUSPENDED"
+  isVerified: boolean
+  isDeleted: boolean
+  auths: Array<{
+    provider: string
+    providerId: string
+  }>
+  bookings: string[]
+  reviews: string[]
+  wishlist: string[]
+  createdAt: string
+  updatedAt: string
 }
 
 export interface Package {
@@ -48,15 +60,27 @@ export interface ApiResponse<T> {
 }
 
 export interface Booking {
-  id: string
-  userId: string
-  packageId: string
-  packageTitle: string
-  userName: string
+  _id: string
+  member: {
+    _id: string
+    name: string
+    email: string
+  }
+  package: {
+    _id: string
+    title: string
+    slug: string
+  }
+  pax: number
+  totalAmount: number
+  currency: string
   status: "PENDING" | "CONFIRMED" | "CANCELLED" | "COMPLETED"
+  paymentStatus: "UNPAID" | "PAID" | "REFUNDED" | "FAILED"
+  notes?: string
   createdAt: string
-  totalPrice: number
+  updatedAt: string
 }
+
 
 export interface Payment {
   id: string

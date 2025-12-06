@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { logout } from "@/redux/slices/authSlice"
+import { logoutUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { LogOut } from "lucide-react"
@@ -12,11 +12,11 @@ export default function AdminHeader() {
   const { user } = useAppSelector((state) => state.auth)
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logoutUser())
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="flex h-16 items-center justify-between px-6">
         <Link href="/admin/dashboard" className="flex items-center gap-2">
           <span className="text-xl font-bold text-primary">TripNest Admin</span>

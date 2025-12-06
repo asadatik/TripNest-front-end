@@ -13,23 +13,13 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "TripNest - Travel Packages",
   description: "Discover amazing travel packages and create unforgettable memories",
-  generator: "v0.app",
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+  generator: "Next.js",
+  authors: [{ name: "Your Name", url: "https://yourwebsite.com" }],
+  keywords: ["Travel", "Packages", "TripNest", "Vacation", "Holidays"],
+ 
+  icons
+: {
+    icon: "/favicon.ico",
   },
 }
 

@@ -2,16 +2,11 @@
 
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 
-export interface Booking {
-  id: string
-  userId: string
-  packageId: string
-  packageTitle: string
-  userName: string
-  status: "PENDING" | "CONFIRMED" | "CANCELLED"
-  createdAt: string
-  totalPrice: number
-}
+import type { Booking } from "@/lib/types"
+
+
+
+
 
 interface BookingsState {
   bookings: Booking[]
@@ -48,21 +43,21 @@ const bookingsSlice = createSlice({
       state.error = action.payload
     },
     updateBookingSuccess(state, action: PayloadAction<Booking>) {
-      const index = state.bookings.findIndex((b) => b.id === action.payload.id)
+      const index = state.bookings.findIndex((b) => b._id === action.payload._id)
       if (index !== -1) {
         state.bookings[index] = action.payload
       }
-      const userIndex = state.userBookings.findIndex((b) => b.id === action.payload.id)
+      const userIndex = state.userBookings.findIndex((b) => b._id === action.payload._id)
       if (userIndex !== -1) {
         state.userBookings[userIndex] = action.payload
       }
     },
     cancelBookingSuccess(state, action: PayloadAction<string>) {
-      const booking = state.bookings.find((b) => b.id === action.payload)
+      const booking = state.bookings.find((b) => b._id === action.payload)
       if (booking) {
         booking.status = "CANCELLED"
       }
-      const userBooking = state.userBookings.find((b) => b.id === action.payload)
+      const userBooking = state.userBookings.find((b) => b._id === action.payload)
       if (userBooking) {
         userBooking.status = "CANCELLED"
       }

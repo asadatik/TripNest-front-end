@@ -1,13 +1,11 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { loginStart, loginSuccess, loginError } from "@/redux/slices/authSlice"
-import { api } from "@/lib/api"
+import { loginUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
@@ -16,27 +14,29 @@ import { AlertCircle, Loader2 } from "lucide-react"
 export default function LoginPage() {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const { isLoading, error } = useAppSelector((state) => state.auth)
+  const { isLoading, error, isAuthenticated, user } = useAppSelector((state) => state.auth)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      router.push(user.role === "ADMIN" ? "/admin/dashboard" : "/user/dashboard")
+    }
+  }, [isAuthenticated, user, router])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    dispatch(loginStart())
 
-    try {
-      const response = await api.login(email, password)
-      const { user, token } = response.data
+    const result = await dispatch(loginUser({ email, password }))
 
-      // Store token in localStorage for future requests
-      localStorage.setItem("authToken", token)
-
-      dispatch(loginSuccess(user))
-      router.push(user.role === "ADMIN" ? "/admin/dashboard" : "/user/dashboard")
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Login failed. Please check your credentials."
-      dispatch(loginError(errorMessage))
-      console.error("🚨Login error:", errorMessage)
+    // Redirect on successful login
+    if (result.meta.requestStatus === "fulfilled") {
+      const loginedUser = result.payload as any
+      if (loginedUser?.role === "ADMIN") {
+        router.push("/admin/dashboard")
+      } else {
+        router.push("/user/dashboard")
+      }
     }
   }
 
