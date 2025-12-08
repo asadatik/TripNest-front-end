@@ -36,13 +36,18 @@ export const api = {
 
   // Admin - Users
   getUsers: () => apiClient.get("/user/all-users"),
-  updateUserRole: (userId: string, role: "USER" | "ADMIN") => apiClient.patch(`/users/${userId}`, { role }),
-  deleteUser: (userId: string) => apiClient.delete(`/users/${userId}`),
+  updateUserRole: (userId: string, role: "USER" | "ADMIN") => apiClient.patch(`/user/${userId}`, { role }),
+  deleteUser: (userId: string) => apiClient.delete(`/user/${userId}`),
+  updateUserStatus: (userId: string, status: "ACTIVE" | "INACTIVE" | "BLOCKED" | "DELETED") =>
+    apiClient.patch(`/user/${userId}`, { status }),
+
+
 
   // Admin - Packages
-  createPackage: (data: object) => apiClient.post("/packages", data),
+  createPackage: (data: object) => apiClient.post("/packages/create", data),
   updatePackage: (packageId: string, data: object) => apiClient.patch(`/packages/${packageId}`, data),
   deletePackage: (packageId: string) => apiClient.delete(`/packages/${packageId}`),
+  getPackageTypes: () => apiClient.get("/packages/types"),
 
   // Admin - Bookings
   getBookings: () => apiClient.get("/bookings"),

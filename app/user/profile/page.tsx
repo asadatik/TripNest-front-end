@@ -108,7 +108,7 @@ export default function UserProfile() {
           <CardContent className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-sm text-muted-foreground">Member Since</span>
-              <span className="font-medium">{user ? new Date(user.id).toLocaleDateString() : "N/A"}</span>
+              <span className="font-medium">{user ? new Date(user._id).toLocaleDateString() : "N/A"}</span>
             </div>
             <Separator />
             <div className="flex justify-between items-center">

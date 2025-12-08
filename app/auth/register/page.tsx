@@ -9,7 +9,7 @@ import { registerUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { AlertCircle, CheckCircle, Loader2 } from "lucide-react"
+import { AlertCircle, CheckCircle, Eye, EyeOff, Loader2 } from "lucide-react"
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -20,6 +20,12 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [successMessage, setSuccessMessage] = useState("")
+
+
+  const [showPassword, setShowPassword] = useState(false)
+const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -91,38 +97,71 @@ export default function RegisterPage() {
               />
             </div>
 
-            <div>
-              <label htmlFor="password" className="text-sm font-medium mb-2 block">
-                Password
-              </label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={isLoading}
-              />
-            </div>
 
-            <div>
+
+
+
+       {/*  */}
+  <div className=" relative      ">  
+      <label htmlFor="password" className="text-sm font-medium mb-2 block">
+        Password
+      </label>
+
+      <Input
+        id="password"
+        type={showPassword ? "text" : "password"}
+        placeholder="••••••••"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        disabled={isLoading}
+        className="pr-10"
+      />
+
+      <button
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+        className="absolute right-3 top-[50px] transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+        tabIndex={-1}
+      >
+        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+      </button>
+    </div>
+
+{/* confirm password */}
+            <div className="relative"  >
               <label htmlFor="confirmPassword" className="text-sm font-medium mb-2 block">
                 Confirm Password
               </label>
               <Input
                 id="confirmPassword"
-                type="password"
+        type={ showConfirmPassword ? "text" : "password"}
+                
                 placeholder="••••••••"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
                 disabled={isLoading}
               />
+ <button
+        type="button"
+        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+        className="absolute right-3 top-[50px] transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+        tabIndex={-1}
+      >
+        {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+      </button>
+
+
+
               {password && confirmPassword && password !== confirmPassword && (
                 <p className="text-xs text-destructive mt-1">Passwords do not match</p>
               )}
+             
+  
             </div>
+
+
 
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? (

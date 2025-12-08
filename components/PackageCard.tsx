@@ -11,6 +11,11 @@ interface PackageCardProps {
 }
 
 export default function PackageCard({ package: pkg }: PackageCardProps) {
+
+
+console.log("🚨Rendering PackageCard for package:", pkg)
+
+
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
       {pkg.images && (

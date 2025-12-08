@@ -9,14 +9,15 @@ import { loginUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { AlertCircle, Loader2 } from "lucide-react"
+import { AlertCircle, Eye, EyeOff, Loader2 } from "lucide-react"
 
 export default function LoginPage() {
   const router = useRouter()
   const dispatch = useAppDispatch()
   const { isLoading, error, isAuthenticated, user } = useAppSelector((state) => state.auth)
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [password, setPassword  ] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
 
   useEffect(() => {
     if (isAuthenticated && user) {
@@ -50,7 +51,7 @@ export default function LoginPage() {
         <CardContent>
           {error && (
             <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md flex items-start gap-2 text-destructive">
-              <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
+              <AlertCircle size={16} className="mt-0.5 shrink-0" />
               <span className="text-sm">{error}</span>
             </div>
           )}
@@ -70,21 +71,31 @@ export default function LoginPage() {
                 disabled={isLoading}
               />
             </div>
+  <div className=" relative      ">  
+      <label htmlFor="password" className="text-sm font-medium mb-2 block">
+        Password
+      </label>
 
-            <div>
-              <label htmlFor="password" className="text-sm font-medium mb-2 block">
-                Password
-              </label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={isLoading}
-              />
-            </div>
+      <Input
+        id="password"
+        type={showPassword ? "text" : "password"}
+        placeholder="••••••••"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        disabled={isLoading}
+        className="pr-10"
+      />
+
+      <button
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+        className="absolute right-3 top-[50px] transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+        tabIndex={-1}
+      >
+        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+      </button>
+    </div>
 
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? (

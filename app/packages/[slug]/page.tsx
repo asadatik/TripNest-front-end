@@ -213,11 +213,14 @@ export default function PackageDetailPage() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Type:</span>
-                      <span className="font-medium">{pkg.packageType}</span>
+                      <span className="font-medium">
+                        {(pkg.packageType as any)?.name ?? "N/A"}
+                      </span>
                     </div>
+
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Division:</span>
-                      <span className="font-medium">{pkg.division}</span>
+                      {/* <span className="text-muted-foreground">Division:</span> */}
+                      {/* <span className="font-medium">{pkg.division}</span> */}
                     </div>
                   </div>
                 </div>

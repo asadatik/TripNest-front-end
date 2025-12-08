@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="min-h-[calc(100vh-theme(space.16))]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/10 to-primary/5 py-20 md:py-32">
+      <section className="bg-gradient from-primary/10 to-primary/5 py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
             Explore the World with <span className="text-primary">TripNest</span>

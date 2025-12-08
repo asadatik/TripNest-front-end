@@ -3,9 +3,9 @@ export interface User {
   name: string
   email: string
   role: "USER" | "ADMIN"
-  status: "ACTIVE" | "INACTIVE" | "SUSPENDED"
-  isVerified: boolean
+  status: "ACTIVE" | "INACTIVE" | "BLOCKED" | "DELETED"
   isDeleted: boolean
+    isVerified: boolean
   auths: Array<{
     provider: string
     providerId: string
@@ -16,6 +16,9 @@ export interface User {
   createdAt: string
   updatedAt: string
 }
+
+
+
 
 export interface Package {
   _id: string

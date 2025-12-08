@@ -1,12 +1,17 @@
+
+
+
+
 "use client"
 
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 
 export interface AdminUser {
-  id: string
+  _id: string
   email: string
   name: string
   role: "USER" | "ADMIN"
+  status: "ACTIVE" | "INACTIVE" | "BLOCKED" | "DELETED"
   createdAt: string
 }
 
@@ -44,13 +49,17 @@ const usersSlice = createSlice({
     },
     updateUserSuccess(state, action: PayloadAction<AdminUser>) {
       state.isLoading = false
-      const index = state.users.findIndex((u) => u.id === action.payload.id)
+      const index = state.users.findIndex((u) => u._id === action.payload._id)
       if (index !== -1) {
         state.users[index] = action.payload
       }
     },
-    deleteUserSuccess(state, action: PayloadAction<string>) {
-      state.users = state.users.filter((u) => u.id !== action.payload)
+    updateUserStatusSuccess(state, action: PayloadAction<AdminUser>) {
+      state.isLoading = false
+      const index = state.users.findIndex((u) => u._id === action.payload._id)
+      if (index !== -1) {
+        state.users[index] = action.payload
+      }
     },
   },
 })
@@ -61,7 +70,7 @@ export const {
   fetchUsersError,
   updateUserStart,
   updateUserSuccess,
-  deleteUserSuccess,
+  updateUserStatusSuccess,
 } = usersSlice.actions
 
 export default usersSlice.reducer

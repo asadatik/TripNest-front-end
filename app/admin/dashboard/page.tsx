@@ -44,7 +44,7 @@ export default function AdminDashboard() {
       const payments = paymentsRes.data?.data || []
      console.log("🚨Dashboard data:", { users, packages, bookings, payments })
       const totalRevenue = (payments ?? []).reduce(
-        (sum: number, p: any) => (p.status === "SUCCESS" ? sum + (p.amount || 0) : sum),
+        (sum: number, p: any) => (p.status === "UNPAID" ? sum + (p.amount || 0) : sum),
         0,
       )
 

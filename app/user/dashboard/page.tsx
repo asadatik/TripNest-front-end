@@ -63,7 +63,7 @@ export default function UserDashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              ${userBookings.reduce((sum, b) => (b.status === "CONFIRMED" ? sum + b.totalPrice : sum), 0)}
+              ${userBookings.reduce((sum, b) => (b.status === "CONFIRMED" ? sum + b.totalAmount : sum), 0)}
             </div>
           </CardContent>
         </Card>

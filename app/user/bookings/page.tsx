@@ -34,15 +34,15 @@ export default function UserBookings() {
       dispatch(fetchBookingsStart())
       try {
         const response = await api.getUserBookings()
-        dispatch(fetchUserBookingsSuccess(response.data))
-        console.log("🚨User bookings loaded:", response.data)
+        dispatch(fetchUserBookingsSuccess(response.data.data))
+        console.log("🚨User bookings loaded:", response.data.data)
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : "Failed to fetch bookings"
         dispatch(fetchBookingsError(errorMessage))
         console.error("🚨Error fetching bookings:", errorMessage)
       }
     }
-
+    console.log("🚨Bookings length:", bookings.length)
     if (bookings.length === 0) {
       fetchBookings()
     }
@@ -66,6 +66,8 @@ export default function UserBookings() {
         return "bg-yellow-100 text-yellow-800"
       case "CANCELLED":
         return "bg-red-100 text-red-800"
+        case "COMPLETED":
+        return "bg-blue-100 text-blue-800"
       default:
         return "bg-gray-100 text-gray-800"
     }
@@ -113,9 +115,9 @@ export default function UserBookings() {
                 </TableHeader>
                 <TableBody>
                   {bookings.map((booking) => (
-                    <TableRow key={booking.id}>
-                      <TableCell className="font-medium">{booking.packageTitle}</TableCell>
-                      <TableCell>${booking.totalPrice}</TableCell>
+                    <TableRow key={booking._id}>
+                      <TableCell className="font-medium">{booking.package.title}</TableCell>
+                      <TableCell>${booking.totalAmount}</TableCell>
                       <TableCell>
                         <Badge className={getStatusColor(booking.status)}>{booking.status}</Badge>
                       </TableCell>
@@ -138,7 +140,7 @@ export default function UserBookings() {
                               </AlertDialogHeader>
                               <div className="flex gap-3">
                                 <AlertDialogCancel>Keep Booking</AlertDialogCancel>
-                                <AlertDialogAction onClick={() => handleCancelBooking(booking.id)}>
+                                <AlertDialogAction onClick={() => handleCancelBooking(booking._id)}>
                                   Cancel Booking
                                 </AlertDialogAction>
                               </div>
