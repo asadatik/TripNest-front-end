@@ -53,14 +53,17 @@ export const api = {
 
   // Admin - Bookings
   getBookings: () => apiClient.get("/bookings"),
-  getBookingDetails: (bookingId: string) => apiClient.get(`/bookings/${bookingId}`),
-  updateBookingStatus: (bookingId: string, status: string) => apiClient.patch(`/bookings/${bookingId}`, { status }),
+  getBookingDetails: (bookingId: string) => apiClient.get(`/bookings/admin/${bookingId}`),
+
+  updateBookingStatus: (bookingId: string, data: { status: string; paymentStatus?: string }) => apiClient.patch(`/bookings/status/${bookingId}`, data),
 
 
   // User - Bookings
   getUserBookings: () => apiClient.get("/bookings/me"),
   // createBooking: (packageId: string, data: object) => apiClient.post("/bookings/create", { packageId, ...data }),
   
+           
+
 createBooking: (data: { package: string; pax: number }) =>
   apiClient.post("/bookings/create", data),
 
@@ -75,7 +78,7 @@ createBooking: (data: { package: string; pax: number }) =>
 
   // Admin - Payments
   getPayments: () => apiClient.get("/payments"),
-  getPaymentDetails: (paymentId: string) => apiClient.get(`/payments/${paymentId}`),
+  getPaymentDetails: (paymentId: string) => apiClient.get(`/payments/admin/${paymentId}`),
 
 // stripe checkout session create
 initStripeCheckout: (data: { bookingId: string }) =>

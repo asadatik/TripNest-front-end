@@ -18,7 +18,9 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, AlertCircle } from "lucide-react"
+import { Loader2, AlertCircle, Eye } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function AdminPayments() {
   const dispatch = useAppDispatch()
@@ -48,7 +50,7 @@ export default function AdminPayments() {
   }, [dispatch, payments.length, isLoading])
 
 
- console.log("Payments:", payments)
+  console.log("Payments:", payments)
 
 
   const getStatusColor = (status: string) => {
@@ -106,10 +108,10 @@ export default function AdminPayments() {
                     <TableHead>Payment ID</TableHead>
                     <TableHead>Booking ID</TableHead>
                     <TableHead>Package</TableHead>
-                    <TableHead>Amount</TableHead>
+
                     <TableHead>Status</TableHead>
                     <TableHead>User</TableHead>
-                    <TableHead>Date</TableHead>
+                    <TableHead>Details</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -125,15 +127,10 @@ export default function AdminPayments() {
                       </TableCell>
                       <TableCell>
                         {payment.booking?.package?.title ||
-                        
+
                           "Unknown"}
                       </TableCell>
-                      <TableCell className="font-semibold">
-                        {payment.amount}
-                        {payment.currency
-                          ? ` ${payment.currency}`
-                          : " BDT"}
-                      </TableCell>
+
                       <TableCell>
                         <Badge className={getStatusColor(payment.status)}>
                           {payment.status}
@@ -143,7 +140,12 @@ export default function AdminPayments() {
                         {payment?.member?.name || "N/A"}
                       </TableCell>
                       <TableCell>
-                        {new Date(payment.createdAt).toLocaleDateString()}
+                        <Link href={`/admin/payments/${payment._id}`}>
+                          <Button variant="outline" size="sm">
+                            <Eye className="mr-2 h-4 w-4" />
+                            View Details
+                          </Button>
+                        </Link>
                       </TableCell>
                     </TableRow>
                   ))}
