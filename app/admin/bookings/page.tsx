@@ -43,10 +43,16 @@ export default function AdminBookings() {
       }
     }
 
+
+
     if (bookings.length === 0) {
       fetchBookings()
     }
   }, [dispatch, bookings.length])
+
+
+
+
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -102,7 +108,7 @@ export default function AdminBookings() {
                   {bookings.map((booking) => (
                     <TableRow key={booking._id}>
                       <TableCell className="font-medium">{booking.member.name || "N/A"}</TableCell>
-                      <TableCell>{booking.package.title || "N/A"}</TableCell>
+                      <TableCell>{booking?.package?.title || "N/A"}</TableCell>
                       <TableCell>${booking.totalAmount || 0}</TableCell>
                       <TableCell>
                         <Badge className={getStatusColor(booking.status)}>

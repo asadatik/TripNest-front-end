@@ -116,7 +116,7 @@ export default function UserBookings() {
                 <TableBody>
                   {bookings.map((booking) => (
                     <TableRow key={booking._id}>
-                      <TableCell className="font-medium">{booking.package.title}</TableCell>
+                      <TableCell className="font-medium"> {booking.package?.title || "N/A"}</TableCell>
                       <TableCell>${booking.totalAmount}</TableCell>
                       <TableCell>
                         <Badge className={getStatusColor(booking.status)}>{booking.status}</Badge>

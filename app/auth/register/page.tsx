@@ -54,14 +54,14 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false)
         <CardContent>
           {error && (
             <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md flex items-start gap-2 text-destructive">
-              <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
+              <AlertCircle size={16} className="mt-0.5 shrink-0" />
               <span className="text-sm">{error}</span>
             </div>
           )}
 
           {successMessage && (
             <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-md flex items-start gap-2 text-green-700">
-              <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
+              <CheckCircle size={16} className="mt-0.5 shrink-0" />
               <span className="text-sm">{successMessage}</span>
             </div>
           )}

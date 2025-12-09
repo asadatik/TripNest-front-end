@@ -6,10 +6,11 @@
   "/admin/payments/page": "app/admin/payments/page.js",
   "/admin/users/page": "app/admin/users/page.js",
   "/auth/login/page": "app/auth/login/page.js",
+  "/auth/register/page": "app/auth/register/page.js",
   "/packages/[slug]/page": "app/packages/[slug]/page.js",
   "/packages/page": "app/packages/page.js",
   "/page": "app/page.js",
+  "/payments/success/page": "app/payments/success/page.js",
   "/user/bookings/page": "app/user/bookings/page.js",
-  "/user/dashboard/page": "app/user/dashboard/page.js",
-  "/user/profile/page": "app/user/profile/page.js"
+  "/user/dashboard/page": "app/user/dashboard/page.js"
 }

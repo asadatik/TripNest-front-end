@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   title: "TripNest - Travel Packages",
   description: "Discover amazing travel packages and create unforgettable memories",
   generator: "Next.js",
-  authors: [{ name: "Your Name", url: "https://yourwebsite.com" }],
+  authors: [{ name: "Md .Atikur Rahman", url: "https://yourwebsite.com" }],
   keywords: ["Travel", "Packages", "TripNest", "Vacation", "Holidays"],
  
   icons
 : {
-    icon: "/favicon.ico",
+    icon: "/24e7519e-f63d-4ead-a400-e244072a9ea8.jpg",
   },
 }
 

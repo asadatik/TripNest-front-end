@@ -309,7 +309,7 @@ const metadata = {
     generator: "Next.js",
     authors: [
         {
-            name: "Your Name",
+            name: "Md .Atikur Rahman",
             url: "https://yourwebsite.com"
         }
     ],
@@ -321,7 +321,7 @@ const metadata = {
         "Holidays"
     ],
     icons: {
-        icon: "/favicon.ico"
+        icon: "/24e7519e-f63d-4ead-a400-e244072a9ea8.jpg"
     }
 };
 function RootLayout({ children }) {

@@ -21,7 +21,7 @@ console.log("🚨Rendering PackageCard for package:", pkg)
       {pkg.images && (
         <div className="aspect-video bg-muted overflow-hidden">
           <img
-            src={pkg.images[0] || "/placeholder.svg"}
+            src={pkg.images[0] || "/pexels-dreamlensproduction-2450296.jpg"}
             alt={pkg.title}
             className="w-full h-full object-cover hover:scale-105 transition-transform"
           />

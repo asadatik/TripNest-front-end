@@ -64,6 +64,7 @@ type PackageFormState = {
   amenities: string
   itinerary: string
   packageType: string
+  images: string            // ✅ URL list string
 }
 
 type PackageTypeOption = {
@@ -92,6 +93,7 @@ const emptyForm: PackageFormState = {
   amenities: "",
   itinerary: "",
   packageType: "",
+  images: "",               // ✅
 }
 
 export default function AdminPackages() {
@@ -167,17 +169,16 @@ export default function AdminPackages() {
     excluded: parseCommaList(formData.excluded),
     amenities: parseCommaList(formData.amenities),
     itinerary: parseCommaList(formData.itinerary),
-    // packageType ইচ্ছাকৃতভাবে এখানে রাখব না; নিচে create case এ আলাদা করে add করব
+    images: parseCommaList(formData.images),   // ✅ URL → string[]
+    // packageType ইচ্ছাকৃতভাবে এখানে নেই; create case এ আলাদা করে add করব
   })
 
   const handleSave = async () => {
     try {
       if (editingId) {
-        // update: packageType না পাঠাই, backend আগেরটাই রাখবে
         const payload = buildPayload()
         await api.updatePackage(editingId, payload)
       } else {
-        // create: packageType সহ পাঠাই
         const payload = {
           ...buildPayload(),
           packageType: formData.packageType || undefined,
@@ -229,7 +230,6 @@ export default function AdminPackages() {
       arrivalLocation: pkg.arrivalLocation || "",
       minAge: pkg.minAge?.toString() ?? "",
       maxAge: pkg.maxAge?.toString() ?? "",
-      // form এ দেখাই; কিন্তু update এ send করব না
       packageType: (pkg as any).packageType?.toString() || "",
       tags: Array.isArray(pkg.tags) ? pkg.tags.join(", ") : "",
       included: Array.isArray(pkg.included) ? pkg.included.join(", ") : "",
@@ -238,6 +238,9 @@ export default function AdminPackages() {
       itinerary: Array.isArray(pkg.itinerary)
         ? pkg.itinerary.join(", ")
         : "",
+      images: Array.isArray((pkg as any).images)
+        ? (pkg as any).images.join(", ")
+        : "",                           // ✅ DB থেকে আসা images → string
     })
     setIsDialogOpen(true)
   }
@@ -533,6 +536,21 @@ export default function AdminPackages() {
                       itinerary: e.target.value,
                     })
                   }
+                />
+              </div>
+
+              {/* Images URL */}
+              <div>
+                <Label>Image URLs (comma separated)</Label>
+                <Input
+                  value={formData.images}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      images: e.target.value,
+                    })
+                  }
+                  placeholder="https://..., https://..."
                 />
               </div>
 

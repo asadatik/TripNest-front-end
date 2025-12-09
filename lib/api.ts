@@ -43,6 +43,8 @@ export const api = {
 
 
 
+
+
   // Admin - Packages
   createPackage: (data: object) => apiClient.post("/packages/create", data),
   updatePackage: (packageId: string, data: object) => apiClient.patch(`/packages/${packageId}`, data),
@@ -54,13 +56,14 @@ export const api = {
   getBookingDetails: (bookingId: string) => apiClient.get(`/bookings/${bookingId}`),
   updateBookingStatus: (bookingId: string, status: string) => apiClient.patch(`/bookings/${bookingId}`, { status }),
 
-  // Admin - Payments
-  getPayments: () => apiClient.get("/payment"),
-  getPaymentDetails: (paymentId: string) => apiClient.get(`/payment/${paymentId}`),
 
   // User - Bookings
   getUserBookings: () => apiClient.get("/bookings/me"),
-  createBooking: (packageId: string, data: object) => apiClient.post("/bookings/create", { packageId, ...data }),
+  // createBooking: (packageId: string, data: object) => apiClient.post("/bookings/create", { packageId, ...data }),
+  
+createBooking: (data: { package: string; pax: number }) =>
+  apiClient.post("/bookings/create", data),
+
   cancelBooking: (bookingId: string) => apiClient.patch(`/bookings/me/${bookingId}/cancel`, {}),
 
   // User - Profile
@@ -69,9 +72,20 @@ export const api = {
   updateUserPassword: (data: object) => apiClient.patch("/password", data),
 
   // Payments
-  createCheckoutSession: (bookingId: string) => apiClient.post("/payments/checkout", { bookingId }),
-  verifyPayment: (paymentId: string, stripePaymentIntentId: string) =>
-    apiClient.post("/payments/verify", { paymentId, stripePaymentIntentId }),
+
+  // Admin - Payments
+  getPayments: () => apiClient.get("/payments"),
+  getPaymentDetails: (paymentId: string) => apiClient.get(`/payments/${paymentId}`),
+
+// stripe checkout session create
+initStripeCheckout: (data: { bookingId: string }) =>
+  apiClient.post("/payments/create", data),
+
+ 
+
+  confirmStripePayment: (data: { sessionId: string }) =>
+    apiClient.post("/payments/confirm", data),
+
 }
 
 export default apiClient
