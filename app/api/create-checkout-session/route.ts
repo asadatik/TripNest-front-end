@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Call your backend to create a Stripe checkout session
-    const backendUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001/api"
+    const backendUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:5000/api/v1"
     const response = await fetch(`${backendUrl}/payments/checkout-session`, {
       method: "POST",
       headers: {

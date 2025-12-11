@@ -19,6 +19,9 @@ export default function LoginPage() {
   const [password, setPassword  ] = useState("")
   const [showPassword, setShowPassword] = useState(false)
 
+
+
+
   useEffect(() => {
     if (isAuthenticated && user) {
       router.push(user.role === "ADMIN" ? "/admin/dashboard" : "/user/dashboard")
@@ -40,6 +43,9 @@ export default function LoginPage() {
       }
     }
   }
+
+console.log(error , ' login page error')
+
 
   return (
     <div className="min-h-[calc(100vh-theme(space.16))] flex items-center justify-center py-12 px-4">
