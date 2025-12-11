@@ -1,15 +1,16 @@
 "use client"
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { logout } from "@/redux/slices/authSlice"
+import { logoutUser } from "@/redux/slices/authSlice"
+
 
 export const useAuth = () => {
   const dispatch = useAppDispatch()
-  const { user, isLoggedIn, isLoading, error } = useAppSelector((state) => state.auth)
+  const { user, isAuthenticated, isLoading, error } = useAppSelector((state) => state.auth)
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logoutUser())
   }
 
-  return { user, isLoggedIn, isLoading, error, logout: handleLogout }
+  return { user, isAuthenticated, isLoading, error, logout: handleLogout }
 }

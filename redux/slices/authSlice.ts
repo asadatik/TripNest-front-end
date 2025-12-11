@@ -115,10 +115,13 @@ const authSlice = createSlice({
         state.user = action.payload
         state.isAuthenticated = true
       })
+      // Handle rejected case to reset auth state
       .addCase(loadUserFromCookie.rejected, (state) => {
         state.isLoading = false
+        state.user = null
         state.isAuthenticated = false
       })
+
 
     // Logout thunk
     builder

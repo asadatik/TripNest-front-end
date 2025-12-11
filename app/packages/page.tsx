@@ -6,6 +6,7 @@ import { fetchPackagesStart, fetchPackagesSuccess, fetchPackagesError } from "@/
 import { api } from "@/lib/api"
 import PackageCard from "@/components/PackageCard"
 import { Loader2, AlertCircle } from "lucide-react"
+import { FullScreenLoader } from "@/components/common/fullscreen-loader"
 
 export default function PackagesPage() {
   const dispatch = useAppDispatch()
@@ -33,6 +34,11 @@ export default function PackagesPage() {
       fetchPackages()
     }
   }, [dispatch, items.length])
+
+
+     if (isLoading) {
+    return <FullScreenLoader />
+  }
 
   return (
     <div className="min-h-[calc(100vh-theme(space.16))] py-12">

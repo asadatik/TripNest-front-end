@@ -14,6 +14,7 @@ import {
 import { useEffect } from "react"
 import { fetchPackagesError, fetchPackagesStart, fetchPackagesSuccess } from "@/redux/slices/packagesSlice"
 import { api } from "@/lib/api"
+import { FullScreenLoader } from "../common/fullscreen-loader"
 
 export default function FeaturedPackages() {
 
@@ -42,6 +43,15 @@ export default function FeaturedPackages() {
       fetchPackages()
     }
   }, [dispatch, items.length])
+
+
+
+  if (isLoading) {
+    return <FullScreenLoader />
+  }
+
+     
+
 
   return (
     <section className="border-b border-border/60 bg-background py-12 md:py-16">

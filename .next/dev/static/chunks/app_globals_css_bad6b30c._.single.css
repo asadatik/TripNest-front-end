@@ -740,10 +740,6 @@
     z-index: 50;
   }
 
-  .z-\[-1\] {
-    z-index: -1;
-  }
-
   .z-\[1\] {
     z-index: 1;
   }
@@ -1313,10 +1309,6 @@
     width: calc(var(--spacing) * 12);
   }
 
-  .w-44 {
-    width: calc(var(--spacing) * 44);
-  }
-
   .w-64 {
     width: calc(var(--spacing) * 64);
   }
@@ -1435,10 +1427,6 @@
 
   .min-w-\[12rem\] {
     min-width: 12rem;
-  }
-
-  .min-w-\[220px\] {
-    min-width: 220px;
   }
 
   .min-w-\[240px\] {
@@ -2123,26 +2111,6 @@
     background-color: var(--background);
   }
 
-  .bg-background\/40 {
-    background-color: var(--background);
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-background\/40 {
-      background-color: color-mix(in oklab, var(--background) 40%, transparent);
-    }
-  }
-
-  .bg-background\/60 {
-    background-color: var(--background);
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-background\/60 {
-      background-color: color-mix(in oklab, var(--background) 60%, transparent);
-    }
-  }
-
   .bg-background\/70 {
     background-color: var(--background);
   }
@@ -2202,16 +2170,6 @@
   @supports (color: color-mix(in lab, red, red)) {
     .bg-card\/90 {
       background-color: color-mix(in oklab, var(--card) 90%, transparent);
-    }
-  }
-
-  .bg-card\/95 {
-    background-color: var(--card);
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-card\/95 {
-      background-color: color-mix(in oklab, var(--card) 95%, transparent);
     }
   }
 
@@ -4331,12 +4289,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:border-border:hover {
-      border-color: var(--border);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:border-cyan-400\/50:hover {
       border-color: #00d2ef80;
     }
@@ -4399,18 +4351,6 @@
   @media (hover: hover) {
     .hover\:bg-background:hover {
       background-color: var(--background);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-background\/80:hover {
-      background-color: var(--background);
-    }
-
-    @supports (color: color-mix(in lab, red, red)) {
-      .hover\:bg-background\/80:hover {
-        background-color: color-mix(in oklab, var(--background) 80%, transparent);
-      }
     }
   }
 
@@ -6048,12 +5988,6 @@
   @media (min-width: 48rem) {
     .md\:hidden {
       display: none;
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .md\:inline-flex {
-      display: inline-flex;
     }
   }
 
