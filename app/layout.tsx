@@ -14,14 +14,15 @@ export const metadata: Metadata = {
   title: "TripNest - Travel Packages",
   description: "Discover amazing travel packages and create unforgettable memories",
   generator: "Next.js",
-  authors: [{ name: "Md .Atikur Rahman", url: "https://yourwebsite.com" }],
+  authors: [{ name: "Md. Atikur Rahman", url: "https://yourwebsite.com" }],
   keywords: ["Travel", "Packages", "TripNest", "Vacation", "Holidays"],
  
   icons
 : {
     icon: "/24e7519e-f63d-4ead-a400-e244072a9ea8.jpg",
   },
-}
+} 
+
 
 export default function RootLayout({
   children,
@@ -29,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en"  className="dark" suppressHydrationWarning={true}>  
       <body className={`font-sans antialiased flex flex-col min-h-screen`}>
         <Providers>
           <Header />
