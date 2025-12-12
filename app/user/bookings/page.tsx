@@ -32,9 +32,12 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Trash2, Loader2, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
+import { useRouter } from "next/navigation"
+
 
 export default function UserBookings() {
   const dispatch = useAppDispatch()
+   const router = useRouter()
   const { userBookings: bookings, isLoading, error } = useAppSelector(
     (state) => state.bookings,
   )
@@ -196,7 +199,15 @@ export default function UserBookings() {
                         <TableCell className="text-sm text-muted-foreground">
                           {new Date(booking.createdAt).toLocaleDateString()}
                         </TableCell>
-                        <TableCell className="text-right">
+                        <TableCell className="text-right space-x-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="gap-1 rounded-lg text-xs"
+                            onClick={() => router.push(`/user/bookings/${booking._id}`)}
+                          >
+                            Details
+                          </Button>
                           {booking.status !== "CANCELLED" && (
                             <AlertDialog>
                               <AlertDialogTrigger asChild>

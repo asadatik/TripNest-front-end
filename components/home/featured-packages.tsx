@@ -96,7 +96,7 @@ export default function FeaturedPackages() {
         {/* cards */}
         {!isLoading && !error && items.length > 0 && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {items.map((pkg) => (
+            {items.slice(0, 6).map((pkg) => (
               <Card
                 key={pkg._id}
                 className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card/90 shadow-[0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-[#00ddff]/40 hover:shadow-[0_0_60px_rgba(0,221,255,0.25)]"
@@ -169,9 +169,9 @@ export default function FeaturedPackages() {
             <Button
               variant="ghost"
               size="sm"
-              className="text-xs text-muted-foreground hover:text-foreground"
+              className="text-xs rounded-full bg-linear-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] px-4 text-[11px] font-medium text-background shadow-md transition hover:brightness-110       "
             >
-              View all packages
+              View all packages ✨ 
             </Button>
           </Link>
         </div>

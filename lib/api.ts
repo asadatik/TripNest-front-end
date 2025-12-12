@@ -61,7 +61,7 @@ export const api = {
   // User - Bookings
   getUserBookings: () => apiClient.get("/bookings/me"),
   // createBooking: (packageId: string, data: object) => apiClient.post("/bookings/create", { packageId, ...data }),
-  
+    getUserBookingById: (id: string) => apiClient.get(`/bookings/me/${id}`) ,
            
 createBooking: (data: { package: string; pax: number }) =>
   apiClient.post("/bookings/create", data),
