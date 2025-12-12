@@ -34,7 +34,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Trash2, Edit2, Plus, Loader2 } from "lucide-react"
+import { Trash2, Edit2, Plus, Loader2, AlertCircle } from "lucide-react"
 import {
   Select,
   SelectContent,
@@ -42,6 +42,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { motion } from "framer-motion"
+import Swal from "sweetalert2"
 
 type PackageFormState = {
   title: string
@@ -64,7 +66,7 @@ type PackageFormState = {
   amenities: string
   itinerary: string
   packageType: string
-  images: string            // ✅ URL list string
+  images: string
 }
 
 type PackageTypeOption = {
@@ -93,7 +95,7 @@ const emptyForm: PackageFormState = {
   amenities: "",
   itinerary: "",
   packageType: "",
-  images: "",               // ✅
+  images: "",
 }
 
 export default function AdminPackages() {
@@ -107,8 +109,8 @@ export default function AdminPackages() {
   const [formData, setFormData] = useState<PackageFormState>(emptyForm)
   const [packageTypes, setPackageTypes] = useState<PackageTypeOption[]>([])
   const [filterType, setFilterType] = useState<string>("all")
+  const [isSaving, setIsSaving] = useState(false)
 
-  // fetch packages + packageTypes
   useEffect(() => {
     const fetchData = async () => {
       dispatch(fetchPackagesStart())
@@ -169,12 +171,12 @@ export default function AdminPackages() {
     excluded: parseCommaList(formData.excluded),
     amenities: parseCommaList(formData.amenities),
     itinerary: parseCommaList(formData.itinerary),
-    images: parseCommaList(formData.images),   // ✅ URL → string[]
-    // packageType ইচ্ছাকৃতভাবে এখানে নেই; create case এ আলাদা করে add করব
+    images: parseCommaList(formData.images),
   })
 
   const handleSave = async () => {
     try {
+      setIsSaving(true)
       if (editingId) {
         const payload = buildPayload()
         await api.updatePackage(editingId, payload)
@@ -192,24 +194,81 @@ export default function AdminPackages() {
         : response.data.data || []
       dispatch(fetchPackagesSuccess(pkgs))
 
+      await Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: editingId ? "Package updated successfully" : "Package created successfully",
+        confirmButtonColor: "#00ddff",
+        background: "#0f172a",
+        color: "#f1f5f9",
+        timer: 2000,
+        timerProgressBar: true,
+      })
+
       setFormData(emptyForm)
       setEditingId(null)
       setIsDialogOpen(false)
-    } catch (err) {
+    } catch (err: any) {
+      await Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: err.response?.data?.message || "Failed to save package",
+        confirmButtonColor: "#ef4444",
+        background: "#0f172a",
+        color: "#f1f5f9",
+      })
       console.error("Failed to save package:", err)
+    } finally {
+      setIsSaving(false)
     }
   }
 
-  const handleDelete = async (id: string) => {
-    try {
-      await api.deletePackage(id)
-      const response = await api.getPackages()
-      const pkgs = Array.isArray(response.data)
-        ? response.data
-        : response.data.data || []
-      dispatch(fetchPackagesSuccess(pkgs))
-    } catch (err) {
-      console.error("Failed to delete package:", err)
+  const handleDelete = async (id: string, title: string) => {
+    const result = await Swal.fire({
+      title: "Delete Package",
+      text: `Are you sure you want to delete "${title}"? This action cannot be undone.`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ef4444",
+      cancelButtonColor: "#64748b",
+      confirmButtonText: "Yes, Delete",
+      background: "#0f172a",
+      color: "#f1f5f9",
+    })
+
+    if (result.isConfirmed) {
+      try {
+        setIsSaving(true)
+        await api.deletePackage(id)
+        const response = await api.getPackages()
+        const pkgs = Array.isArray(response.data)
+          ? response.data
+          : response.data.data || []
+        dispatch(fetchPackagesSuccess(pkgs))
+
+        await Swal.fire({
+          icon: "success",
+          title: "Deleted!",
+          text: "Package has been deleted successfully",
+          confirmButtonColor: "#00ddff",
+          background: "#0f172a",
+          color: "#f1f5f9",
+          timer: 2000,
+          timerProgressBar: true,
+        })
+      } catch (err: any) {
+        await Swal.fire({
+          icon: "error",
+          title: "Error!",
+          text: err.response?.data?.message || "Failed to delete package",
+          confirmButtonColor: "#ef4444",
+          background: "#0f172a",
+          color: "#f1f5f9",
+        })
+        console.error("Failed to delete package:", err)
+      } finally {
+        setIsSaving(false)
+      }
     }
   }
 
@@ -240,7 +299,7 @@ export default function AdminPackages() {
         : "",
       images: Array.isArray((pkg as any).images)
         ? (pkg as any).images.join(", ")
-        : "",                           // ✅ DB থেকে আসা images → string
+        : "",
     })
     setIsDialogOpen(true)
   }
@@ -254,11 +313,19 @@ export default function AdminPackages() {
         )
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="p-4 md:p-6 space-y-6">
+      {/* Header */}
+      <motion.div
+        className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div>
-          <h1 className="text-3xl font-bold">Packages Management</h1>
-          <p className="text-muted-foreground">Manage travel packages</p>
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] bg-clip-text text-transparent">
+            Packages Management
+          </h1>
+          <p className="text-muted-foreground mt-1">Manage travel packages and deals</p>
         </div>
 
         <Dialog
@@ -272,42 +339,44 @@ export default function AdminPackages() {
           }}
         >
           <DialogTrigger asChild>
-            <Button className="gap-2">
-              <Plus size={18} />
-              Add Package
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button className="rounded-xl gap-2  bg-gradient-to-r from-[#00ddff]/30 to-[#ff4edb]/30 border border-[#00ddff]/30 hover:from-[#00ddff]/40 hover:to-[#ff4edb]/40 text-black w-full sm:w-auto">
+                <Plus size={18} />
+                Add Package
+              </Button>
+            </motion.div>
           </DialogTrigger>
 
-          <DialogContent className="max-h-[80vh] overflow-y-auto">
+          <DialogContent className="max-h-[80vh] overflow-y-auto bg-card/95 border border-border/70 backdrop-blur rounded-2xl">
             <DialogHeader>
-              <DialogTitle>
-                {editingId ? "Edit Package" : "Create Package"}
-              </DialogTitle>
+              <DialogTitle>{editingId ? "Edit Package" : "Create Package"}</DialogTitle>
             </DialogHeader>
 
             <div className="space-y-4">
               <div>
-                <Label>Title</Label>
+                <Label className="text-sm">Title</Label>
                 <Input
                   value={formData.title}
                   onChange={(e) =>
                     setFormData({ ...formData, title: e.target.value })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
               <div>
-                <Label>Summary</Label>
+                <Label className="text-sm">Summary</Label>
                 <Input
                   value={formData.summary}
                   onChange={(e) =>
                     setFormData({ ...formData, summary: e.target.value })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
               <div>
-                <Label>Description</Label>
+                <Label className="text-sm">Description</Label>
                 <Textarea
                   value={formData.description}
                   onChange={(e) =>
@@ -316,11 +385,12 @@ export default function AdminPackages() {
                       description: e.target.value,
                     })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
               <div>
-                <Label>Destination</Label>
+                <Label className="text-sm">Destination</Label>
                 <Input
                   value={formData.destination}
                   onChange={(e) =>
@@ -329,12 +399,13 @@ export default function AdminPackages() {
                       destination: e.target.value,
                     })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <Label>Cost From</Label>
+                  <Label className="text-sm">Cost From</Label>
                   <Input
                     type="number"
                     value={formData.costFrom}
@@ -344,10 +415,11 @@ export default function AdminPackages() {
                         costFrom: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
                 <div>
-                  <Label>Currency</Label>
+                  <Label className="text-sm">Currency</Label>
                   <Input
                     value={formData.currency}
                     onChange={(e) =>
@@ -356,13 +428,14 @@ export default function AdminPackages() {
                         currency: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <Label>Duration (Days)</Label>
+                  <Label className="text-sm">Duration (Days)</Label>
                   <Input
                     type="number"
                     value={formData.durationDays}
@@ -372,10 +445,11 @@ export default function AdminPackages() {
                         durationDays: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
                 <div>
-                  <Label>Capacity</Label>
+                  <Label className="text-sm">Capacity</Label>
                   <Input
                     type="number"
                     value={formData.capacity}
@@ -385,13 +459,14 @@ export default function AdminPackages() {
                         capacity: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <Label>Start Date</Label>
+                  <Label className="text-sm">Start Date</Label>
                   <Input
                     type="date"
                     value={formData.startDate}
@@ -401,10 +476,11 @@ export default function AdminPackages() {
                         startDate: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
                 <div>
-                  <Label>End Date</Label>
+                  <Label className="text-sm">End Date</Label>
                   <Input
                     type="date"
                     value={formData.endDate}
@@ -414,13 +490,14 @@ export default function AdminPackages() {
                         endDate: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <Label>Departure Location</Label>
+                  <Label className="text-sm">Departure Location</Label>
                   <Input
                     value={formData.departureLocation}
                     onChange={(e) =>
@@ -429,10 +506,11 @@ export default function AdminPackages() {
                         departureLocation: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
                 <div>
-                  <Label>Arrival Location</Label>
+                  <Label className="text-sm">Arrival Location</Label>
                   <Input
                     value={formData.arrivalLocation}
                     onChange={(e) =>
@@ -441,13 +519,14 @@ export default function AdminPackages() {
                         arrivalLocation: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <Label>Min Age</Label>
+                  <Label className="text-sm">Min Age</Label>
                   <Input
                     type="number"
                     value={formData.minAge}
@@ -457,10 +536,11 @@ export default function AdminPackages() {
                         minAge: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
                 <div>
-                  <Label>Max Age</Label>
+                  <Label className="text-sm">Max Age</Label>
                   <Input
                     type="number"
                     value={formData.maxAge}
@@ -470,12 +550,13 @@ export default function AdminPackages() {
                         maxAge: e.target.value,
                       })
                     }
+                    className="rounded-lg border-border/50 bg-background/50 mt-1"
                   />
                 </div>
               </div>
 
               <div>
-                <Label>Tags (comma separated)</Label>
+                <Label className="text-sm">Tags (comma separated)</Label>
                 <Input
                   value={formData.tags}
                   onChange={(e) =>
@@ -484,11 +565,12 @@ export default function AdminPackages() {
                       tags: e.target.value,
                     })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
               <div>
-                <Label>Included (comma separated)</Label>
+                <Label className="text-sm">Included (comma separated)</Label>
                 <Input
                   value={formData.included}
                   onChange={(e) =>
@@ -497,11 +579,12 @@ export default function AdminPackages() {
                       included: e.target.value,
                     })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
               <div>
-                <Label>Excluded (comma separated)</Label>
+                <Label className="text-sm">Excluded (comma separated)</Label>
                 <Input
                   value={formData.excluded}
                   onChange={(e) =>
@@ -510,11 +593,12 @@ export default function AdminPackages() {
                       excluded: e.target.value,
                     })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
               <div>
-                <Label>Amenities (comma separated)</Label>
+                <Label className="text-sm">Amenities (comma separated)</Label>
                 <Input
                   value={formData.amenities}
                   onChange={(e) =>
@@ -523,11 +607,12 @@ export default function AdminPackages() {
                       amenities: e.target.value,
                     })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
               <div>
-                <Label>Itinerary (comma separated)</Label>
+                <Label className="text-sm">Itinerary (comma separated)</Label>
                 <Input
                   value={formData.itinerary}
                   onChange={(e) =>
@@ -536,12 +621,12 @@ export default function AdminPackages() {
                       itinerary: e.target.value,
                     })
                   }
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
-              {/* Images URL */}
               <div>
-                <Label>Image URLs (comma separated)</Label>
+                <Label className="text-sm">Image URLs (comma separated)</Label>
                 <Input
                   value={formData.images}
                   onChange={(e) =>
@@ -551,12 +636,12 @@ export default function AdminPackages() {
                     })
                   }
                   placeholder="https://..., https://..."
+                  className="rounded-lg border-border/50 bg-background/50 mt-1"
                 />
               </div>
 
-              {/* শুধু create এর জন্য ব্যবহার হবে; update এ payload এ যাবে না */}
               <div>
-                <Label>Package Type</Label>
+                <Label className="text-sm">Package Type</Label>
                 <Select
                   value={formData.packageType}
                   onValueChange={(value) =>
@@ -566,10 +651,10 @@ export default function AdminPackages() {
                     })
                   }
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="rounded-lg border-border/50 bg-background/50 mt-1">
                     <SelectValue placeholder="Select package type" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-card/95 border border-border/70">
                     {packageTypes.map((t) => (
                       <SelectItem key={t._id} value={t._id}>
                         {t.name}
@@ -579,110 +664,156 @@ export default function AdminPackages() {
                 </Select>
               </div>
 
-              <Button onClick={handleSave} className="w-full">
-                {editingId ? "Update" : "Create"} Package
+              <Button
+                onClick={handleSave}
+                disabled={isSaving}
+                className="w-full rounded-lg bg-gradient-to-r from-[#00ddff]/30 to-[#ff4edb]/30 border border-[#00ddff]/30 hover:from-[#00ddff]/40 hover:to-[#ff4edb]/40 text-black"
+              >
+                {isSaving ? (
+                  <>
+                    <Loader2 size={14} className="animate-spin mr-2" />
+                    Saving...
+                  </>
+                ) : editingId ? (
+                  "Update Package"
+                ) : (
+                  "Create Package"
+                )}
               </Button>
             </div>
           </DialogContent>
         </Dialog>
-      </div>
+      </motion.div>
 
+      {/* Error Alert */}
       {error && (
-        <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive">
-          {error}
-        </div>
+        <motion.div
+          className="p-4 bg-destructive/10 border border-destructive/20 rounded-2xl text-destructive flex items-start gap-3 backdrop-blur"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <AlertCircle size={20} className="mt-0.5 flex-shrink-0" />
+          <div>
+            <p className="font-medium">Error loading packages</p>
+            <p className="text-sm">{error}</p>
+          </div>
+        </motion.div>
       )}
 
-      <Card>
-        <CardHeader className="flex items-center justify-between gap-4">
-          <CardTitle>All Packages</CardTitle>
+      {/* Packages Table Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.5 }}
+      >
+        <Card className="relative overflow-hidden border border-border/70 bg-card/90 backdrop-blur shadow-[0_20px_70px_rgba(0,0,0,0.3)]">
+          {/* Gradient Background */}
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#00ddff]/20 via-transparent to-[#ff4edb]/20 opacity-60" />
 
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">
-              Filter by type
-            </span>
-            <Select value={filterType} onValueChange={setFilterType}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="All types" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All types</SelectItem>
-                {packageTypes.map((t) => (
-                  <SelectItem key={t._id} value={t._id}>
-                    {t.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </CardHeader>
+          <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <CardTitle className="text-xl">All Packages</CardTitle>
 
-        <CardContent>
-          {isLoading ? (
-            <div className="flex justify-center py-8">
-              <Loader2 className="animate-spin" size={32} />
-            </div>
-          ) : shownPackages.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8">
-              No packages found
-            </p>
-          ) : (
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Title</TableHead>
-                    <TableHead>Destination</TableHead>
-                    <TableHead>Price (From)</TableHead>
-                    <TableHead>Duration</TableHead>
-                    <TableHead className="text-right">
-                      Actions
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {shownPackages.map((pkg) => (
-                    <TableRow key={pkg._id}>
-                      <TableCell className="font-medium">
-                        {pkg.title}
-                      </TableCell>
-                      <TableCell>{pkg.destination}</TableCell>
-                      <TableCell>
-                        {pkg.costFrom} {pkg.currency}
-                      </TableCell>
-                      <TableCell>
-                        {pkg.durationDays} days
-                      </TableCell>
-                      <TableCell className="text-right space-x-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleEdit(pkg)}
-                          className="gap-1"
-                        >
-                          <Edit2 size={14} />
-                          Edit
-                        </Button>
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          onClick={() =>
-                            handleDelete(pkg._id)
-                          }
-                          className="gap-1"
-                        >
-                          <Trash2 size={14} />
-                          Delete
-                        </Button>
-                      </TableCell>
-                    </TableRow>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
+              <span className="text-sm text-muted-foreground whitespace-nowrap">
+                Filter by type
+              </span>
+              <Select value={filterType} onValueChange={setFilterType}>
+                <SelectTrigger className="rounded-lg border-border/50 bg-background/50 w-full sm:w-[180px]">
+                  <SelectValue placeholder="All types" />
+                </SelectTrigger>
+                <SelectContent className="bg-card/95 border border-border/70">
+                  <SelectItem value="all">All types</SelectItem>
+                  {packageTypes.map((t) => (
+                    <SelectItem key={t._id} value={t._id}>
+                      {t.name}
+                    </SelectItem>
                   ))}
-                </TableBody>
-              </Table>
+                </SelectContent>
+              </Select>
             </div>
-          )}
-        </CardContent>
-      </Card>
+          </CardHeader>
+
+          <CardContent>
+            {isLoading ? (
+              <div className="flex justify-center py-12">
+                <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }}>
+                  <Loader2 size={40} className="text-[#00ddff]" />
+                </motion.div>
+              </div>
+            ) : shownPackages.length === 0 ? (
+              <p className="text-muted-foreground text-center py-12">
+                No packages found
+              </p>
+            ) : (
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="border-border/50 hover:bg-transparent">
+                      <TableHead>Title</TableHead>
+                      <TableHead>Destination</TableHead>
+                      <TableHead>Price</TableHead>
+                      <TableHead>Duration</TableHead>
+                      <TableHead className="text-right">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {shownPackages.map((pkg) => (
+                      <motion.tr
+                        key={pkg._id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="border-border/50 hover:bg-background/30 transition-colors"
+                      >
+                        <TableCell className="font-medium text-foreground text-sm">
+                          {pkg.title}
+                        </TableCell>
+                        <TableCell className="text-muted-foreground text-sm">
+                          {pkg.destination}
+                        </TableCell>
+                        <TableCell className="text-sm">
+                          {pkg.costFrom} {pkg.currency}
+                        </TableCell>
+                        <TableCell className="text-sm">
+                          {pkg.durationDays}d
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <div className="flex justify-end gap-2 flex-wrap">
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => handleEdit(pkg)}
+                                className="rounded-lg border-border/50 bg-background/50 hover:bg-background/80 gap-1 text-xs"
+                              >
+                                <Edit2 size={14} />
+                                <span className="hidden sm:inline">Edit</span>
+                              </Button>
+                            </motion.div>
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                              <Button
+                                variant="destructive"
+                                size="sm"
+                                onClick={() =>
+                                  handleDelete(pkg._id, pkg.title)
+                                }
+                                className="rounded-lg bg-red-600/80 hover:bg-red-600 gap-1 text-xs"
+                              >
+                                <Trash2 size={14} />
+                                <span className="hidden sm:inline">Delete</span>
+                              </Button>
+                            </motion.div>
+                          </div>
+                        </TableCell>
+                      </motion.tr>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </motion.div>
     </div>
   )
 }

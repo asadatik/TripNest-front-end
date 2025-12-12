@@ -70,15 +70,24 @@ createBooking: (data: { package: string; pax: number }) =>
   cancelBooking: (bookingId: string) => apiClient.patch(`/bookings/me/${bookingId}/cancel`, {}),
 
   // User - Profile
-  getUserProfile: () => apiClient.get("/profile"),
-  updateUserProfile: (data: object) => apiClient.patch("/profile", data),
-  updateUserPassword: (data: object) => apiClient.patch("/password", data),
+  getUserProfile: () => apiClient.get("/user/me"),
+  updateUserProfile: (userId: string, data: object) =>
+    apiClient.patch(`/user/${userId}`, data),
+  updateUserPassword: (userId: string, data: { password: string }) =>
+    apiClient.patch(`/user/${userId}`, data),
 
-  // Payments
+ 
+
+
 
   // Admin - Payments
   getPayments: () => apiClient.get("/payments"),
+
   getPaymentDetails: (paymentId: string) => apiClient.get(`/payments/admin/${paymentId}`),
+
+// User - my payments
+  getMyPayments: () => apiClient.get("/payments/my-payments"),
+  
 
 // stripe checkout session create
 initStripeCheckout: (data: { bookingId: string }) =>

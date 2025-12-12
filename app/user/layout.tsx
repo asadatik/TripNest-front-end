@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import UserHeader from "@/components/UserHeader"
+
 import UserSidebar from "@/components/UserSidebar"
 import { useAuthGuard } from "@/hooks/useAuthGuard"
 import { FullScreenLoader } from "@/components/common/fullscreen-loader"
@@ -19,8 +19,8 @@ export default function UserLayout({
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <UserHeader />
+    <div className="flex pt-16 md:pt-4  min-h-screen flex-col bg-background">
+
       <div className="flex flex-1">
         <UserSidebar />
         <main className="flex-1 overflow-auto bg-background">{children}</main>

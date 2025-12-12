@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 const testimonials = [
   {
@@ -8,18 +9,21 @@ const testimonials = [
     role: "Frequent traveler",
     quote:
       "Tripnest made booking my trips feel effortless. All my bookings and payments in one clean interface.",
+    image: "/testimonial/aisha (2).jpg", // public/images/testimonials/aisha.jpg
   },
   {
     name: "Karim Hasan",
     role: "Travel agency owner",
     quote:
       "The admin dashboard is exactly what I needed to track bookings and revenue without custom spreadsheets.",
+    image: "/testimonial/aisha (1).jpg"
   },
   {
     name: "Sarah Ahmed",
     role: "Remote worker",
     quote:
       "Loved how fast it was to compare packages and checkout securely. The dark UI looks premium on mobile.",
+    image: "/testimonial/aisha (3).jpg"
   },
 ]
 
@@ -66,11 +70,14 @@ export default function Testimonials() {
             >
               <p className="text-sm text-muted-foreground">“{t.quote}”</p>
               <div className="mt-4 flex items-center gap-3 text-sm">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#00ddff] to-[#ff4edb] text-[11px] font-semibold text-background">
-                  {t.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+                <div className="relative h-14 w-14 overflow-hidden rounded-full border border-border/60">
+                  <Image
+                    src={t.image}
+                    alt={t.name}
+                    fill
+                    sizes="32px"
+                    className="object-cover"
+                  />
                 </div>
                 <div>
                   <p className="font-medium">{t.name}</p>

@@ -58,9 +58,9 @@ export default function PaymentSuccessClient() {
         <p className="mb-4 text-sm text-muted-foreground">{message}</p>
         <Button
           className="rounded-full bg-gradient-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa]"
-          onClick={() => router.push("/user/bookings")}
+          onClick={() => router.push("/user/my-payments")}
         >
-          Go to My Bookings
+          See Payment History
         </Button>
       </div>
     </div>

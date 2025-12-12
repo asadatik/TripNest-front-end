@@ -385,25 +385,6 @@ console.log("🚨 Booking data:", booking)
               </div>
             </CardContent>
           </Card>
-
-          {/* Actions */}
-          <div className="space-y-2">
-            {booking.paymentStatus === "UNPAID" && (
-              <Link href={`/packages/${booking.package?.slug}`}>
-                <Button className="w-full">Complete Payment</Button>
-              </Link>
-            )}
-            {booking.paymentStatus === "PAID" && (
-              <Button variant="outline" className="w-full" disabled>
-                Payment Completed
-              </Button>
-            )}
-            {booking.status !== "CANCELLED" && (
-              <Button variant="destructive" className="w-full">
-                Cancel Booking
-              </Button>
-            )}
-          </div>
         </div>
       </div>
     </div>

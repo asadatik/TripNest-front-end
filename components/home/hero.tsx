@@ -8,10 +8,21 @@ import { Button } from "@/components/ui/button"
 import { useAppSelector } from "@/redux/hooks"
 
 export default function Hero() {
+
+
+
   const { items } = useAppSelector((state) => state.packages)
 
-  // সর্বশেষ package কে featured হিসেবে নিলাম 
+
   
+  // User info for dashboard link
+  const { user } = useAppSelector((state) => state.auth)
+  const isAdmin = user?.role === "ADMIN"
+  const targetHref = isAdmin ? "/admin/dashboard" : "/user/dashboard"
+  const buttonLabel = isAdmin ? "Go to my Dashboard" : "Go to my trips"
+
+
+  // সর্বশেষ package কে featured হিসেবে নিলাম 
   const featuredPkg = items.length > 0 ? items[items.length - 1] : null
   const destination = featuredPkg?.destination || "Destination"
   const title = featuredPkg?.title || "Featured trip"
@@ -85,9 +96,9 @@ export default function Hero() {
             </span>
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-              adventures
+              adventures 
             </span>
-            , in clicks.
+              -in clicks.
           </motion.h1>
 
           {/* Description */}
@@ -123,22 +134,27 @@ export default function Hero() {
               </motion.div>
             </Link>
 
-            <Link href="/user/dashboard" className="w-full sm:w-auto">
-              <motion.div
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button
-                  variant="outline"
-                  className="group w-full rounded-2xl border-2 border-slate-700/70 bg-slate-900/50 px-8 py-6 text-base font-semibold text-white backdrop-blur-xl transition-all hover:border-cyan-500/50 hover:bg-slate-800/80 hover:shadow-lg hover:shadow-cyan-500/10"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    <span>Go to my trips</span>
-                    <TrendingUp className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </Button>
-              </motion.div>
-            </Link>
+
+ {/* User dashboard/trips button */}
+         
+      <Link href={targetHref} className="w-full sm:w-auto">
+        <motion.div
+          whileHover={{ scale: 1.03, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Button
+            variant="outline"
+            className="group w-full rounded-2xl border-2 border-slate-700/70 bg-slate-900/50 px-8 py-6 text-base font-semibold text-white backdrop-blur-xl transition-all hover:border-cyan-500/50 hover:bg-slate-800/80 hover:shadow-lg hover:shadow-cyan-500/10"
+          >
+            <span className="flex items-center justify-center gap-2">
+              <span>{buttonLabel}</span>
+              <TrendingUp className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Button>
+        </motion.div>
+      </Link>
+
+
           </motion.div>
 
           {/* Trust indicators */}

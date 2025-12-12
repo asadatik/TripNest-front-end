@@ -1,15 +1,7 @@
 "use client"
 
-import { useEffect } from "react"
-import Link from "next/link"
-import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import {
-  fetchPaymentsStart,
-  fetchPaymentsSuccess,
-  fetchPaymentsError,
-} from "@/redux/slices/paymentsSlice"
+import { useEffect, useState } from "react"
 import { api } from "@/lib/api"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Table,
   TableBody,
@@ -18,41 +10,40 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, AlertCircle, Eye } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Loader2, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
 
-export default function AdminPayments() {
-  const dispatch = useAppDispatch()
-  const { payments, isLoading, error } = useAppSelector(
-    (state) => state.payments,
-  )
+export default function MyPaymentsPage() {
+  const [payments, setPayments] = useState<any[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchPayments = async () => {
-      dispatch(fetchPaymentsStart())
+    const fetchMyPayments = async () => {
       try {
-        const response = await api.getPayments()
-        const paymentsData = response.data.data || response.data
-        dispatch(fetchPaymentsSuccess(paymentsData))
-      } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : "Failed to fetch payments"
-        dispatch(fetchPaymentsError(errorMessage))
+        setIsLoading(true)
+        const res = await api.getMyPayments()
+        setPayments(res.data.data || res.data)
+      } catch (err: any) {
+        const msg =
+          err?.response?.data?.message ||
+          err?.message ||
+          "Failed to load your payments"
+        setError(msg)
+      } finally {
+        setIsLoading(false)
       }
     }
 
-    if (payments.length === 0 && !isLoading) {
-      fetchPayments()
-    }
-  }, [dispatch, payments.length, isLoading])
+    fetchMyPayments()
+  }, [])
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "SUCCESS":
       case "PAID":
+      case "SUCCESS":
         return "bg-green-500/20 text-green-400 border border-green-500/30"
       case "UNPAID":
         return "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
@@ -73,44 +64,38 @@ export default function AdminPayments() {
         transition={{ duration: 0.5 }}
       >
         <h1 className="bg-gradient-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
-          Payments Management
+          My Payments
         </h1>
         <p className="mt-1 text-muted-foreground">
-          View and track all payment transactions
+          All your payment history in one place
         </p>
       </motion.div>
 
-      {/* Error Alert */}
+      {/* Error */}
       {error && (
         <motion.div
-          className="flex items-start gap-3 rounded-2xl border border-destructive/20 bg-destructive/10 p-4 text-destructive backdrop-blur"
+          className="flex items-start gap-2 rounded-2xl border border-destructive/20 bg-destructive/10 p-4 text-destructive backdrop-blur"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <AlertCircle size={20} className="mt-0.5 shrink-0" />
-          <div className="flex-1">
-            <p className="font-medium">{error}</p>
-            <p className="mt-1 text-sm">
-              Make sure backend is running at http://localhost:5000/api/v1
-            </p>
-          </div>
+          <AlertCircle className="mt-0.5 h-4 w-4" />
+          <span className="text-sm">{error}</span>
         </motion.div>
       )}
 
-      {/* Payments Table Card */}
+      {/* Table Card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.5 }}
       >
         <Card className="relative overflow-hidden border border-border/70 bg-card/90 backdrop-blur shadow-[0_20px_70px_rgba(0,0,0,0.3)]">
-          {/* Gradient Background */}
+          {/* Gradient bg */}
           <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#00ddff]/20 via-transparent to-[#ff4edb]/20 opacity-60" />
 
           <CardHeader>
-            <CardTitle className="text-xl">All Payments</CardTitle>
+            <CardTitle>Your Payments</CardTitle>
           </CardHeader>
-
           <CardContent>
             {isLoading ? (
               <div className="flex justify-center py-12">
@@ -122,84 +107,66 @@ export default function AdminPayments() {
                     ease: "linear",
                   }}
                 >
-                  <Loader2 size={40} className="text-[#00ddff]" />
+                  <Loader2 className="h-8 w-8 text-[#00ddff]" />
                 </motion.div>
               </div>
             ) : payments.length === 0 ? (
               <p className="py-12 text-center text-muted-foreground">
-                No payments found
+                No payments found.
               </p>
             ) : (
               <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
                     <TableRow className="border-border/50 hover:bg-transparent">
-                      <TableHead className="text-xs sm:text-sm">
-                        Payment
-                      </TableHead>
-                      <TableHead className="text-xs sm:text-sm">
-                        Booking
-                      </TableHead>
+                      <TableHead className="text-xs sm:text-sm">ID</TableHead>
                       <TableHead className="text-xs sm:text-sm">
                         Package
+                      </TableHead>
+                      <TableHead className="text-xs sm:text-sm">
+                        Amount
                       </TableHead>
                       <TableHead className="text-xs sm:text-sm">
                         Status
                       </TableHead>
                       <TableHead className="text-xs sm:text-sm">
-                        User
-                      </TableHead>
-                      <TableHead className="text-right text-xs sm:text-sm">
-                        Details
+                        Date
                       </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {payments.map((payment: any) => (
+                    {payments.map((p: any) => (
                       <motion.tr
-                        key={payment._id}
+                        key={p._id}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
                         className="border-border/50 hover:bg-background/30 transition-colors"
                       >
-                        <TableCell className="font-medium text-sm">
-                          {payment._id?.slice(-8) || "N/A"}
+                        <TableCell className="text-sm font-medium">
+                          {p._id?.slice(-8) || "N/A"}
                         </TableCell>
-                        <TableCell className="text-sm text-muted-foreground">
-                          {payment.booking?._id?.slice(-8) ||
-                            payment.bookingId?.slice(-8) ||
-                            "N/A"}
+                        <TableCell className="max-w-[200px] truncate text-sm">
+                          {p.booking?.package?.title || "N/A"}
                         </TableCell>
-                        <TableCell className="max-w-[180px] truncate text-sm font-medium">
-                          {payment.booking?.package?.title || "Unknown"}
+                        <TableCell className="text-sm">
+                          {p.amount
+                            ? `${p.amount} ${p.currency || ""}`
+                            : "N/A"}
                         </TableCell>
                         <TableCell>
                           <Badge
-                            className={cn(
-                              "rounded-full px-2 py-1 text-xs font-semibold",
-                              getStatusColor(payment.status),
-                            )}
+                            className={`rounded-full px-2 py-1 text-xs font-semibold ${getStatusColor(
+                              p.status,
+                            )}`}
                           >
-                            {payment.status}
+                            {p.status}
                           </Badge>
                         </TableCell>
                         <TableCell className="text-sm text-muted-foreground">
-                          {payment?.member?.name || "N/A"}
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <Link href={`/admin/payments/${payment._id}`}>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="rounded-lg border-border/50 bg-background/50 text-xs hover:bg-background/80"
-                            >
-                              <Eye className="h-4 w-4" />
-                              <span className="ml-1 hidden sm:inline">
-                                View
-                              </span>
-                            </Button>
-                          </Link>
+                          {p.createdAt
+                            ? new Date(p.createdAt).toLocaleDateString()
+                            : "N/A"}
                         </TableCell>
                       </motion.tr>
                     ))}

@@ -23,6 +23,7 @@ import {
 import { Button } from "@/components/ui/button"
 import PackageCard from "@/components/PackageCard"
 import { Loader2 } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function UserDashboard() {
   const dispatch = useAppDispatch()
@@ -114,83 +115,127 @@ export default function UserDashboard() {
   const error = packagesError || bookingsError
 
   return (
-    <div className="p-6 space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Your Dashboard</h1>
-        <p className="text-muted-foreground">
-          Manage your bookings and explore packages
+    <div className="space-y-6 p-4 md:p-6">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="bg-gradient-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
+          Your Dashboard
+        </h1>
+        <p className="mt-1 text-muted-foreground">
+          Manage your bookings and explore new travel experiences
         </p>
-      </div>
+      </motion.div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
+      <motion.div
+        className="grid gap-4 md:grid-cols-3"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.5 }}
+      >
+        <Card className="relative overflow-hidden border border-border/70 bg-card/90 backdrop-blur shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-emerald-500/20 via-transparent to-cyan-400/20 opacity-70" />
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Active Bookings
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{activeCount}</div>
+            <p className="text-3xl font-bold text-foreground">{activeCount}</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Confirmed trips that are upcoming or in progress
+            </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="relative overflow-hidden border border-border/70 bg-card/90 backdrop-blur shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-yellow-500/20 via-transparent to-orange-400/20 opacity-70" />
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Pending Bookings
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{pendingCount}</div>
+            <p className="text-3xl font-bold text-foreground">
+              {pendingCount}
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Waiting for confirmation or payment
+            </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="relative overflow-hidden border border-border/70 bg-card/90 backdrop-blur shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#00ddff]/20 via-transparent to-[#ff4edb]/20 opacity-70" />
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Spent
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <p className="text-3xl font-bold text-foreground">
               ${totalSpent.toFixed(2)}
-            </div>
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              On all confirmed bookings so far
+            </p>
           </CardContent>
         </Card>
-      </div>
+      </motion.div>
 
       {/* Featured Packages */}
-      <div>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold">Featured Packages</h2>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15, duration: 0.5 }}
+      >
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-xl font-semibold md:text-2xl">
+            Featured Packages
+          </h2>
           <Link href="/packages">
-            <Button variant="outline">View All</Button>
+            <Button
+              variant="outline"
+              className="rounded-lg border-border/60 bg-background/70 text-sm hover:bg-background"
+            >
+              View All
+            </Button>
           </Link>
         </div>
 
         {error && (
-          <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive mb-4">
-            {error}
+          <div className="mb-4 flex items-start gap-2 rounded-2xl border border-destructive/20 bg-destructive/10 p-4 text-destructive">
+            <span className="text-sm">{error}</span>
           </div>
         )}
 
         {isLoading ? (
           <div className="flex justify-center py-12">
-            <Loader2 className="animate-spin" size={32} />
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
           </div>
         ) : packages.length === 0 ? (
-          <p className="text-muted-foreground text-center py-8">
-            No packages available
+          <p className="py-8 text-center text-muted-foreground">
+            No packages available right now. Check back later!
           </p>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {packages.slice(0, 3).map((pkg) => (
-              <PackageCard key={pkg._id} package={pkg} />
+              <motion.div
+                key={pkg._id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <PackageCard package={pkg} />
+              </motion.div>
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   )
 }
