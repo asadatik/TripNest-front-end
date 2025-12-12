@@ -3,9 +3,7 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import {
-  fetchPackagesStart,
-  fetchPackagesSuccess,
+import {  fetchPackagesStart, fetchPackagesSuccess,
   fetchPackagesError,
 } from "@/redux/slices/packagesSlice"
 import {
@@ -25,6 +23,8 @@ import PackageCard from "@/components/PackageCard"
 import { Loader2 } from "lucide-react"
 import { motion } from "framer-motion"
 
+
+
 export default function UserDashboard() {
   const dispatch = useAppDispatch()
 
@@ -34,11 +34,7 @@ export default function UserDashboard() {
     error: packagesError,
   } = useAppSelector((state) => state.packages)
 
-  const {
-    userBookings,
-    isLoading: bookingsLoading,
-    error: bookingsError,
-  } = useAppSelector((state) => state.bookings)
+  const { userBookings, isLoading: bookingsLoading, error: bookingsError} = useAppSelector((state) => state.bookings)
 
   console.log("User Dashboard loaded bookings:", userBookings)
   console.log("User Dashboard packages:", packages)
@@ -86,6 +82,7 @@ export default function UserDashboard() {
 
         dispatch(fetchUserBookingsSuccess(data))
         console.log("User bookings loaded (dashboard):", data)
+        
       } catch (err) {
         const errorMessage =
           err instanceof Error ? err.message : "Failed to fetch bookings"

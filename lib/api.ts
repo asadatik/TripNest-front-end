@@ -63,7 +63,6 @@ export const api = {
   // createBooking: (packageId: string, data: object) => apiClient.post("/bookings/create", { packageId, ...data }),
   
            
-
 createBooking: (data: { package: string; pax: number }) =>
   apiClient.post("/bookings/create", data),
 

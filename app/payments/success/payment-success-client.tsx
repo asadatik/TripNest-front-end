@@ -60,7 +60,7 @@ export default function PaymentSuccessClient() {
           className="rounded-full bg-gradient-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa]"
           onClick={() => router.push("/user/my-payments")}
         >
-          See Payment History
+          My Payment History
         </Button>
       </div>
     </div>
