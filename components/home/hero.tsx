@@ -22,7 +22,7 @@ export default function Hero() {
   const buttonLabel = isAdmin ? "Go to my Dashboard" : "Go to my trips"
 
 
-  // সর্বশেষ package কে featured হিসেবে নিলাম 
+  // last package as  feature package
   const featuredPkg = items.length > 0 ? items[items.length - 1] : null
   const destination = featuredPkg?.destination || "Destination"
   const title = featuredPkg?.title || "Featured trip"
@@ -40,7 +40,7 @@ export default function Hero() {
 
   return (
     <motion.section
-      className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
+      className="relative overflow-hidden bg-linear-to-br from-slate-950 via-slate-900 to-slate-950"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -53,7 +53,7 @@ export default function Hero() {
       </div>
 
       {/* Grid pattern overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[72px_72px]" />
 
       <div className="container mx-auto flex flex-col items-center gap-12 px-4 pb-20 pt-24 md:flex-row md:justify-between md:gap-16 md:pb-28 md:pt-32 lg:gap-20 lg:pb-32 lg:pt-40">
         {/* Left: content */}
@@ -84,18 +84,18 @@ export default function Hero() {
           >
             Discover{" "}
             <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-cyan-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+              <span className="bg-linear-to-r from-cyan-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">
                 unforgettable
               </span>
               <motion.span
-                className="absolute -bottom-2 left-0 h-1 w-full bg-gradient-to-r from-cyan-400 via-pink-400 to-purple-400 rounded-full"
+                className="absolute -bottom-2 left-0 h-1 w-full bg-linear-to-r from-cyan-400 via-pink-400 to-purple-400 rounded-full"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               />
             </span>
             <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+            <span className="bg-linear-to-r from-cyan-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">
               adventures 
             </span>
               -in clicks.
@@ -124,12 +124,12 @@ export default function Hero() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-500 via-pink-500 to-purple-500 px-8 py-6 text-base font-semibold text-white shadow-2xl shadow-cyan-500/30 transition-all hover:shadow-cyan-500/40 sm:w-auto">
+                <Button className="group relative w-full overflow-hidden rounded-2xl bg-linear-to-r from-cyan-500 via-pink-500 to-purple-500 px-8 py-6 text-base font-semibold text-white shadow-2xl shadow-cyan-500/30 transition-all hover:shadow-cyan-500/40 sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     <span>Browse packages</span>
                     <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-pink-600 to-purple-600 opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-linear-to-r from-cyan-600 via-pink-600 to-purple-600 opacity-0 transition-opacity group-hover:opacity-100" />
                 </Button>
               </motion.div>
             </Link>
@@ -188,7 +188,7 @@ export default function Hero() {
         >
           {/* Floating glow */}
           <motion.div
-            className="absolute -inset-12 -z-10 rounded-full bg-gradient-to-br from-cyan-500/30 via-pink-500/20 to-purple-500/30 blur-[80px]"
+            className="absolute -inset-12 -z-10 rounded-full bg-linear-to-br from-cyan-500/30 via-pink-500/20 to-purple-500/30 blur-[80px]"
             animate={{ 
               scale: [1, 1.1, 1],
               opacity: [0.5, 0.7, 0.5]
@@ -202,7 +202,7 @@ export default function Hero() {
 
           {/* Main card */}
           <motion.div
-            className="relative mx-auto h-full rounded-3xl border border-slate-700/50 bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 p-6 shadow-2xl backdrop-blur-xl lg:p-7"
+            className="relative mx-auto h-full rounded-3xl border border-slate-700/50 bg-linear-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 p-6 shadow-2xl backdrop-blur-xl lg:p-7"
             animate={{ y: [-10, 0, -10] }}
             transition={{
               duration: 6,
@@ -215,7 +215,7 @@ export default function Hero() {
             <div className="mb-5 flex items-start justify-between">
               <div className="flex items-center gap-3">
                 <motion.div 
-                  className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-pink-500 shadow-lg shadow-cyan-500/30"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-cyan-500 to-pink-500 shadow-lg shadow-cyan-500/30"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
@@ -231,7 +231,7 @@ export default function Hero() {
                 </div>
               </div>
               <motion.span 
-                className="rounded-xl bg-gradient-to-r from-emerald-500/20 to-green-500/20 border border-emerald-500/30 px-3 py-1.5 text-xs font-semibold text-emerald-300 shadow-lg"
+                className="rounded-xl bg-linear-to-r from-emerald-500/20 to-green-500/20 border border-emerald-500/30 px-3 py-1.5 text-xs font-semibold text-emerald-300 shadow-lg"
                 whileHover={{ scale: 1.05 }}
               >
                 {priceLabel}
@@ -239,7 +239,7 @@ export default function Hero() {
             </div>
 
             {/* Destination & Duration */}
-            <div className="mb-5 overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-500/20 via-pink-500/20 to-purple-500/20 p-[1px]">
+            <div className="mb-5 overflow-hidden rounded-2xl bg-linear-to-r from-cyan-500/20 via-pink-500/20 to-purple-500/20 p-px">
               <div className="flex items-center justify-between rounded-[15px] bg-slate-900/90 px-5 py-4 backdrop-blur">
                 <div>
                   <p className="text-xs font-medium text-slate-400 uppercase tracking-wide">Destination</p>
@@ -294,7 +294,7 @@ export default function Hero() {
               </span>
               <Link href={detailsHref}>
                 <motion.span 
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500/20 to-pink-500/20 border border-cyan-500/30 px-3 py-1.5 text-xs font-semibold text-cyan-300 transition-all hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/20"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-linear-to-r from-cyan-500/20 to-pink-500/20 border border-cyan-500/30 px-3 py-1.5 text-xs font-semibold text-cyan-300 transition-all hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/20"
                   whileHover={{ scale: 1.05 }}
                 >
                   View details
@@ -329,7 +329,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-slate-950 to-transparent pointer-events-none" />
     </motion.section>
   )
 }
