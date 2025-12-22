@@ -109,6 +109,15 @@ export default function Header() {
               About Us
             </motion.div>
           </Link>
+            <Link href="/faq">
+            <motion.div
+              className="rounded-full px-5 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              FAQ
+            </motion.div>
+          </Link>
         </nav>
 
         {/* Auth Section */}
@@ -288,6 +297,16 @@ export default function Header() {
                     About Us
                   </Link>
                 </DropdownMenuItem>
+                   <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link
+                    href="/faq"
+                    className="flex items-center rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+                  >
+                    FAQ
+                  </Link>
+                </DropdownMenuItem>
+
+
 
                 {isAuthenticated && user && (
                   <>
