@@ -8,14 +8,19 @@ import { Button } from "@/components/ui/button"
 import { useAppSelector } from "@/redux/hooks"
 
 export default function Hero() {
-  const { items } = useAppSelector((state) => state.packages)
+const { items = [] } = useAppSelector((state) => state.packages ?? { items: [] })
+
 
   const { user } = useAppSelector((state) => state.auth)
   const isAdmin = user?.role === "ADMIN"
   const targetHref = isAdmin ? "/admin/dashboard" : "/user/dashboard"
   const buttonLabel = isAdmin ? "Go to my Dashboard" : "Go to my trips"
 
-  const featuredPkg = items.length > 0 ? items[items.length - 1] : null
+const featuredPkg = items.length > 0 ? items[items.length - 1] : null
+
+console.log("Hero render: featured package:", featuredPkg)
+
+
   const destination = featuredPkg?.destination || "Destination"
   const title = featuredPkg?.title || "Featured trip"
   const durationLabel = featuredPkg?.durationDays

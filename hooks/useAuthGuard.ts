@@ -9,9 +9,7 @@ export const useAuthGuard = (options?: { requireAdmin?: boolean }) => {
   const router = useRouter()
   const pathname = usePathname()
   const dispatch = useAppDispatch()
-
   const { user, isAuthenticated, isLoading } = useAppSelector((s) => s.auth)
-
   useEffect(() => {
     if (!isAuthenticated && !isLoading) {
       dispatch(loadUserFromCookie())

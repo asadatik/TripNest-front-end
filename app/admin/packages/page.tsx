@@ -100,8 +100,10 @@ const emptyForm: PackageFormState = {
 
 export default function AdminPackages() {
   const dispatch = useAppDispatch()
-  const { items: packages, isLoading, error } = useAppSelector(
-    (state) => state.packages,
+
+
+  const { items: packages = [], isLoading, error } = useAppSelector(
+    (state) => state.packages ?? { items: [], isLoading: false, error: null },
   )
 
   const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -111,19 +113,23 @@ export default function AdminPackages() {
   const [filterType, setFilterType] = useState<string>("all")
   const [isSaving, setIsSaving] = useState(false)
 
+  // Fetch packages and package types on mount
   useEffect(() => {
     const fetchData = async () => {
       dispatch(fetchPackagesStart())
       try {
         const [packagesRes, typesRes] = await Promise.all([
-          api.getPackages(),
+          api.getPackages(),       // backend → { statusCode, success, message, meta, data }
           api.getPackageTypes(),
         ])
 
-        const pkgs = Array.isArray(packagesRes.data)
-          ? packagesRes.data
-          : packagesRes.data.data || []
-        dispatch(fetchPackagesSuccess(pkgs))
+        // ✅ Redux slice এর expected payload
+        dispatch(
+          fetchPackagesSuccess({
+            data: packagesRes.data.data || [],
+            meta: packagesRes.data.meta,
+          }),
+        )
 
         const types = Array.isArray(typesRes.data)
           ? typesRes.data
@@ -142,6 +148,7 @@ export default function AdminPackages() {
       fetchData()
     }
   }, [dispatch, packages.length, packageTypes.length])
+
 
   const parseCommaList = (value: string) =>
     value
@@ -189,10 +196,14 @@ export default function AdminPackages() {
       }
 
       const response = await api.getPackages()
-      const pkgs = Array.isArray(response.data)
-        ? response.data
-        : response.data.data || []
-      dispatch(fetchPackagesSuccess(pkgs))
+
+      dispatch(
+        fetchPackagesSuccess({
+          data: response.data.data || [],
+          meta: response.data.meta,
+        }),
+      )
+
 
       await Swal.fire({
         icon: "success",
@@ -240,11 +251,17 @@ export default function AdminPackages() {
       try {
         setIsSaving(true)
         await api.deletePackage(id)
+
+        
         const response = await api.getPackages()
-        const pkgs = Array.isArray(response.data)
-          ? response.data
-          : response.data.data || []
-        dispatch(fetchPackagesSuccess(pkgs))
+
+        dispatch(
+          fetchPackagesSuccess({
+            data: response.data.data || [],
+            meta: response.data.meta,
+          }),
+        )
+
 
         await Swal.fire({
           icon: "success",
@@ -308,9 +325,9 @@ export default function AdminPackages() {
     filterType === "all"
       ? packages
       : packages.filter(
-          (pkg) =>
-            (pkg as any).packageType?.toString() === filterType,
-        )
+        (pkg) =>
+          (pkg as any).packageType?.toString() === filterType,
+      )
 
   return (
     <div className="p-4 md:p-6 space-y-6">

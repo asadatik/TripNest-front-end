@@ -14,7 +14,24 @@ import { motion, AnimatePresence } from "framer-motion"
 
 export default function PackagesPage() {
   const dispatch = useAppDispatch()
-  const { items, meta, isLoading, error } = useAppSelector((state) => state.packages)
+
+  const {
+    items: rawItems,
+    meta,
+    isLoading,
+    error,
+  } = useAppSelector(
+    (state) =>
+      state.packages ?? {
+        items: [],
+        meta: null,
+        isLoading: false,
+        error: null,
+      },
+  )
+
+  // items সবসময় array হিসেবে force করা
+  const items = Array.isArray(rawItems) ? rawItems : []
 
   const [packageTypes, setPackageTypes] = useState<any[]>([])
   const [selectedTypeId, setSelectedTypeId] = useState<string | null>(null)
@@ -23,9 +40,9 @@ export default function PackagesPage() {
   const limit = 10
 
   // Debug
-  console.log("PackagesPage render: from Redux store", items.length)
-  console.log("PackagesPage render: packageTypes", packageTypes)
-  console.log("PackagesPage render: meta", meta, "page", page)
+  console.log("PackagesPage: items length", items.length)
+  console.log("PackagesPage: packageTypes", packageTypes)
+  console.log("PackagesPage: meta", meta, "local page state", page)
 
   // Fetch packages + types
   useEffect(() => {
@@ -34,25 +51,16 @@ export default function PackagesPage() {
         dispatch(fetchPackagesStart())
 
         const [packagesRes, typesRes] = await Promise.all([
-          api.getPackages({ page, limit }),
+          api.getPackages({ page, limit }), // backend → { meta, data }
           api.getPackageTypes(),
         ])
 
-        const packagesPayload = {
-          data: Array.isArray(packagesRes.data)
-            ? packagesRes.data
-            : packagesRes.data.data || [],
-          meta: Array.isArray(packagesRes.data)
-            ? {
-                page,
-                limit,
-                total: Array.isArray(packagesRes.data) ? packagesRes.data.length : 0,
-                totalPage: 1,
-              }
-            : packagesRes.data.meta,
-        }
-
-        dispatch(fetchPackagesSuccess(packagesPayload))
+        dispatch(
+          fetchPackagesSuccess({
+            data: packagesRes.data.data || [],
+            meta: packagesRes.data.meta,
+          }),
+        )
 
         const types = Array.isArray(typesRes.data)
           ? typesRes.data
@@ -63,11 +71,10 @@ export default function PackagesPage() {
           err?.response?.data?.message ||
           (err instanceof Error ? err.message : "Failed to fetch packages")
         dispatch(fetchPackagesError(errorMessage))
-        console.error("🚨Error fetching packages:", errorMessage)
+        console.error("🚨 Error fetching packages:", errorMessage)
       }
     }
 
-    // page change হলেই packages লোড হবে
     fetchData()
   }, [dispatch, page, limit])
 
@@ -87,7 +94,7 @@ export default function PackagesPage() {
   const currentPage = meta?.page ?? page
   const totalPages = meta?.totalPage ?? 1
   const totalItems = meta?.total ?? filteredPackages.length
-  const startIndex = (currentPage - 1) * limit + 1
+  const startIndex = (totalItems === 0 ? 0 : (currentPage - 1) * limit + 1)
   const endIndex = Math.min(currentPage * limit, totalItems)
 
   const handlePrev = () => {
@@ -354,17 +361,17 @@ export default function PackagesPage() {
                 <button
                   onClick={handlePrev}
                   disabled={currentPage <= 1}
-                  className="rounded-full border px-3 py-1 text-xs font-medium text-slate-700 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200"
+                  className="rounded-full bg-linear-to-r from-cyan-500 via-blue-500 to-purple-400 border px-3 py-1 text-xs font-medium text-slate-700 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200"
                 >
                   Prev
                 </button>
-                <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
+                <span className="text-xs font-medium text-slate-600 dark:text-slate-200">
                   Page {currentPage} of {totalPages}
                 </span>
                 <button
                   onClick={handleNext}
                   disabled={currentPage >= totalPages}
-                  className="rounded-full border px-3 py-1 text-xs font-medium text-slate-700 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200"
+                  className="rounded-full border px-3 bg-linear-to-r from-cyan-500 via-blue-500 to-purple-400 py-1 text-xs font-medium text-slate-700 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200"
                 >
                   Next
                 </button>

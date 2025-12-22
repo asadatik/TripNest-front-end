@@ -42,7 +42,8 @@ const packagesSlice = createSlice({
     },
     fetchPackagesSuccess(state, action: PayloadAction<PackagesSuccessPayload>) {
       state.isLoading = false
-      state.items = action.payload.data
+      // নিশ্চিত করি সবসময় array সেট হচ্ছে
+      state.items = Array.isArray(action.payload.data) ? action.payload.data : []
       state.meta = action.payload.meta
     },
     fetchPackagesError(state, action: PayloadAction<string>) {

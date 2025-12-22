@@ -32,6 +32,7 @@ export const api = {
 
   // Packages endpoints
 getPackages: (params?: { page?: number; limit?: number; search?: string }) =>  apiClient.get("/packages", { params }),
+
   getPackageBySlug: (slug: string) => apiClient.get(`/packages/${slug}`),
 
   // Admin - Users

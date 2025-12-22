@@ -19,30 +19,38 @@ import { FullScreenLoader } from "../common/fullscreen-loader"
 export default function FeaturedPackages() {
 
   const dispatch = useAppDispatch()
-  const { items, isLoading, error } = useAppSelector((state) => state.packages)
+ const { items = [], isLoading, error } = useAppSelector(
+  (state) => state.packages ?? { items: [], isLoading: false, error: null },
+)
 
+  console.log(" PackagesPage from Redux store.............", items.length)
 
+useEffect(() => {
+  const fetchPackages = async () => {
+    dispatch(fetchPackagesStart())
+    try {
+      const response = await api.getPackages()
 
-  console.log(" PackagesPage render: from Redux store", items.length)
+      dispatch(
+        fetchPackagesSuccess({
+          data: response.data.data || [],
+          meta: response.data.meta,
+        }),
+      )
 
-  useEffect(() => {
-    const fetchPackages = async () => {
-      dispatch(fetchPackagesStart())
-      try {
-        const response = await api.getPackages()
-        dispatch(fetchPackagesSuccess(response.data.data))
-        console.log(" Packages loaded successfully:", response.data.data)
-      } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : "Failed to fetch packages"
-        dispatch(fetchPackagesError(errorMessage))
-        console.error("🚨Error fetching packages:", errorMessage)
-      }
+      console.log("Packages loaded successfully:", response.data.data)
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "Failed to fetch packages"
+      dispatch(fetchPackagesError(errorMessage))
+      console.error("🚨Error fetching packages:", errorMessage)
     }
+  }
 
-    if (items.length === 0) {
-      fetchPackages()
-    }
-  }, [dispatch, items.length])
+  if (items.length === 0) {
+    fetchPackages()
+  }
+}, [dispatch, items.length])
 
 
 

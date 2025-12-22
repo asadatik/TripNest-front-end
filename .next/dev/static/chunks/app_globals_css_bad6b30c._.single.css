@@ -2968,20 +2968,6 @@
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
 
-  .bg-linear-to-tl {
-    --tw-gradient-position: to top left;
-  }
-
-  @supports (background-image: linear-gradient(in lab, red, red)) {
-    .bg-linear-to-tl {
-      --tw-gradient-position: to top left in oklab;
-    }
-  }
-
-  .bg-linear-to-tl {
-    background-image: linear-gradient(var(--tw-gradient-stops));
-  }
-
   .bg-linear-to-tr {
     --tw-gradient-position: to top right;
   }

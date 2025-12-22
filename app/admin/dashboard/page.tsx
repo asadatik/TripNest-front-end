@@ -33,7 +33,7 @@ export default function AdminDashboard() {
     try {
       const [usersRes, packagesRes, bookingsRes, paymentsRes] = await Promise.all([
         api.getUsers(),
-        api.getPackages(),
+        api.getPackages({ page: 1, limit: 999 }),
         api.getBookings(),
         api.getPayments(),
       ])
