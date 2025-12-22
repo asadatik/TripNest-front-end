@@ -3,7 +3,8 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import {  fetchPackagesStart, fetchPackagesSuccess,
+import {
+  fetchPackagesStart, fetchPackagesSuccess,
   fetchPackagesError,
 } from "@/redux/slices/packagesSlice"
 import {
@@ -28,44 +29,44 @@ import { motion } from "framer-motion"
 export default function UserDashboard() {
   const dispatch = useAppDispatch()
 
-  const {
-    items: packages,
-    isLoading: packagesLoading,
-    error: packagesError,
-  } = useAppSelector((state) => state.packages)
 
-  const { userBookings, isLoading: bookingsLoading, error: bookingsError} = useAppSelector((state) => state.bookings)
 
+  const { userBookings, isLoading: bookingsLoading, error: bookingsError } = useAppSelector((state) => state.bookings)
   console.log("User Dashboard loaded bookings:", userBookings)
-  console.log("User Dashboard packages:", packages)
 
-  // Fetch packages
+  const { items: packages = [], isLoading: packagesLoading, error: packagesError, } = useAppSelector((state) => state.packages ?? { items: [], isLoading: false, error: null },);
+
+  // ✅ Packages fetch useEffect
   useEffect(() => {
     const fetchPackages = async () => {
-      dispatch(fetchPackagesStart())
+      dispatch(fetchPackagesStart());
       try {
-        const response = await api.getPackages()
+        const response = await api.getPackages();
 
-        const pkgs = Array.isArray(response.data?.data)
-          ? response.data.data
-          : Array.isArray(response.data)
-          ? response.data
-          : []
-
-        dispatch(fetchPackagesSuccess(pkgs))
-      } catch (err) {
+        // 
         dispatch(
-          fetchPackagesError(
-            err instanceof Error ? err.message : "Failed to fetch packages",
-          ),
-        )
+          fetchPackagesSuccess({
+            data: response.data?.data || [],
+            meta: response.data?.meta,
+          }),
+        );
+
+        console.log("Packages loaded successfully:", response.data?.data);
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to fetch packages";
+        dispatch(fetchPackagesError(errorMessage));
+        console.error("🚨 Error fetching packages:", errorMessage);
       }
-    }
+    };
 
     if (packages.length === 0) {
-      fetchPackages()
+      fetchPackages();
     }
-  }, [dispatch, packages.length])
+  }, [dispatch, packages.length]);
+
+
+
 
   // Fetch user bookings
   useEffect(() => {
@@ -77,12 +78,12 @@ export default function UserDashboard() {
         const data = Array.isArray(response.data?.data)
           ? response.data.data
           : Array.isArray(response.data)
-          ? response.data
-          : []
+            ? response.data
+            : []
 
         dispatch(fetchUserBookingsSuccess(data))
         console.log("User bookings loaded (dashboard):", data)
-        
+
       } catch (err) {
         const errorMessage =
           err instanceof Error ? err.message : "Failed to fetch bookings"
@@ -119,7 +120,7 @@ export default function UserDashboard() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="bg-gradient-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
+        <h1 className="bg-linear-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
           Your Dashboard
         </h1>
         <p className="mt-1 text-muted-foreground">
