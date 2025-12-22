@@ -205,7 +205,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Button className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-500 via-pink-400 to-purple-400 px-8 py-6 text-base font-semibold text-white shadow-2xl shadow-cyan-500/30 transition-all hover:shadow-cyan-500/50 sm:w-auto">
+                <Button className="group relative w-full overflow-hidden rounded-2xl bg-linear-to-tr from-cyan-500 via-blue-600 to-purple-600 px-8 py-6 text-base font-semibold text-white shadow-2xl shadow-cyan-500/30 transition-all hover:shadow-cyan-500/50 sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     <span>Browse packages</span>
                     <motion.div
@@ -216,7 +216,7 @@ export default function Hero() {
                     </motion.div>
                   </span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-pink-500 to-purple-500 opacity-0"
+                    className="absolute inset-0 bg-linear-to-r from-cyan-600 via-pink-500 to-purple-500 opacity-0"
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
                   />

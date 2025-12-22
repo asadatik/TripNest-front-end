@@ -151,7 +151,7 @@ export default function FeaturedPackages() {
                     <Link href={`/packages/${pkg.slug}`} className="mt-auto">
                       <Button
                         size="sm"
-                        className="rounded-full bg-linear-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] px-4 text-[11px] font-medium text-background shadow-md transition hover:brightness-110"
+                        className="rounded-full bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 px-4 text-[11px] font-medium  text-amber-50  shadow-md transition hover:brightness-110"
                       >
                         View details
                       </Button>
@@ -169,7 +169,7 @@ export default function FeaturedPackages() {
             <Button
               variant="ghost"
               size="sm"
-              className="text-xs rounded-full bg-linear-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] px-4 text-[11px] font-medium text-background shadow-md transition hover:brightness-110       "
+              className="text-xs rounded-full bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 px-4 text-[11px] font-medium  shadow-md transition hover:brightness-110       "
             >
               View all packages ✨ 
             </Button>

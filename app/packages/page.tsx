@@ -9,55 +9,72 @@ import {
 } from "@/redux/slices/packagesSlice"
 import { api } from "@/lib/api"
 import PackageCard from "@/components/PackageCard"
-import { Loader2, AlertCircle, X, Search, Filter, SlidersHorizontal, Sparkles } from "lucide-react"
+import { Loader2, AlertCircle, X, Filter, SlidersHorizontal, Sparkles } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function PackagesPage() {
   const dispatch = useAppDispatch()
-  const { items, isLoading, error } = useAppSelector((state) => state.packages)
+  const { items, meta, isLoading, error } = useAppSelector((state) => state.packages)
 
   const [packageTypes, setPackageTypes] = useState<any[]>([])
   const [selectedTypeId, setSelectedTypeId] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
+  const [page, setPage] = useState(1)
+  const limit = 10
 
+  // Debug
   console.log("PackagesPage render: from Redux store", items.length)
   console.log("PackagesPage render: packageTypes", packageTypes)
+  console.log("PackagesPage render: meta", meta, "page", page)
 
+  // Fetch packages + types
   useEffect(() => {
     const fetchData = async () => {
-      dispatch(fetchPackagesStart())
       try {
+        dispatch(fetchPackagesStart())
+
         const [packagesRes, typesRes] = await Promise.all([
-          api.getPackages(),
+          api.getPackages({ page, limit }),
           api.getPackageTypes(),
         ])
 
-        const pkgs = Array.isArray(packagesRes.data)
-          ? packagesRes.data
-          : packagesRes.data.data || []
-        dispatch(fetchPackagesSuccess(pkgs))
+        const packagesPayload = {
+          data: Array.isArray(packagesRes.data)
+            ? packagesRes.data
+            : packagesRes.data.data || [],
+          meta: Array.isArray(packagesRes.data)
+            ? {
+                page,
+                limit,
+                total: Array.isArray(packagesRes.data) ? packagesRes.data.length : 0,
+                totalPage: 1,
+              }
+            : packagesRes.data.meta,
+        }
+
+        dispatch(fetchPackagesSuccess(packagesPayload))
 
         const types = Array.isArray(typesRes.data)
           ? typesRes.data
           : typesRes.data.data || []
         setPackageTypes(types)
-      } catch (err) {
+      } catch (err: any) {
         const errorMessage =
-          err instanceof Error ? err.message : "Failed to fetch packages"
+          err?.response?.data?.message ||
+          (err instanceof Error ? err.message : "Failed to fetch packages")
         dispatch(fetchPackagesError(errorMessage))
         console.error("🚨Error fetching packages:", errorMessage)
       }
     }
 
-    if (items.length === 0 || packageTypes.length === 0) {
-      fetchData()
-    }
-  }, [dispatch, items.length, packageTypes.length])
+    // page change হলেই packages লোড হবে
+    fetchData()
+  }, [dispatch, page, limit])
 
+  // Filtered packages (current page এর ভিতরে)
   const filteredPackages = useMemo(() => {
     return items.filter((pkg) => {
-      const matchesType =
-        !selectedTypeId || pkg.packageType === selectedTypeId // ✅ string compare
+      const matchesType = !selectedTypeId || pkg.packageType === selectedTypeId
 
       const text = `${pkg.title} ${pkg.destination}`.toLowerCase()
       const matchesSearch = text.includes(searchTerm.toLowerCase())
@@ -66,24 +83,38 @@ export default function PackagesPage() {
     })
   }, [items, selectedTypeId, searchTerm])
 
+  // Pagination helpers
+  const currentPage = meta?.page ?? page
+  const totalPages = meta?.totalPage ?? 1
+  const totalItems = meta?.total ?? filteredPackages.length
+  const startIndex = (currentPage - 1) * limit + 1
+  const endIndex = Math.min(currentPage * limit, totalItems)
+
+  const handlePrev = () => {
+    if (currentPage > 1) setPage(currentPage - 1)
+  }
+
+  const handleNext = () => {
+    if (currentPage < totalPages) setPage(currentPage + 1)
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   }
 
   return (
-    <div className="min-h-[calc(100vh-theme(space.16))]    bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 lg:py-16">
+    <div className="min-h-[calc(100vh-theme(space.16))] bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 lg:py-16">
       {/* Background decorative elements */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
@@ -145,7 +176,7 @@ export default function PackagesPage() {
               <p className="text-base text-slate-600 dark:text-slate-300 md:text-lg">
                 Choose from our collection of{" "}
                 <span className="font-semibold text-cyan-600 dark:text-cyan-400">
-                  {items.length} amazing
+                  {totalItems} amazing
                 </span>{" "}
                 travel packages
               </p>
@@ -159,14 +190,12 @@ export default function PackagesPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <div className="relative">
-             
-                
                 <input
                   type="text"
                   placeholder=" 🔍 Search by title, destination..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full rounded-2xl border-2  bg-white/80 py-3.5 md:px-4 pr-4 text-sm font-medium text-slate-900 placeholder-slate-400 shadow-lg backdrop-blur-sm transition-all border-cyan-500  outline-none  ring-4  ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-900/80 dark:text-white dark:placeholder-slate-500 dark:focus:border-cyan-400"
+                  className="w-full rounded-2xl border-2 bg-white/80 py-3.5 md:px-4 pr-4 text-sm font-medium text-slate-900 placeholder-slate-400 shadow-lg backdrop-blur-sm transition-all border-cyan-500 outline-none ring-4 ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-900/80 dark:text-white dark:placeholder-slate-500 dark:focus:border-cyan-400"
                 />
                 {searchTerm && (
                   <motion.button
@@ -199,7 +228,9 @@ export default function PackagesPage() {
                     <p className="font-semibold text-red-900 dark:text-red-100">
                       Error loading packages
                     </p>
-                    <p className="mt-1 text-sm text-red-700 dark:text-red-300">{error}</p>
+                    <p className="mt-1 text-sm text-red-700 dark:text-red-300">
+                      {error}
+                    </p>
                     <p className="mt-2 text-xs text-red-600 dark:text-red-400">
                       Make sure backend is running at http://localhost:5000
                     </p>
@@ -244,28 +275,31 @@ export default function PackagesPage() {
               <div className="flex flex-wrap gap-2">
                 <motion.button
                   onClick={() => setSelectedTypeId(null)}
-                  className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${!selectedTypeId
+                  className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                    !selectedTypeId
                       ? "bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white shadow-lg shadow-cyan-500/30"
                       : "border-2 border-slate-200 bg-white text-slate-700 hover:border-cyan-500 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-cyan-400 dark:hover:bg-slate-800"
-                    }`}
+                  }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  All Packages ({items.length})
+                  All Packages ({totalItems})
                 </motion.button>
                 {packageTypes.map((t) => {
                   const count = items.filter(
-                    (pkg) => pkg.packageType && String(pkg.packageType) === String(t._id),
+                    (pkg) =>
+                      pkg.packageType && String(pkg.packageType) === String(t._id),
                   ).length
 
                   return (
                     <motion.button
                       key={t._id}
                       onClick={() => setSelectedTypeId(t._id)}
-                      className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${selectedTypeId === t._id
+                      className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                        selectedTypeId === t._id
                           ? "bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white shadow-lg shadow-cyan-500/30"
                           : "border-2 border-slate-200 bg-white text-slate-700 hover:border-cyan-500 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-cyan-400 dark:hover:bg-slate-800"
-                        }`}
+                      }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -297,9 +331,9 @@ export default function PackagesPage() {
           </motion.div>
         ) : filteredPackages.length > 0 ? (
           <>
-            {/* Results Count */}
+            {/* Results + pagination info */}
             <motion.div
-              className="mb-6 flex items-center justify-between"
+              className="mb-6 flex flex-col gap-2 items-start justify-between sm:flex-row sm:items-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -307,15 +341,39 @@ export default function PackagesPage() {
               <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
                 Showing{" "}
                 <span className="font-bold text-cyan-600 dark:text-cyan-400">
-                  {filteredPackages.length}
+                  {startIndex}-{endIndex}
                 </span>{" "}
-                {filteredPackages.length === 1 ? "package" : "packages"}
+                of{" "}
+                <span className="font-bold text-cyan-600 dark:text-cyan-400">
+                  {totalItems}
+                </span>{" "}
+                packages
               </p>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handlePrev}
+                  disabled={currentPage <= 1}
+                  className="rounded-full border px-3 py-1 text-xs font-medium text-slate-700 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200"
+                >
+                  Prev
+                </button>
+                <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  onClick={handleNext}
+                  disabled={currentPage >= totalPages}
+                  className="rounded-full border px-3 py-1 text-xs font-medium text-slate-700 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200"
+                >
+                  Next
+                </button>
+              </div>
             </motion.div>
 
             {/* Package Grid */}
             <motion.div
-              className="grid gap-6 md:grid-cols-2  lg:grid-cols-3"
+              className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -330,7 +388,6 @@ export default function PackagesPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                         
                   >
                     <PackageCard package={pkg} />
                   </motion.div>
@@ -361,7 +418,7 @@ export default function PackagesPage() {
                   setSelectedTypeId(null)
                   setSearchTerm("")
                 }}
-                className="mt-4 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:shadow-cyan-500/40"
+                className="mt-4 rounded-full bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:shadow-cyan-500/40"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

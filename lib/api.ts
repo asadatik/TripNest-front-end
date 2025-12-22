@@ -31,7 +31,7 @@ export const api = {
   getMe: () => apiClient.get("/user/me"), // Fetch current user from cookies
 
   // Packages endpoints
-  getPackages: () => apiClient.get("/packages"),
+getPackages: (params?: { page?: number; limit?: number; search?: string }) =>  apiClient.get("/packages", { params }),
   getPackageBySlug: (slug: string) => apiClient.get(`/packages/${slug}`),
 
   // Admin - Users

@@ -3,8 +3,16 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 import type { Package } from "@/lib/types"
 
+interface PackagesMeta {
+  page: number
+  limit: number
+  total: number
+  totalPage: number
+}
+
 interface PackagesState {
   items: Package[]
+  meta: PackagesMeta | null
   selectedPackage: Package | null
   isLoading: boolean
   error: string | null
@@ -12,30 +20,41 @@ interface PackagesState {
 
 const initialState: PackagesState = {
   items: [],
+  meta: null,
   selectedPackage: null,
   isLoading: false,
   error: null,
+}
+
+type PackagesSuccessPayload = {
+  data: Package[]
+  meta: PackagesMeta
 }
 
 const packagesSlice = createSlice({
   name: "packages",
   initialState,
   reducers: {
+    // List
     fetchPackagesStart(state) {
       state.isLoading = true
       state.error = null
     },
-    fetchPackagesSuccess(state, action: PayloadAction<Package[]>) {
+    fetchPackagesSuccess(state, action: PayloadAction<PackagesSuccessPayload>) {
       state.isLoading = false
-      state.items = action.payload
+      state.items = action.payload.data
+      state.meta = action.payload.meta
     },
     fetchPackagesError(state, action: PayloadAction<string>) {
       state.isLoading = false
       state.error = action.payload
     },
+
+    // Detail
     fetchPackageDetailStart(state) {
       state.isLoading = true
       state.error = null
+      state.selectedPackage = null
     },
     fetchPackageDetailSuccess(state, action: PayloadAction<Package>) {
       state.isLoading = false
@@ -45,6 +64,7 @@ const packagesSlice = createSlice({
       state.isLoading = false
       state.error = action.payload
     },
+
     clearError(state) {
       state.error = null
     },
