@@ -53,7 +53,7 @@ export default function UserBookings() {
         const errorMessage =
           err instanceof Error ? err.message : "Failed to fetch bookings"
         dispatch(fetchBookingsError(errorMessage))
-        console.error("🚨Error fetching bookings:", errorMessage)
+        // console.error("🚨Error fetching bookings:", errorMessage)
       }
     }
     console.log("🚨Bookings length:", bookings.length)
@@ -68,7 +68,7 @@ export default function UserBookings() {
       dispatch(cancelBookingSuccess(bookingId))
       console.log("🚨Booking cancelled:", bookingId)
     } catch (err) {
-      console.error("🚨Failed to cancel booking:", err)
+      // console.error("🚨Failed to cancel booking:", err)
     }
   }
 

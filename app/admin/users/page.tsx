@@ -46,7 +46,7 @@ export default function AdminUsers() {
       } catch (err: any) {
         const errorMessage = err.response?.data?.message || err.message || "Failed to fetch users"
         dispatch(fetchUsersError(errorMessage))
-        console.error("[v0] Error fetching users:", errorMessage)
+           
       }
     }
 
@@ -85,7 +85,7 @@ export default function AdminUsers() {
         background: "#0f172a",
         color: "#f1f5f9",
       })
-      console.error("[v0] Failed to update user:", err)
+      // console.error("[v0] Failed to update user:", err)
     } finally {
       setIsUpdating(false)
     }
@@ -135,7 +135,7 @@ export default function AdminUsers() {
           background: "#0f172a",
           color: "#f1f5f9",
         })
-        console.error("[v0] Failed to update user status:", err)
+        // console.error("[v0] Failed to update user status:", err)
       } finally {
         setIsUpdating(false)
       }

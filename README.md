@@ -1,7 +1,7 @@
 # TripNest Frontend
 
 Live URL:  https://trip-nest-front-end.vercel.app
-Backend Repo/URL: https://tripnest-backend-mpjf.onrender.com
+Backend Repo/URL: https://trip-nest-back-end.vercel.app
 
 TripNest is a travel booking platform where users can browse curated travel packages, book trips, pay via Stripe, and manage their bookings from a modern dashboard.
 
@@ -49,7 +49,7 @@ cp .env.example .env.local
 
 
 Then update:
-NEXT_PUBLIC_API_BASE_URL= https://tripnest-backend-mpjf.onrender.com
+NEXT_PUBLIC_API_BASE_URL= https://trip-nest-back-end.vercel.app
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
 4. Run the development server
 npm run dev

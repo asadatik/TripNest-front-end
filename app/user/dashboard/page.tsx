@@ -56,7 +56,7 @@ export default function UserDashboard() {
         const errorMessage =
           err instanceof Error ? err.message : "Failed to fetch packages";
         dispatch(fetchPackagesError(errorMessage));
-        console.error("🚨 Error fetching packages:", errorMessage);
+        // console.error("🚨 Error fetching packages:", errorMessage);
       }
     };
 
@@ -64,9 +64,6 @@ export default function UserDashboard() {
       fetchPackages();
     }
   }, [dispatch, packages.length]);
-
-
-
 
   // Fetch user bookings
   useEffect(() => {
@@ -88,7 +85,7 @@ export default function UserDashboard() {
         const errorMessage =
           err instanceof Error ? err.message : "Failed to fetch bookings"
         dispatch(fetchBookingsError(errorMessage))
-        console.error("Error fetching bookings (dashboard):", errorMessage)
+        // console.error("Error fetching bookings (dashboard):", errorMessage)
       }
     }
 

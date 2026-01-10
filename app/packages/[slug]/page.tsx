@@ -162,7 +162,7 @@ const pathname = usePathname()
         err.message ||
         "Failed to start booking"
       setBookingError(msg)
-      console.error("BookNow error:", msg)
+      // console.error("BookNow error:", msg)
     } finally {
       setIsBooking(false)
     }

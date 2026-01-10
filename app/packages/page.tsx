@@ -71,7 +71,7 @@ export default function PackagesPage() {
           err?.response?.data?.message ||
           (err instanceof Error ? err.message : "Failed to fetch packages")
         dispatch(fetchPackagesError(errorMessage))
-        console.error("🚨 Error fetching packages:", errorMessage)
+        // console.error("🚨 Error fetching packages:", errorMessage)
       }
     }
 

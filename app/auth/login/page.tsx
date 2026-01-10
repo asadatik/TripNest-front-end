@@ -30,7 +30,7 @@ import { motion, AnimatePresence } from "framer-motion"
 export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const redirect = searchParams.get("redirect") // e.g. /packages/123
+  const redirect = searchParams.get("redirect")
   const dispatch = useAppDispatch()
   const { isLoading, error, isAuthenticated, user } = useAppSelector(
     (state) => state.auth,
@@ -45,12 +45,11 @@ export default function LoginPage() {
       setShowSuccessAlert(true)
 
       setTimeout(() => {
-        // jodi redirect query ache, age oikhan-e jabo
+        // jodi redirect query ache, age
         if (redirect) {
           router.push(redirect)
           return
         }
-
         // na thakle role-based default
         router.push(
           user.role === "ADMIN" ? "/admin/dashboard" : "/user/dashboard",

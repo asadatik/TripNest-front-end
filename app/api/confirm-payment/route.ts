@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     const data = await response.json()
     return NextResponse.json(data)
   } catch (error) {
-    console.error("Error confirming payment:", error)
+    // console.error("Error confirming payment:", error)
     return NextResponse.json({ error: "Failed to confirm payment" }, { status: 500 })
   }
 }
