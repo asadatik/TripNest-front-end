@@ -17,8 +17,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Md. Atikur Rahman", url: "https://yourwebsite.com" }],
   keywords: ["Travel", "Packages", "TripNest", "Vacation", "Holidays"],
  
-  icons
-: {
+  icons: {
     icon: "/24e7519e-f63d-4ead-a400-e244072a9ea8.jpg",
   },
 } 
