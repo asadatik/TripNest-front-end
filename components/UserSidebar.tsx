@@ -47,7 +47,7 @@ export default function UserSidebar() {
 
   return (
     <>
-      {/* Mobile Toggle Button - Top of Page */}
+      {/* Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed left-4 top-20 z-50 inline-flex items-center justify-center rounded-xl border border-border/70 bg-card/90 p-2.5 text-foreground shadow-lg backdrop-blur transition-all duration-200 hover:bg-card/95 md:hidden"
@@ -79,7 +79,7 @@ export default function UserSidebar() {
       {/* Sidebar */}
       <motion.aside
         className={cn(
-          // desktop: full-height column, sticky under header (assumed h-16 => 4rem)
+
           "fixed left-0 top-28 z-40 h-[calc(100vh-7rem)] w-64 overflow-y-auto md:sticky md:top-16 md:h-[calc(100vh-4rem)] md:left-0 md:z-30",
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
@@ -87,12 +87,12 @@ export default function UserSidebar() {
         animate={{ x: isOpen || !isMobile ? 0 : -256 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        {/* Glassmorphic Container */}
+  
         <div className="relative m-4 overflow-hidden rounded-2xl border border-border/70 bg-card/90 shadow-[0_20px_70px_rgba(0,0,0,0.3)] backdrop-blur md:m-0 md:h-full md:rounded-none md:border-none md:border-r md:shadow-none">
-          {/* Gradient Background */}
+ 
           <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#00ddff]/20 via-transparent to-[#ff4edb]/20 opacity-60" />
 
-          {/* Navigation Items */}
+
           <nav className="space-y-2 p-4">
             {userNav.map((item, index) => {
               const isActive =
@@ -114,7 +114,7 @@ export default function UserSidebar() {
                         : "text-muted-foreground hover:bg-background/50 hover:text-foreground border-transparent",
                     )}
                   >
-                    {/* Active Indicator Gradient */}
+                  {/*  */}
                     {isActive && (
                       <motion.div
                         className="absolute inset-0 -z-10 bg-gradient-to-r from-[#00ddff]/30 via-[#ff4edb]/25 to-[#ff00aa]/20 blur-xl"

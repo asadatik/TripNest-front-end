@@ -34,7 +34,7 @@ export const useAuthGuard = (options?: AuthGuardOptions) => {
       return
     }
 
-    // Admin area: only ADMIN
+
     if (requireAdmin && user && user.role !== "ADMIN") {
       Swal.fire({
         icon: "warning",
@@ -48,7 +48,7 @@ export const useAuthGuard = (options?: AuthGuardOptions) => {
       return
     }
 
-    //  User area: block ADMIN
+ 
     if (!requireAdmin && user && user.role === "ADMIN") {
       Swal.fire({
         icon: "warning",

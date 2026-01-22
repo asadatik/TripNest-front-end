@@ -48,7 +48,7 @@ export default function UserBookings() {
       try {
         const response = await api.getUserBookings()
         dispatch(fetchUserBookingsSuccess(response.data.data))
-        console.log("🚨User bookings loaded:", response.data.data)
+        // console.log("🚨User bookings loaded:", response.data.data)
       } catch (err) {
         const errorMessage =
           err instanceof Error ? err.message : "Failed to fetch bookings"
@@ -66,9 +66,9 @@ export default function UserBookings() {
     try {
       await api.cancelBooking(bookingId)
       dispatch(cancelBookingSuccess(bookingId))
-      console.log("🚨Booking cancelled:", bookingId)
+      // console.log("🚨Booking cancelled:", bookingId)
     } catch (err) {
-      // console.error("🚨Failed to cancel booking:", err)
+
     }
   }
 

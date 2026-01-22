@@ -72,7 +72,7 @@ export default function LoginForm() {
 
   return (
     <div className="relative min-h-[calc(100vh-theme(space.16))] overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 px-4 py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Background decorative elements */}
+   
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-transparent blur-3xl"
@@ -100,7 +100,7 @@ export default function LoginForm() {
         />
       </div>
 
-      {/* Success Alert (SweetAlert style) */}
+
       <AnimatePresence>
         {showSuccessAlert && (
           <motion.div
@@ -361,7 +361,7 @@ export default function LoginForm() {
             </CardContent>
           </Card>
 
-          {/* Footer Note */}
+          {/* Footer  */}
           <motion.p
             className="mt-6 text-center text-xs text-slate-500 dark:text-slate-400"
             initial={{ opacity: 0 }}

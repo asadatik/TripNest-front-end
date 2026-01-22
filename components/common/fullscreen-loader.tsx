@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 export function FullScreenLoader() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-linear-to-br from-slate-950 via-slate-900 to-slate-950">
-      {/* subtle background orbs */}
+
       <div className="pointer-events-none absolute inset-0 opacity-60">
         <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" />
         <div className="absolute -right-24 -bottom-24 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-3xl" />
@@ -18,7 +18,7 @@ export function FullScreenLoader() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="relative flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-slate-900/70 px-10 py-8 shadow-[0_22px_80px_rgba(0,0,0,0.65)] backdrop-blur-xl"
       >
-        {/* circular loader with plane icon */}
+        {/* circular loader*/}
         <div className="relative flex h-16 w-16 items-center justify-center">
           <motion.span
             className="absolute inset-0 rounded-full border-2 border-cyan-400/40 border-t-fuchsia-500"
@@ -42,7 +42,7 @@ export function FullScreenLoader() {
           </p>
         </div>
 
-        {/* small animated dots */}
+
         <div className="mt-1 flex gap-1">
           {[0, 1, 2].map((i) => (
             <motion.span

@@ -282,7 +282,7 @@ export default function AdminPackages() {
           background: "#0f172a",
           color: "#f1f5f9",
         })
-        // console.error("Failed to delete package:", err)
+  
       } finally {
         setIsSaving(false)
       }

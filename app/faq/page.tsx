@@ -187,7 +187,7 @@ export default function FAQPage() {
       </div>
 
       <div className="container relative z-10   mx-auto px-4">
-        {/* Header */}
+
         <motion.div
           className="mb-12 text-center lg:mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -216,7 +216,7 @@ export default function FAQPage() {
           </p>
         </motion.div>
 
-        {/* Search Bar */}
+     
         <motion.div
           className="mx-auto mb-12 max-w-2xl"
           initial={{ opacity: 0, y: 20 }}
@@ -245,7 +245,7 @@ export default function FAQPage() {
           </div>
         </motion.div>
 
-        {/* Category Filters */}
+   
         <motion.div
           className="mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -285,7 +285,7 @@ export default function FAQPage() {
           </Card>
         </motion.div>
 
-        {/* Results Count */}
+ 
         <motion.div
           className="mb-6 text-center"
           initial={{ opacity: 0 }}
@@ -301,7 +301,7 @@ export default function FAQPage() {
           </p>
         </motion.div>
 
-        {/* FAQ List */}
+    
         <motion.div
           className="mx-auto max-w-4xl space-y-4"
           variants={containerVariants}
@@ -394,7 +394,6 @@ export default function FAQPage() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Contact Support Section */}
         <motion.div
           className="mt-20"
           initial={{ opacity: 0, y: 30 }}

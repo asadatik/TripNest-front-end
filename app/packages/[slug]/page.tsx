@@ -56,7 +56,7 @@ const pathname = usePathname()
 
     fetchPackageDetail()
   }, [dispatch, slug])
-  // booking + payment state //
+
 
   const pkg = localPackage || selectedPackage
 
@@ -154,7 +154,7 @@ const pathname = usePathname()
         throw new Error("Stripe checkout URL missing")
       }
 
-      //Stripe checkout এ redirect
+
       window.location.href = url
     } catch (err: any) {
       const msg =
@@ -162,7 +162,7 @@ const pathname = usePathname()
         err.message ||
         "Failed to start booking"
       setBookingError(msg)
-      // console.error("BookNow error:", msg)
+
     } finally {
       setIsBooking(false)
     }
@@ -488,7 +488,7 @@ const pathname = usePathname()
                   </p>
                 </div>
 
-                {/* Departure & Arrival */}
+           
                 <div className="space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
                   <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                     <Navigation className="h-4 w-4 text-blue-600 dark:text-blue-400" />
@@ -510,7 +510,7 @@ const pathname = usePathname()
                   </div>
                 </div>
 
-                {/* Error Message */}
+           
                 <AnimatePresence>
                   {bookingError && (
                     <motion.div
@@ -524,7 +524,7 @@ const pathname = usePathname()
                   )}
                 </AnimatePresence>
 
-                {/* Action Buttons */}
+         
                 <div className="space-y-3">
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button
@@ -580,7 +580,7 @@ const pathname = usePathname()
                   )}
                 </div>
 
-                {/* Additional Info */}
+             
                 <div className="space-y-3 border-t border-slate-200 pt-6 dark:border-slate-800">
                   <div className="flex items-center justify-between text-sm">
                     <span className="font-medium text-slate-600 dark:text-slate-400">

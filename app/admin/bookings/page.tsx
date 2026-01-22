@@ -112,7 +112,7 @@ export default function AdminBookings() {
         timerProgressBar: true,
       })
     } catch (err: any) {
-      // console.error("Failed to refresh bookings:", err)
+
       await Swal.fire({
         icon: "error",
         title: "Error!",
@@ -284,7 +284,7 @@ export default function AdminBookings() {
         </Card>
       </motion.div>
 
-      {/* Status Update Modal */}
+      {/* Status  Modal */}
       {selectedBooking && (
         <UpdateBookingStatusModal
           isOpen={isModalOpen}

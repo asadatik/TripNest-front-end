@@ -135,7 +135,7 @@ export default function AdminUsers() {
           background: "#0f172a",
           color: "#f1f5f9",
         })
-        // console.error("[v0] Failed to update user status:", err)
+  
       } finally {
         setIsUpdating(false)
       }

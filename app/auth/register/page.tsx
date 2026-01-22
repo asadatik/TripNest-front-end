@@ -45,7 +45,7 @@ export default function RegisterPage() {
 
   return (
     <div className="relative min-h-[calc(100vh-theme(space.16))] overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 px-4 py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Background decorative elements */}
+
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-transparent blur-3xl"
@@ -122,7 +122,7 @@ export default function RegisterPage() {
                 )}
               </AnimatePresence>
 
-              {/* Success Message (same logic, nicer UI) */}
+
               <AnimatePresence>
                 {successMessage && (
                   <motion.div
@@ -203,7 +203,6 @@ export default function RegisterPage() {
                   </div>
                 </motion.div>
 
-                {/* Password */}
                 <motion.div
                   className="relative"
                   initial={{ opacity: 0, x: -20 }}
@@ -241,7 +240,7 @@ export default function RegisterPage() {
                   </div>
                 </motion.div>
 
-                {/* Confirm Password */}
+      
                 <motion.div
                   className="relative"
                   initial={{ opacity: 0, x: -20 }}
@@ -285,7 +284,7 @@ export default function RegisterPage() {
                   )}
                 </motion.div>
 
-                {/* Submit button */}
+                {/* submitbutton */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

@@ -143,7 +143,7 @@ export default function WhyTripnest() {
                   </div>
                 </div>
 
-                {/* Decorative line at bottom */}
+         
                 <motion.div
                   className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r ${feature.color}`}
                   initial={{ width: 0 }}
