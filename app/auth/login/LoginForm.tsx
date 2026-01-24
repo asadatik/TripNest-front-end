@@ -1,5 +1,4 @@
 "use client"
-
 import type React from "react"
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -8,22 +7,22 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { loginUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import {
-  Card,
+import { Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
 } from "@/components/ui/card"
-import {
-  AlertCircle,
+import {AlertCircle,
   Eye,
   EyeOff,
-
   Mail,
   Lock,
   LogIn,
   Sparkles,
+  User,
+  Shield,
+  Zap
 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -40,17 +39,33 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [showSuccessAlert, setShowSuccessAlert] = useState(false)
 
+  // Demo credentials
+  const demoAccounts = {
+    admin: {
+      email: "admin@example.com",
+      password: "admin123",
+      label: "Admin Demo",
+      icon: Shield,
+      gradient: "from-amber-500 to-orange-600"
+    },
+    user: {
+      email: "user@example.com",
+      password: "user123",
+      label: "User Demo",
+      icon: User,
+      gradient: "from-cyan-500 to-blue-600"
+    }
+  }
+
   useEffect(() => {
     if (isAuthenticated && user) {
       setShowSuccessAlert(true)
 
       setTimeout(() => {
-        // jodi redirect query ache, age
         if (redirect) {
           router.push(redirect)
           return
         }
-        // na thakle role-based default
         router.push(
           user.role === "ADMIN" ? "/admin/dashboard" : "/user/dashboard",
         )
@@ -60,12 +75,17 @@ export default function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
     const result = await dispatch(loginUser({ email, password }))
+  }
 
-    if (result.meta.requestStatus === "fulfilled") {
-      // success handle ta uporer useEffect-e already hocche
-    }
+  const handleDemoLogin = (type: 'admin' | 'user') => {
+    const account = demoAccounts[type]
+    setEmail(account.email)
+    setPassword(account.password)
+
+    setTimeout(() => {
+      dispatch(loginUser({ email: account.email, password: account.password }))
+    }, 300)
   }
 
   console.log(error, " login page error")
@@ -100,7 +120,7 @@ export default function LoginForm() {
         />
       </div>
 
-
+{/* Success */}
       <AnimatePresence>
         {showSuccessAlert && (
           <motion.div
@@ -178,8 +198,8 @@ export default function LoginForm() {
           transition={{ duration: 0.6 }}
         >
           <Card className="overflow-hidden border-2 border-slate-200 bg-white/80 shadow-2xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/80">
-            {/* Header with gradient */}
-            <CardHeader className="space-y-4 border-b border-slate-200 bg-gradient-to-br from-white to-slate-50 pb-8 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800">
+         
+            <CardHeader className="space-y-1 border-b border-slate-200 bg-gradient-to-br from-white to-slate-50 pb-8 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800">
               <motion.div
                 className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 shadow-lg shadow-cyan-500/30"
                 initial={{ scale: 0, rotate: -180 }}
@@ -195,12 +215,10 @@ export default function LoginForm() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <CardTitle className="mb-2 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-3xl font-bold text-transparent dark:from-white dark:via-slate-100 dark:to-white">
+                <CardTitle className=" bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-3xl font-bold text-transparent dark:from-white dark:via-slate-100 dark:to-white">
                   Welcome Back
                 </CardTitle>
-                <CardDescription className="text-base">
-                  Sign in to your account to continue
-                </CardDescription>
+              
               </motion.div>
 
               <motion.div
@@ -215,7 +233,93 @@ export default function LoginForm() {
             </CardHeader>
 
             <CardContent className="p-8">
-              {/* Error Alert */}
+     
+              <motion.div
+              
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+              >
+                <div className="mb-4 flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-amber-500" />
+                  <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                    Quick Demo Login
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Admin Demo Button */}
+                  <motion.button
+                    onClick={() => handleDemoLogin('admin')}
+                    disabled={isLoading}
+                    className="group relative overflow-hidden rounded-xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-4 shadow-lg transition-all hover:border-amber-400 hover:shadow-xl disabled:opacity-50 dark:border-amber-800 dark:from-amber-950/50 dark:to-orange-950/50 dark:hover:border-amber-600"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="relative z-10">
+                      <div className="mb-2 flex justify-center">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg">
+                          <Shield className="h-5 w-5 text-white" />
+                        </div>
+                      </div>
+                      <p className="text-sm font-bold text-amber-900 dark:text-amber-100">
+                        Admin Demo
+                      </p>
+                      <p className="mt-1 text-xs text-amber-700 dark:text-amber-300">
+                        Full Access
+                      </p>
+                    </div>
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-br from-amber-100 to-orange-100 opacity-0 transition-opacity group-hover:opacity-100 dark:from-amber-900/50 dark:to-orange-900/50"
+                    />
+                  </motion.button>
+
+                  {/* User Demo  */}
+                  <motion.button
+                    onClick={() => handleDemoLogin('user')}
+                    disabled={isLoading}
+                    className="group relative overflow-hidden rounded-xl border-2 border-cyan-200 bg-gradient-to-br from-cyan-50 to-blue-50 p-4 shadow-lg transition-all hover:border-cyan-400 hover:shadow-xl disabled:opacity-50 dark:border-cyan-800 dark:from-cyan-950/50 dark:to-blue-950/50 dark:hover:border-cyan-600"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="relative z-10">
+                      <div className="mb-2 flex justify-center">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg">
+                          <User className="h-5 w-5 text-white" />
+                        </div>
+                      </div>
+                      <p className="text-sm font-bold text-cyan-900 dark:text-cyan-100">
+                        User Demo
+                      </p>
+                      <p className="mt-1 text-xs text-cyan-700 dark:text-cyan-300">
+                        Standard User
+                      </p>
+                    </div>
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-br from-cyan-100 to-blue-100 opacity-0 transition-opacity group-hover:opacity-100 dark:from-cyan-900/50 dark:to-blue-900/50"
+                    />
+                  </motion.button>
+                </div>
+              </motion.div>
+
+              {/* Divider */}
+              <motion.div
+                className="relative my-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.38 }}
+              >
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-slate-200 dark:border-slate-800"></div>
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-white px-2 text-slate-500 dark:bg-slate-900 dark:text-slate-400">
+                    Or continue with
+                  </span>
+                </div>
+              </motion.div>
+
+            
               <AnimatePresence>
                 {error && (
                   <motion.div
@@ -240,7 +344,7 @@ export default function LoginForm() {
               </AnimatePresence>
 
               <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Email Field */}
+    {/*  */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -267,7 +371,7 @@ export default function LoginForm() {
                   </div>
                 </motion.div>
 
-                {/* Password Field */}
+            {/*  */}
                 <motion.div
                   className="relative"
                   initial={{ opacity: 0, x: -20 }}
@@ -305,7 +409,7 @@ export default function LoginForm() {
                   </div>
                 </motion.div>
 
-                {/* Submit Button */}
+                {/* Submit */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -319,7 +423,12 @@ export default function LoginForm() {
                     >
                       {isLoading ? (
                         <span className="flex items-center justify-center gap-2">
-                   
+                          <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          >
+                            <LogIn className="h-5 w-5" />
+                          </motion.div>
                           Signing in...
                         </span>
                       ) : (
@@ -339,7 +448,7 @@ export default function LoginForm() {
                 </motion.div>
               </form>
 
-              {/* Sign Up Link */}
+          
               <motion.div
                 className="mt-6 text-center text-sm"
                 initial={{ opacity: 0 }}
@@ -356,12 +465,10 @@ export default function LoginForm() {
                   Sign up
                 </Link>
               </motion.div>
-
-  
             </CardContent>
           </Card>
 
-          {/* Footer  */}
+    
           <motion.p
             className="mt-6 text-center text-xs text-slate-500 dark:text-slate-400"
             initial={{ opacity: 0 }}
