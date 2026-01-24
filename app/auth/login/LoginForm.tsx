@@ -7,13 +7,15 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { loginUser } from "@/redux/slices/authSlice"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card,
+import {
+  Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
 } from "@/components/ui/card"
-import {AlertCircle,
+import {
+  AlertCircle,
   Eye,
   EyeOff,
   Mail,
@@ -42,15 +44,15 @@ export default function LoginForm() {
   // Demo credentials
   const demoAccounts = {
     admin: {
-      email: "admin@example.com",
-      password: "admin123",
+      email: "admin01@gmail.com",
+      password: "A12&345678",
       label: "Admin Demo",
       icon: Shield,
       gradient: "from-amber-500 to-orange-600"
     },
     user: {
-      email: "user@example.com",
-      password: "user123",
+      email: "user@gmail.com",
+      password: "A&12345678",
       label: "User Demo",
       icon: User,
       gradient: "from-cyan-500 to-blue-600"
@@ -92,7 +94,7 @@ export default function LoginForm() {
 
   return (
     <div className="relative min-h-[calc(100vh-theme(space.16))] overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 px-4 py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-   
+
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-transparent blur-3xl"
@@ -120,7 +122,7 @@ export default function LoginForm() {
         />
       </div>
 
-{/* Success */}
+      {/* Success */}
       <AnimatePresence>
         {showSuccessAlert && (
           <motion.div
@@ -192,13 +194,13 @@ export default function LoginForm() {
 
       <div className="relative z-10 flex items-center justify-center">
         <motion.div
-          className="w-full max-w-md"
+          className="w-full max-w-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <Card className="overflow-hidden border-2 border-slate-200 bg-white/80 shadow-2xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/80">
-         
+
             <CardHeader className="space-y-1 border-b border-slate-200 bg-gradient-to-br from-white to-slate-50 pb-8 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800">
               <motion.div
                 className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 shadow-lg shadow-cyan-500/30"
@@ -208,7 +210,7 @@ export default function LoginForm() {
               >
                 <LogIn className="h-8 w-8 text-white" />
               </motion.div>
-              
+
               <motion.div
                 className="text-center"
                 initial={{ opacity: 0, y: 10 }}
@@ -218,7 +220,7 @@ export default function LoginForm() {
                 <CardTitle className=" bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-3xl font-bold text-transparent dark:from-white dark:via-slate-100 dark:to-white">
                   Welcome Back
                 </CardTitle>
-              
+
               </motion.div>
 
               <motion.div
@@ -232,73 +234,84 @@ export default function LoginForm() {
               </motion.div>
             </CardHeader>
 
-            <CardContent className="p-8">
-     
+            <CardContent className=" md:px-2 ">
+
               <motion.div
-              
+
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
               >
-                <div className="mb-4 flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-amber-500" />
+
+                {/*Demo Button */}
+                <div className="mb-2 flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-purple-600" />
                   <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                     Quick Demo Login
                   </p>
                 </div>
-                
-                <div className="grid grid-cols-2 gap-3">
-                  {/* Admin Demo Button */}
+
+                <div className="grid grid-cols-2 gap-2">
+
+                  {/* Admin Demo */}
                   <motion.button
                     onClick={() => handleDemoLogin('admin')}
                     disabled={isLoading}
-                    className="group relative overflow-hidden rounded-xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-4 shadow-lg transition-all hover:border-amber-400 hover:shadow-xl disabled:opacity-50 dark:border-amber-800 dark:from-amber-950/50 dark:to-orange-950/50 dark:hover:border-amber-600"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    className="group relative overflow-hidden rounded-xl border-2 border-purple-300
+             bg-gradient-to-br from-cyan-500 via-blue-600 to-sky-600
+             p-2 shadow-lg transition-all hover:border-purple-500 hover:shadow-xl
+             disabled:opacity-50
+     dark:from-cyan-900/50 dark:via-blue-900/50 dark:to-sky-900/50"
                   >
                     <div className="relative z-10">
                       <div className="mb-2 flex justify-center">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl
+                      bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg">
                           <Shield className="h-5 w-5 text-white" />
                         </div>
                       </div>
-                      <p className="text-sm font-bold text-amber-900 dark:text-amber-100">
-                        Admin Demo
-                      </p>
-                      <p className="mt-1 text-xs text-amber-700 dark:text-amber-300">
-                        Full Access
-                      </p>
+                      <p className="text-sm font-bold text-white">Admin Demo</p>
                     </div>
+
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-amber-100 to-orange-100 opacity-0 transition-opacity group-hover:opacity-100 dark:from-amber-900/50 dark:to-orange-900/50"
+                      className="absolute inset-0 bg-gradient-to-br
+               from-cyan-400/40 via-blue-400/40 to-sky-400/40
+               opacity-0 transition-opacity group-hover:opacity-100"
                     />
                   </motion.button>
 
-                  {/* User Demo  */}
+
+                  {/* User Demo */}
                   <motion.button
                     onClick={() => handleDemoLogin('user')}
                     disabled={isLoading}
-                    className="group relative overflow-hidden rounded-xl border-2 border-cyan-200 bg-gradient-to-br from-cyan-50 to-blue-50 p-4 shadow-lg transition-all hover:border-cyan-400 hover:shadow-xl disabled:opacity-50 dark:border-cyan-800 dark:from-cyan-950/50 dark:to-blue-950/50 dark:hover:border-cyan-600"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    className="group relative overflow-hidden rounded-xl border-2 border-cyan-300
+             bg-gradient-to-br from-cyan-500 via-blue-600 to-sky-600
+             p-2 shadow-lg transition-all hover:border-cyan-500 hover:shadow-xl
+             disabled:opacity-50
+             dark:border-cyan-700 dark:from-cyan-900/50 dark:via-blue-900/50 dark:to-sky-900/50"
                   >
                     <div className="relative z-10">
                       <div className="mb-2 flex justify-center">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl
+                      bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg">
                           <User className="h-5 w-5 text-white" />
                         </div>
                       </div>
-                      <p className="text-sm font-bold text-cyan-900 dark:text-cyan-100">
-                        User Demo
-                      </p>
-                      <p className="mt-1 text-xs text-cyan-700 dark:text-cyan-300">
-                        Standard User
-                      </p>
+                      <p className="text-sm font-bold text-white">User Demo</p>
                     </div>
+
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-cyan-100 to-blue-100 opacity-0 transition-opacity group-hover:opacity-100 dark:from-cyan-900/50 dark:to-blue-900/50"
+                      className="absolute inset-0 bg-gradient-to-br
+               from-cyan-400/40 via-blue-400/40 to-sky-400/40
+               opacity-0 transition-opacity group-hover:opacity-100"
                     />
                   </motion.button>
+
                 </div>
               </motion.div>
 
@@ -319,7 +332,7 @@ export default function LoginForm() {
                 </div>
               </motion.div>
 
-            
+
               <AnimatePresence>
                 {error && (
                   <motion.div
@@ -344,7 +357,7 @@ export default function LoginForm() {
               </AnimatePresence>
 
               <form onSubmit={handleSubmit} className="space-y-5">
-    {/*  */}
+                {/*  */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -371,7 +384,7 @@ export default function LoginForm() {
                   </div>
                 </motion.div>
 
-            {/*  */}
+                {/*  */}
                 <motion.div
                   className="relative"
                   initial={{ opacity: 0, x: -20 }}
@@ -448,7 +461,7 @@ export default function LoginForm() {
                 </motion.div>
               </form>
 
-          
+
               <motion.div
                 className="mt-6 text-center text-sm"
                 initial={{ opacity: 0 }}
@@ -468,7 +481,7 @@ export default function LoginForm() {
             </CardContent>
           </Card>
 
-    
+
           <motion.p
             className="mt-6 text-center text-xs text-slate-500 dark:text-slate-400"
             initial={{ opacity: 0 }}
