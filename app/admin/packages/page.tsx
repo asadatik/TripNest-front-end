@@ -113,7 +113,7 @@ export default function AdminPackages() {
   const [filterType, setFilterType] = useState<string>("all")
   const [isSaving, setIsSaving] = useState(false)
 
-  // Fetch packages and package types on mount
+ 
   useEffect(() => {
     const fetchData = async () => {
       dispatch(fetchPackagesStart())
@@ -123,7 +123,6 @@ export default function AdminPackages() {
           api.getPackageTypes(),
         ])
 
-        // ✅ Redux slice এর expected payload
         dispatch(
           fetchPackagesSuccess({
             data: packagesRes.data.data || [],
@@ -228,7 +227,7 @@ export default function AdminPackages() {
         background: "#0f172a",
         color: "#f1f5f9",
       })
-      // console.error("Failed to save package:", err)
+     
     } finally {
       setIsSaving(false)
     }
@@ -331,7 +330,7 @@ export default function AdminPackages() {
 
   return (
     <div className="p-4 md:p-6 space-y-6">
-      {/* Header */}
+     
       <motion.div
         className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
         initial={{ opacity: 0, y: 20 }}
@@ -344,7 +343,7 @@ export default function AdminPackages() {
           </h1>
           <p className="text-muted-foreground mt-1">Manage travel packages and deals</p>
         </div>
-
+    {/*Create Pack*/}
         <Dialog
           open={isDialogOpen}
           onOpenChange={(open) => {
@@ -363,7 +362,7 @@ export default function AdminPackages() {
               </Button>
             </motion.div>
           </DialogTrigger>
-
+              
           <DialogContent className="max-h-[80vh] overflow-y-auto bg-card/95 border border-border/70 backdrop-blur rounded-2xl">
             <DialogHeader>
               <DialogTitle>{editingId ? "Edit Package" : "Create Package"}</DialogTitle>
@@ -702,7 +701,7 @@ export default function AdminPackages() {
         </Dialog>
       </motion.div>
 
-      {/* Error Alert */}
+      {/*Alert*/}
       {error && (
         <motion.div
           className="p-4 bg-destructive/10 border border-destructive/20 rounded-2xl text-destructive flex items-start gap-3 backdrop-blur"
@@ -717,14 +716,14 @@ export default function AdminPackages() {
         </motion.div>
       )}
 
-      {/* Packages Table Card */}
+      {/*  Table Card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.5 }}
       >
         <Card className="relative overflow-hidden border border-border/70 bg-card/90 backdrop-blur shadow-[0_20px_70px_rgba(0,0,0,0.3)]">
-          {/* Gradient Background */}
+      
           <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#00ddff]/20 via-transparent to-[#ff4edb]/20 opacity-60" />
 
           <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

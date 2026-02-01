@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import {
   fetchPackagesStart,
@@ -20,43 +20,38 @@ import { FullScreenLoader } from "@/components/common/fullscreen-loader"
 export default function HomePage() {
   const dispatch = useAppDispatch()
   const { items, isLoading: packagesLoading, error } = useAppSelector(
-    (state) =>
-      state.packages ?? { items: [], isLoading: false, error: null },
+    (state) => state.packages ?? { items: [], isLoading: false, error: null }
   )
 
-  const [bootLoading, setBootLoading] = useState(false)
-
   useEffect(() => {
-    const loadPackages = async () => {
-      setBootLoading(true)
-      try {
-        dispatch(fetchPackagesStart())
-        const res = await api.getPackages({ page: 1, limit: 10 })
 
-        dispatch(
-          fetchPackagesSuccess({
-            data: res.data.data || [],
-            meta: res.data.meta,
-          }),
-        )
-      } catch (err: any) {
-        const msg =
-          err?.response?.data?.message ||
-          (err instanceof Error ? err.message : "Failed to load packages")
-        dispatch(fetchPackagesError(msg))
-      } finally {
-        setBootLoading(false)
-      }
-    }
-
+    // Only fetch if items not already loaded
+    
     if (!items || items.length === 0) {
+      const loadPackages = async () => {
+        dispatch(fetchPackagesStart())
+        try {
+          const res = await api.getPackages({ page: 1, limit: 10 })
+          dispatch(
+            fetchPackagesSuccess({
+              data: res.data.data || [],
+              meta: res.data.meta,
+            })
+          )
+        } catch (err: any) {
+          const msg =
+            err?.response?.data?.message ||
+            (err instanceof Error ? err.message : "Failed to load packages")
+          dispatch(fetchPackagesError(msg))
+        }
+      }
+
       void loadPackages()
     }
   }, [dispatch, items])
 
-  const isLoading = bootLoading || packagesLoading
+  if ((packagesLoading && items.length === 0) || (!items || items.length === 0)) {
 
-  if (isLoading && items.length === 0) {
     return <FullScreenLoader />
   }
 
@@ -72,6 +67,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
+    
       <Hero />
       <FeaturedPackages />
       <HowItWorks />

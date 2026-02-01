@@ -1,9 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { Plane, Clock3, MapPin } from "lucide-react"
+import { Plane, Clock, MapPin, ArrowRight, Star, Sparkles } from "lucide-react"
+import { motion } from "framer-motion"
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks"
+import { useAppSelector } from "@/redux/hooks"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -11,178 +12,245 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { useEffect } from "react"
-import { fetchPackagesError, fetchPackagesStart, fetchPackagesSuccess } from "@/redux/slices/packagesSlice"
-import { api } from "@/lib/api"
 import { FullScreenLoader } from "../common/fullscreen-loader"
 
 export default function FeaturedPackages() {
+  const { items = [], isLoading, error } = useAppSelector(
+    (state) => state.packages ?? { items: [], isLoading: false, error: null },
+  )
 
-  const dispatch = useAppDispatch()
- const { items = [], isLoading, error } = useAppSelector(
-  (state) => state.packages ?? { items: [], isLoading: false, error: null },
-)
-
-  console.log(" PackagesPage from Redux store.............", items.length)
-
-useEffect(() => {
-  const fetchPackages = async () => {
-    dispatch(fetchPackagesStart())
-    try {
-      const response = await api.getPackages()
-
-      dispatch(
-        fetchPackagesSuccess({
-          data: response.data.data || [],
-          meta: response.data.meta,
-        }),
-      )
-
-      console.log("Packages loaded successfully:", response.data.data)
-    } catch (err) {
-      const errorMessage =
-        err instanceof Error ? err.message : "Failed to fetch packages"
-      dispatch(fetchPackagesError(errorMessage))
-      console.error("🚨Error fetching packages:", errorMessage)
-    }
-  }
-
-  if (items.length === 0) {
-    fetchPackages()
-  }
-}, [dispatch, items.length])
-
-
-
-  if (isLoading) {
+  if (isLoading && items.length === 0) {
     return <FullScreenLoader />
   }
 
-     
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  }
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  }
 
   return (
-    <section className="border-b border-border/60 bg-background py-12 md:py-16">
-      <div className="container mx-auto px-4">
-        {/* heading */}
-        <div className="tw-animate-fade-up tw-animate-duration-700 tw-animate-ease-out mx-auto mb-8 max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+    <section className="relative overflow-hidden border-b border-slate-200/60 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 py-16 dark:border-slate-800/60 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 md:py-24">
+      {/* Background decorative elements */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <motion.div
+          className="absolute right-0 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/20 via-blue-500/10 to-transparent blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4">
+        {/* Heading */}
+        <motion.div
+          className="mx-auto mb-12 max-w-3xl text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 px-4 py-2 text-sm font-medium text-slate-700 shadow-lg backdrop-blur-sm dark:text-cyan-100"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, type: "spring" }}
+          >
+            <Sparkles className="h-4 w-4 text-cyan-500" />
+            <span>Handpicked Destinations</span>
+          </motion.div>
+
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-slate-900 dark:text-white md:text-5xl">
             Featured{" "}
-            <span className="bg-gradient-to-r from-[#00ddff] via-[#ff4edb] to-[#ff00aa] bg-clip-text text-transparent">
-              trip packages
+            <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Trip Packages
             </span>
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+          <p className="text-base text-slate-600 dark:text-slate-300 md:text-lg">
             Hand‑picked getaways to help you plan your next escape faster.
           </p>
-        </div>
+        </motion.div>
 
-        {/* state: loading / error / empty */}
-        {isLoading && (
-          <div className="flex justify-center py-10 text-sm text-muted-foreground">
-            Loading packages...
-          </div>
-        )}
-
+        {/* Error State */}
         {!isLoading && error && (
-          <div className="flex justify-center py-10 text-sm text-destructive">
-            Failed to load packages. Please try again.
-          </div>
+          <motion.div
+            className="flex justify-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="rounded-2xl border border-red-200 bg-gradient-to-r from-red-50 to-pink-50 p-6 text-center shadow-lg dark:border-red-900 dark:from-red-950/50 dark:to-pink-950/50">
+              <p className="font-semibold text-red-900 dark:text-red-100">
+                Failed to load packages. Please try again.
+              </p>
+            </div>
+          </motion.div>
         )}
 
+        {/* Empty State */}
         {!isLoading && !error && items.length === 0 && (
-          <div className="flex flex-col items-center gap-3 py-10 text-center text-sm text-muted-foreground">
-            <p>No packages available yet.</p>
+          <motion.div
+            className="flex flex-col items-center gap-4 py-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
+              <Plane className="h-10 w-10 text-slate-400" />
+            </div>
+            <p className="text-slate-600 dark:text-slate-400">
+              No packages available yet.
+            </p>
             <Link href="/packages">
-              <Button variant="outline" size="sm">
+              <Button className="rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white shadow-lg shadow-cyan-500/30">
                 View all packages
               </Button>
             </Link>
-          </div>
+          </motion.div>
         )}
 
-        {/* cards */}
+        {/* Package Cards */}
         {!isLoading && !error && items.length > 0 && (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {items.slice(0, 6).map((pkg) => (
-              <Card
+          <motion.div
+            className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {items.slice(0, 6).map((pkg, index) => (
+              <motion.div
                 key={pkg._id}
-                className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card/90 shadow-[0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-[#00ddff]/40 hover:shadow-[0_0_60px_rgba(0,221,255,0.25)]"
+                variants={itemVariants}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* gradient edge */}
-                <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-[#00ddff]/10 via-transparent to-[#ff4edb]/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <Card className="group relative h-full overflow-hidden border-2 border-slate-200 bg-white/80 shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-cyan-500 hover:shadow-2xl hover:shadow-cyan-500/20 dark:border-slate-800 dark:bg-slate-900/80 dark:hover:border-cyan-400 dark:hover:shadow-cyan-400/20">
+                  {/* Gradient overlay on hover */}
+                  <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-cyan-500/10 via-blue-500/5 to-purple-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                <CardHeader className="space-y-3 pb-3">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1 text-[11px] font-medium text-muted-foreground/90">
-                    <Plane className="h-3 w-3 text-[#00ddff]" />
-                    <span>{pkg.destination || "Destination"}</span>
-                  </div>
-                  <CardTitle className="line-clamp-2 text-base font-semibold leading-snug sm:text-lg">
-                    {pkg.title || "Trip package"}
-                  </CardTitle>
-                  {pkg.summary && (
-                    <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
-                      {pkg.summary}
-                    </p>
-                  )}
-                </CardHeader>
-
-                <CardContent className="space-y-4 pb-5">
-                  <div className="flex flex-wrap items-center gap-3 text-[11px] text-muted-foreground">
-                    <div className="inline-flex items-center gap-1 rounded-full bg-background/80 px-2 py-1">
-                      <MapPin className="h-3 w-3 text-[#ff4edb]" />
-                      <span className="truncate max-w-[140px]">
-                        {pkg.destination || "Flexible location"}
-                      </span>
-                    </div>
-                    <div className="inline-flex items-center gap-1 rounded-full bg-background/80 px-2 py-1">
-                      <Clock3 className="h-3 w-3" />
-                      <span>
-                        {pkg.durationDays
-                          ? `${pkg.durationDays} days`
-                          : "Flexible duration"}
-                      </span>
-                    </div>
+                  {/* Featured Badge */}
+                  <div className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
+                    <Star className="h-3 w-3 fill-white" />
+                    Featured
                   </div>
 
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <p className="text-[11px] uppercase tracking-wide text-muted-foreground">
-                        Starting from
+                  <CardHeader className="space-y-4 pb-4">
+                    {/* Destination Badge */}
+                    <div className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                      <Plane className="h-3.5 w-3.5 text-cyan-600 dark:text-cyan-400" />
+                      <span>{pkg.destination || "Destination"}</span>
+                    </div>
+
+                    {/* Title */}
+                    <CardTitle className="text-xl font-bold leading-tight text-slate-900 transition-colors group-hover:text-cyan-600 dark:text-white dark:group-hover:text-cyan-400 line-clamp-2">
+                      {pkg.title || "Trip package"}
+                    </CardTitle>
+
+                    {/* Summary */}
+                    {pkg.summary && (
+                      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 line-clamp-2">
+                        {pkg.summary}
                       </p>
-                      <p className="mt-1 text-lg font-semibold">
-                        {pkg.costFrom
-                          ? `${pkg.costFrom} ${pkg.currency || "USD"}`
-                          : "Contact for price"}
-                      </p>
+                    )}
+                  </CardHeader>
+
+                  <CardContent className="space-y-5 pb-6">
+                    {/* Info Pills */}
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium dark:border-slate-700 dark:bg-slate-800">
+                        <MapPin className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+                        <span className="text-slate-700 dark:text-slate-300">
+                          {pkg.destination || "Flexible"}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium dark:border-slate-700 dark:bg-slate-800">
+                        <Clock className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                        <span className="text-slate-700 dark:text-slate-300">
+                          {pkg.durationDays ? `${pkg.durationDays} days` : "Flexible"}
+                        </span>
+                      </div>
                     </div>
-                    <Link href={`/packages/${pkg.slug}`} className="mt-auto">
-                      <Button
-                        size="sm"
-                        className="rounded-full bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 px-4 text-[11px] font-medium  text-amber-50  shadow-md transition hover:brightness-110"
-                      >
-                        View details
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+
+                    {/* Price and CTA */}
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                          Starting from
+                        </p>
+                        <p className="mt-1 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500">
+                          {pkg.costFrom
+                            ? `$${pkg.costFrom}`
+                            : "Contact"}
+                        </p>
+                        {pkg.currency && (
+                          <p className="text-xs text-slate-600 dark:text-slate-400">
+                            {pkg.currency}
+                          </p>
+                        )}
+                      </div>
+
+                      <Link href={`/packages/${pkg.slug}`}>
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Button className="group/btn rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:shadow-cyan-500/40">
+                            <span className="flex items-center gap-1.5">
+                              View
+                              <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                            </span>
+                          </Button>
+                        </motion.div>
+                      </Link>
+                    </div>
+                  </CardContent>
+
+                  {/* Hover glow effect */}
+                  <motion.div
+                    className="pointer-events-none absolute -inset-1 -z-10 rounded-3xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 opacity-0 blur-xl transition-opacity group-hover:opacity-20"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 0.2 }}
+                  />
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
-        {/* view all link */}
-        <div className="mt-8 flex justify-center">
-          <Link href="/packages">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-xs rounded-full bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 px-4 text-[11px] font-medium  shadow-md transition hover:brightness-110       "
-            >
-              View all packages ✨ 
-            </Button>
-          </Link>
-        </div>
+        {/* View All Button */}
+        {!isLoading && !error && items.length > 0 && (
+          <motion.div
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            <Link href="/packages">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button className="group rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 px-8 py-6 text-base font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:shadow-cyan-500/40">
+                  <span className="flex items-center gap-2">
+                    View All Packages
+                    <Sparkles className="h-5 w-5 transition-transform group-hover:rotate-12" />
+                  </span>
+                </Button>
+              </motion.div>
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   )
