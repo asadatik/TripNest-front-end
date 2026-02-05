@@ -5179,10 +5179,6 @@
     font-variant-numeric: var(--tw-ordinal, ) var(--tw-slashed-zero, ) var(--tw-numeric-figure, ) var(--tw-numeric-spacing, ) var(--tw-numeric-fraction, );
   }
 
-  .underline {
-    text-decoration-line: underline;
-  }
-
   .underline-offset-4 {
     text-underline-offset: 4px;
   }
@@ -7894,6 +7890,12 @@
   @media (min-width: 40rem) {
     .sm\:items-center {
       align-items: center;
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:justify-between {
+      justify-content: space-between;
     }
   }
 

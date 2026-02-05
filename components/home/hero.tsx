@@ -2,24 +2,23 @@
 
 import Link from "next/link"
 import { ArrowRight, PlaneTakeoff, Sparkles, Star, TrendingUp, Shield } from "lucide-react"
-import { motion, type Variants } from "framer-motion"
+import { motion, LazyMotion, domAnimation, m, type Variants } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
 import { useAppSelector } from "@/redux/hooks"
 
-export default function Hero() {
-const { items = [] } = useAppSelector((state) => state.packages ?? { items: [] })
 
-const featuredPkg = items.length > 0 ? items[items.length - 1] : null
+
+interface HeroProps {
+  featuredPkg: any | null
+}
+
+export default function Hero({ featuredPkg }: HeroProps) {
 
   const { user } = useAppSelector((state) => state.auth)
   const isAdmin = user?.role === "ADMIN"
   const targetHref = isAdmin ? "/admin/dashboard" : "/user/dashboard"
   const buttonLabel = isAdmin ? "Go to my Dashboard" : "Go to my trips"
-
-
-
-// console.log("Hero render: featured package:", featuredPkg)
 
 
   const destination = featuredPkg?.destination || "Destination"
@@ -36,7 +35,8 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
 
   const detailsHref = featuredPkg ? `/packages/${featuredPkg.slug}` : "/packages"
 
-  // Animation variants
+
+  //
   const containerVariants : Variants= {
     hidden: { opacity: 0 },
     visible: {
@@ -113,7 +113,7 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {/* Premium animated background */}
+ 
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute top-0 right-0 h-[600px] w-[600px] rounded-full bg-gradient-to-b from-cyan-500/30 to-cyan-500/5 blur-3xl"
@@ -135,21 +135,20 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
         />
       </div>
 
-      {/* Grid pattern overlay - enhanced */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
-      {/* Radial gradient overlay for depth */}
       <div className="pointer-events-none absolute inset-0 bg-radial-gradient from-transparent via-transparent to-slate-950/40" />
 
       <div className="container mx-auto flex flex-col items-center gap-12 px-4 pb-20 pt-24 md:flex-row md:justify-between md:gap-16 md:pb-28 md:pt-32 lg:gap-20 lg:pb-32 lg:pt-40">
-        {/* Left: content */}
+    
+        {/* Left */}
         <motion.div
           className="max-w-2xl space-y-8 text-center md:text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Badge */}
+  
           <motion.div
             className="inline-flex items-center gap-2.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 shadow-lg shadow-cyan-500/20 backdrop-blur-xl"
             variants={itemVariants}
@@ -165,7 +164,7 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
             />
           </motion.div>
 
-          {/* Main heading */}
+
           <motion.div
             className="space-y-3"
             variants={itemVariants}
@@ -191,7 +190,6 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
             </h1>
           </motion.div>
 
-          {/* Description */}
           <motion.p
             className="text-lg text-slate-300 sm:text-xl leading-relaxed max-w-xl mx-auto md:mx-0"
             variants={itemVariants}
@@ -200,7 +198,6 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
             payments, and keep all your trips organized in one sleek dashboard.
           </motion.p>
 
-          {/* CTA buttons */}
           <motion.div
             className="flex flex-col items-center gap-4 sm:flex-row sm:justify-start pt-2"
             variants={itemVariants}
@@ -211,6 +208,7 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
+              
                 <Button className="group relative w-full overflow-hidden rounded-2xl bg-linear-to-tr from-cyan-500 via-blue-600 to-purple-600 px-8 py-6 text-base font-semibold text-white shadow-2xl shadow-cyan-500/30 transition-all hover:shadow-cyan-500/50 sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     <span>Browse packages</span>
@@ -254,7 +252,6 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
             </Link>
           </motion.div>
 
-          {/* Trust indicators */}
           <motion.div
             className="flex flex-wrap items-center justify-center gap-3 pt-4 text-sm text-slate-400 md:justify-start"
             variants={itemVariants}
@@ -285,21 +282,20 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
           </motion.div>
         </motion.div>
 
-        {/* Right: animated card - Premium version */}
         <motion.div
           className="relative mt-8 h-[340px] w-full max-w-md md:mt-0 lg:h-[380px] lg:max-w-lg"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          {/* Floating glow - enhanced */}
+ 
           <motion.div
             className="absolute -inset-12 -z-10 rounded-full bg-gradient-to-br from-cyan-500/30 via-pink-500/20 to-purple-500/30 blur-3xl"
             variants={glowVariants}
             animate="animate"
           />
 
-          {/* Animated gradient border wrapper */}
+
           <motion.div
             className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500 via-blue-500 via-cyan-500 to-purple-500 p-1"
             animate={{
@@ -314,9 +310,9 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
               backgroundSize: "200% 200%",
             }}
           >
-            {/* Inner card container */}
+          
             <div className="relative h-full rounded-3xl bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 backdrop-blur-xl overflow-hidden">
-              {/* Shine effect overlay */}
+       
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl"
                 animate={{
@@ -329,13 +325,13 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
                 }}
               />
 
-              {/* Main card content */}
+              {/*card content */}
               <motion.div
                 className="relative h-full p-6 lg:p-7"
                 variants={floatingVariants}
                 animate="animate"
               >
-                {/* Card header */}
+         
                 <div className="mb-5 flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <motion.div
@@ -365,7 +361,7 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
                   </motion.span>
                 </div>
 
-                {/* Destination & Duration */}
+        
                 <div className="mb-5 overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-500/15 via-pink-500/15 to-purple-500/15 p-px">
                   <div className="flex items-center justify-between rounded-[15px] bg-slate-900/90 px-5 py-4 backdrop-blur">
                     <div>
@@ -387,7 +383,7 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
                   </div>
                 </div>
 
-                {/* Info grid */}
+                {/* */}
                 <div className="mb-5 grid grid-cols-2 gap-4 text-sm">
                   <motion.div
                     className="rounded-2xl border border-slate-700/50 bg-slate-800/40 p-4 backdrop-blur transition-all hover:border-cyan-500/40 hover:bg-slate-800/60"
@@ -429,7 +425,7 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
             </div>
           </motion.div>
 
-          {/* Floating badge */}
+          {/*  */}
           <motion.div
             className="absolute -bottom-4 -right-4 rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800/95 to-slate-900/95    text-slate-300 shadow-2xl shadow-cyan-500/10 backdrop-blur-xl"
           
@@ -454,7 +450,7 @@ const featuredPkg = items.length > 0 ? items[items.length - 1] : null
         </motion.div>
       </div>
 
-      {/* Bottom fade - enhanced */}
+
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent pointer-events-none" />
     </motion.section>
   )

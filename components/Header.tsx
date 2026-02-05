@@ -74,7 +74,7 @@ export default function Header() {
     return user?.email?.[0]?.toUpperCase() || "U"
   }
 
-  // Navigation items with href for active state detection
+ 
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Packages", href: "/packages" },
@@ -82,7 +82,7 @@ export default function Header() {
     { label: "FAQ", href: "/faq" },
   ]
 
-  // Check if route is active
+
   const isActive = (href: string) => {
     if (href === "/") {
       return pathname === "/"
@@ -103,11 +103,11 @@ export default function Header() {
       />
 
       <header className="fixed w-full top-0 z-40 border-b border-slate-200/60 bg-white/80 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/80">
-        {/* Gradient accent line */}
+
         <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600" />
 
         <div className="container mx-auto flex h-20 items-center justify-between px-4 lg:px-6">
-          {/* Brand Logo */}
+          {/* Logo */}
           <Link href="/" className="group relative flex items-center gap-3">
             <motion.div
               className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 shadow-lg shadow-cyan-500/30 transition-all group-hover:shadow-xl group-hover:shadow-cyan-500/40"
@@ -132,7 +132,7 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation with Active State */}
+   
           <nav className="hidden items-center gap-1 md:flex">
             {navItems.map((item) => {
               const active = isActive(item.href)
@@ -149,7 +149,7 @@ export default function Header() {
                   >
                     {item.label}
 
-                    {/* Animated underline for active state */}
+              
                     {active && (
                       <motion.div
                         className="absolute bottom-1 left-5 right-5 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-600"
@@ -158,7 +158,7 @@ export default function Header() {
                       />
                     )}
 
-                    {/* Hover background glow */}
+           
                     {!active && (
                       <motion.div
                         className="absolute inset-0 rounded-full bg-slate-100 dark:bg-slate-800 -z-10"
@@ -174,11 +174,11 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Auth Section */}
+   {/* auth */}
           <div className="flex items-center gap-3">
             {isAuthenticated && user ? (
               <div className="flex items-center gap-3">
-                {/* User Avatar Dropdown */}
+               
                 <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
                   <DropdownMenuTrigger asChild>
                     <motion.button
@@ -186,7 +186,7 @@ export default function Header() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      {/* Avatar Circle */}
+               
                       <motion.div
                         className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 text-sm font-bold text-white shadow-inner"
                         whileHover={{ scale: 1.1 }}
@@ -215,7 +215,7 @@ export default function Header() {
                     align="end"
                     className="mt-2 min-w-[240px] rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/95"
                   >
-                    {/* User Info Header */}
+                  
                     <motion.div
                       className="mb-2 flex items-center gap-3 rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 p-3 dark:from-cyan-950/50 dark:to-blue-950/50"
                       initial={{ opacity: 0, y: -10 }}
@@ -282,10 +282,10 @@ export default function Header() {
                 </Link>
                 <Link href="/auth/register">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:shadow-cyan-500/40">
+                    <Button className="group relative overflow-hidden rounded-full bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:shadow-cyan-500/40">
                       <span className="relative z-10">Sign Up</span>
                       <motion.div
-                        className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 via-blue-700 to-purple-700"
+                        className="absolute inset-0 -z-10 bg-gradient-to-tr from-cyan-600 via-blue-700 to-purple-700"
                         initial={{ x: "-100%" }}
                         whileHover={{ x: "0%" }}
                         transition={{ duration: 0.3 }}
@@ -296,7 +296,7 @@ export default function Header() {
               </div>
             )}
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu  */}
             <div className="md:hidden">
               <DropdownMenu open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <DropdownMenuTrigger asChild>
@@ -312,7 +312,7 @@ export default function Header() {
                   align="end"
                   className="mt-2 w-64 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/95"
                 >
-                  {/* User Info in Mobile Menu (if authenticated) */}
+           
                   {isAuthenticated && user && (
                     <>
                       <div className="mb-2 flex items-center gap-3 rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 p-3 dark:from-cyan-950/50 dark:to-blue-950/50">
@@ -340,7 +340,6 @@ export default function Header() {
                     </>
                   )}
 
-                  {/* Navigation Links with Active State */}
                   {navItems.map((item) => {
                     const active = isActive(item.href)
                     return (
@@ -374,7 +373,7 @@ export default function Header() {
                     </>
                   )}
 
-                  {/* Auth Actions */}
+       {/* login/logout */}
                   {!isAuthenticated && (
                     <>
                       <DropdownMenuSeparator className="bg-slate-200 dark:bg-slate-800" />
@@ -389,7 +388,7 @@ export default function Header() {
                       <DropdownMenuItem asChild className="cursor-pointer">
                         <Link
                           href="/auth/register"
-                          className="flex items-center rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 px-3 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg"
+                          className="flex items-center rounded-lg bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 px-3 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg"
                         >
                           Sign Up
                         </Link>
@@ -397,7 +396,7 @@ export default function Header() {
                     </>
                   )}
 
-                  {/* Logout */}
+
                   {isAuthenticated && user && (
                     <>
                       <DropdownMenuSeparator className="bg-slate-200 dark:bg-slate-800" />
@@ -417,7 +416,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Animated border gradient on scroll */}
+
         {scrolled && (
           <motion.div
             initial={{ width: 0, opacity: 0 }}
