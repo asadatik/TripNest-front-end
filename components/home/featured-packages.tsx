@@ -170,7 +170,7 @@ export default function FeaturedPackages({
                           <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                             Starting from
                           </p>
-                          <p className="mt-1 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500">
+                          <p className="mt-1 bg-clip-text text-2xl font-bold text-slate-900 dark:text-slate-100">
                             {pkg.costFrom ? `$${pkg.costFrom}` : "Contact"}
                           </p>
                           {pkg.currency && (

@@ -14,3 +14,691 @@
 [00:02:02.379] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
 [00:02:02.379] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
 [00:02:02.379] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323544014}
+[00:08:18.886] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.914] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\node_modules_d65b4e72._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.918] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.923] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.926] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.926] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.941] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.943] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.946] Server  ERROR    ⨯ Error: The default export is not a React Component in "/loading"
+[00:08:18.952] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.953] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\node_modules_d65b4e72._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.954] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.954] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.956] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.956] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.956] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.956] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:18.958] Server  ERROR    ⨯ Error: The default export is not a React Component in "/loading"
+[00:08:21.003] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.004] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\node_modules_d65b4e72._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.004] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.005] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.005] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.005] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.006] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.006] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.006] Server  ERROR    ⨯ Error: The default export is not a React Component in "/loading"
+[00:08:21.009] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.009] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\node_modules_d65b4e72._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.013] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.018] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.020] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.021] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.022] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.023] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:21.025] Server  ERROR    ⨯ Error: The default export is not a React Component in "/loading"
+[00:08:21.159] Browser ERROR   uncaughtError: Error: The default export is not a React Component in "/loading"
+[00:08:38.596] Server  LOG      ✓ Compiled in 214ms
+[00:08:40.447] Server  LOG      ✓ Compiled in 99ms
+[00:08:48.607] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:48.608] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:08:48.608] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323950245}
+[00:08:58.499] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:58.499] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:08:58.499] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323960097}
+[00:09:01.031] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:01.031] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:01.031] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323962618}
+[00:09:01.750] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:01.750] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:01.750] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323963374}
+[00:09:02.353] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:02.353] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:02.353] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323963996}
+[00:09:03.018] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:03.018] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:03.018] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323964654}
+[00:09:03.668] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:03.668] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:03.668] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323965308}
+[00:09:04.471] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:04.471] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:04.471] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323966110}
+[00:09:07.185] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:09:07.185] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:07.185] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:07.185] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323968777}
+[00:09:08.213] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:08.213] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:08.213] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323969846}
+[00:09:09.033] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:09.033] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:09.033] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323970657}
+[00:09:10.091] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:10.092] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:10.092] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323971720}
+[00:09:11.550] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:09:11.550] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:11.550] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:11.550] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323973172}
+[00:09:13.022] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:09:13.022] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:13.022] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:13.022] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323974653}
+[00:09:14.454] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:09:14.454] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:14.454] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:14.454] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323976087}
+[00:09:16.299] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:16.299] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:16.299] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323977925}
+[00:09:18.079] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:18.079] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:18.079] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770323979719}
+[00:11:01.947] Server  LOG      ✓ Compiled in 188ms
+[00:11:02.479] Browser ERROR   ./components/home/featured-packages.tsx:8:1
+Export FullScreenLoader doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button"
+   7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+>  8 | import { FullScreenLoader } from "../common/fullscreen-loader"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { useState } from "react"
+  10 |
+  11 | type Package = {
+
+The export FullScreenLoader was not found in module [project]/components/common/fullscreen-loader.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./components/home/featured-packages.tsx
+    ./app/page.tsx
+[00:11:02.479] Browser ERROR   ./components/home/featured-packages.tsx:8:1
+Export FullScreenLoader doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button"
+   7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+>  8 | import { FullScreenLoader } from "../common/fullscreen-loader"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { useState } from "react"
+  10 |
+  11 | type Package = {
+
+The export FullScreenLoader was not found in module [project]/components/common/fullscreen-loader.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./components/home/featured-packages.tsx
+    ./app/page.tsx
+[00:11:05.850] Server  LOG      ✓ Compiled in 118ms
+[00:11:06.480] Browser ERROR   ./components/home/featured-packages.tsx:8:1
+Export FullScreenLoader doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button"
+   7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+>  8 | import { FullScreenLoader } from "../common/fullscreen-loader"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { useState } from "react"
+  10 |
+  11 | type Package = {
+
+The export FullScreenLoader was not found in module [project]/components/common/fullscreen-loader.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./components/home/featured-packages.tsx
+    ./app/page.tsx
+[00:11:06.480] Browser ERROR   ./components/home/featured-packages.tsx:8:1
+Export FullScreenLoader doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button"
+   7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+>  8 | import { FullScreenLoader } from "../common/fullscreen-loader"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { useState } from "react"
+  10 |
+  11 | type Package = {
+
+The export FullScreenLoader was not found in module [project]/components/common/fullscreen-loader.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./components/home/featured-packages.tsx
+    ./app/page.tsx
+[00:11:08.488] Server  LOG      ✓ Compiled in 82ms
+[00:11:09.488] Browser ERROR   ./components/home/featured-packages.tsx:8:1
+Export FullScreenLoader doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button"
+   7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+>  8 | import { FullScreenLoader } from "../common/fullscreen-loader"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { useState } from "react"
+  10 |
+  11 | type Package = {
+
+The export FullScreenLoader was not found in module [project]/components/common/fullscreen-loader.tsx [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./components/home/featured-packages.tsx
+    ./app/page.tsx
+[00:11:09.488] Browser ERROR   ./components/home/featured-packages.tsx:8:1
+Export FullScreenLoader doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button"
+   7 | import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+>  8 | import { FullScreenLoader } from "../common/fullscreen-loader"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import { useState } from "react"
+  10 |
+  11 | type Package = {
+
+The export FullScreenLoader was not found in module [project]/components/common/fullscreen-loader.tsx [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./components/home/featured-packages.tsx
+    ./app/page.tsx
+[00:11:17.065] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.084] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\node_modules_d65b4e72._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.085] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.085] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.086] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.086] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.086] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.087] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.087] Server  ERROR    ⨯ Error: The default export is not a React Component in "/loading"
+[00:11:17.091] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.091] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\node_modules_d65b4e72._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.092] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.092] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.093] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.094] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.094] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.095] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.095] Server  ERROR    ⨯ Error: The default export is not a React Component in "/loading"
+[00:11:17.185] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.185] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\node_modules_d65b4e72._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.186] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.186] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.187] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.187] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.187] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.187] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.188] Server  ERROR    ⨯ Error: The default export is not a React Component in "/loading"
+[00:11:17.191] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.191] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\.next\dev\server\chunks\ssr\node_modules_d65b4e72._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.192] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.192] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.192] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.193] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.193] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.193] Server  ERROR   C:\LEVEL-2\trip-nest-front-end\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:11:17.194] Server  ERROR    ⨯ Error: The default export is not a React Component in "/loading"
+[00:11:17.322] Browser ERROR   uncaughtError: Error: The default export is not a React Component in "/loading"
+[00:11:18.093] Server  LOG      ✓ Compiled in 76ms
+[00:11:23.418] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:23.418] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:23.418] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324105056}
+[00:11:26.300] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:11:26.300] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:26.300] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:26.300] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324107937}
+[00:11:27.664] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:11:27.664] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:27.664] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:27.664] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324109306}
+[00:11:28.929] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:28.929] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:28.929] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324110571}
+[00:11:29.803] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:29.803] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:29.803] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324111445}
+[00:11:31.026] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:11:31.026] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:31.026] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:31.026] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324112664}
+[00:11:31.886] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:11:31.886] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:31.886] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:31.886] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324113524}
+[00:11:32.849] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:32.849] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:32.849] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324114491}
+[00:11:35.078] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <MenuProvider scope={{Menu:[...], ...}} onClose={function Menu.useCallback} isUsingKeyboardRef={{current:false}} ...>
+      <DropdownMenuTrigger asChild={true}>
+        <DropdownMenuTrigger data-slot="dropdown-m..." asChild={true}>
+          <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+            <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+              <Primitive.div asChild={true} ref={function}>
+                <Slot ref={function}>
+                  <SlotClone ref={function}>
+                    <Primitive.button type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                      <Slot type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                        <SlotClone type="button" id="radix-_R_n..." aria-haspopup="menu" aria-expanded={false} ...>
+                          <motion.button className="flex h-11 ..." whileHover={{scale:1.05}} whileTap={{scale:0.95}} ...>
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-slate-..."
+                              type="button"
++                             id="radix-_R_n9lb_"
+-                             id="radix-_R_2t5lb_"
+                              aria-haspopup="menu"
+                              aria-expanded={false}
+                              aria-controls={undefined}
+                              data-state="closed"
+                              data-disabled={undefined}
+                              disabled={false}
+                              data-slot="dropdown-menu-trigger"
+                              onPointerDown={function handleEvent}
+                              onKeyDown={function handleEvent}
+                              tabIndex={0}
+                              style={{}}
+                              ref={function useMotionRef.useCallback}
+                            >
+      ...
+
+[00:11:35.078] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:35.078] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:35.078] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324116684}
+[00:12:49.570] Server  LOG      ✓ Compiled in 111ms
+[00:12:53.607] Server  LOG      ✓ Compiled in 87ms
+[00:12:58.461] Server  LOG      ✓ Compiled in 173ms
+[00:13:05.322] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:13:05.322] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:13:05.322] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770324206964}
+[00:13:26.889] Server  LOG      ✓ Compiled in 215ms
+[00:13:31.250] Server  LOG      ✓ Compiled in 134ms
+[00:13:40.506] Server  LOG      ✓ Compiled in 100ms
+[00:13:42.689] Server  LOG      ✓ Compiled in 91ms
+[00:13:43.959] Server  LOG      ✓ Compiled in 98ms
+[00:13:47.579] Server  LOG      ✓ Compiled in 91ms
+[00:13:50.029] Server  LOG      ✓ Compiled in 98ms
+[00:13:51.917] Server  LOG      ✓ Compiled in 90ms
+[00:13:56.849] Server  LOG      ✓ Compiled in 182ms
+[00:13:59.642] Server  LOG      ✓ Compiled in 96ms
+[00:14:02.280] Server  LOG      ✓ Compiled in 102ms
