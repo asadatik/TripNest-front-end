@@ -27,7 +27,7 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-slate-200/60 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 dark:border-slate-800/60 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Background decorative elements */}
+  {/* Background decorative elements */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/20 via-blue-500/10 to-transparent blur-3xl"
@@ -63,7 +63,7 @@ export default function Footer() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {/* Brand Column */}
+      
           <motion.div variants={itemVariants} className="space-y-6 lg:col-span-1">
             <Link href="/" className="group inline-flex items-center gap-3">
               <motion.div

@@ -122,7 +122,7 @@ export default function PackagesPage() {
 
   return (
     <div className="min-h-[calc(100vh-theme(space.16))] bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 lg:py-16">
-      {/* Background decorative elements */}
+
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute right-0 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/20 via-blue-500/10 to-transparent blur-3xl"
@@ -149,9 +149,9 @@ export default function PackagesPage() {
           }}
         />
       </div>
-
+{/* main */}
       <div className="container relative z-10 mx-auto px-4">
-        {/* Header Section */}
+    {/* Header Section */}
         <motion.div
           className="mb-10 lg:mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -189,7 +189,7 @@ export default function PackagesPage() {
               </p>
             </div>
 
-            {/* Search Bar */}
+       {/* Search Bar */}
             <motion.div
               className="w-full md:w-auto md:min-w-[320px]"
               initial={{ opacity: 0, x: 20 }}
@@ -218,7 +218,7 @@ export default function PackagesPage() {
             </motion.div>
           </div>
 
-          {/* Error Alert */}
+
           <AnimatePresence>
             {error && (
               <motion.div
@@ -247,7 +247,7 @@ export default function PackagesPage() {
             )}
           </AnimatePresence>
 
-          {/* Package Type Filters */}
+      {/*Filters */}
           {packageTypes.length > 0 && (
             <motion.div
               className="rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-lg backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/80"
@@ -319,7 +319,7 @@ export default function PackagesPage() {
           )}
         </motion.div>
 
-        {/* Content */}
+  {/* Content */}
         {isLoading ? (
           <motion.div
             className="flex flex-col items-center justify-center gap-4 py-20"
@@ -338,7 +338,7 @@ export default function PackagesPage() {
           </motion.div>
         ) : filteredPackages.length > 0 ? (
           <>
-            {/* Results + pagination info */}
+         
             <motion.div
               className="mb-6 flex flex-col gap-2 items-start justify-between sm:flex-row sm:items-center"
               initial={{ opacity: 0 }}
@@ -378,7 +378,7 @@ export default function PackagesPage() {
               </div>
             </motion.div>
 
-            {/* Package Grid */}
+           
             <motion.div
               className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
               variants={containerVariants}

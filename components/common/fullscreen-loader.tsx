@@ -13,6 +13,9 @@ export function FullScreenLoader() {
         transition={{ duration: 0.4, ease: "easeOut" }}
         className="relative flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-slate-900/80 px-8 py-6 shadow-lg backdrop-blur-md"
       >
+
+ 
+
         {/* Circular loader */}
         <div className="relative flex h-14 w-14 items-center justify-center">
           <motion.span

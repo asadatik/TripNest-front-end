@@ -170,7 +170,7 @@ const pathname = usePathname()
 
   return (
     <div className="min-h-[calc(100vh-theme(space.16))] bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 lg:py-16">
-      {/* Background decorative elements */}
+ 
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute right-0 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/20 via-blue-500/10 to-transparent blur-3xl"
@@ -185,7 +185,7 @@ const pathname = usePathname()
           }}
         />
       </div>
-
+{/* main content */}
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
           className="grid gap-8 md:grid-cols-3"
@@ -193,9 +193,9 @@ const pathname = usePathname()
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Left Column - Main Content */}
+     {/* left side */}
           <div className="md:col-span-2">
-            {/* Hero Image */}
+      {/* Hero Image */}
             <motion.div
               className="group relative mb-8 aspect-video overflow-hidden rounded-3xl border-2 border-slate-200 bg-gradient-to-br from-slate-200 to-slate-300 shadow-2xl dark:border-slate-800 dark:from-slate-800 dark:to-slate-900"
               whileHover={{ scale: 1.02 }}
@@ -208,13 +208,13 @@ const pathname = usePathname()
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-              {/* Featured Badge */}
+    
               <div className="absolute right-4 top-4 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 px-4 py-2 text-sm font-bold text-white shadow-lg">
                 <Star className="h-4 w-4 fill-white" />
                 Featured Package
               </div>
 
-              {/* Bottom Info Bar */}
+           
               <div className="absolute bottom-0 left-0 right-0 flex flex-wrap gap-3 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <div className="flex items-center gap-2 rounded-full border border-white/30 bg-white/90 px-4 py-2 text-sm font-semibold text-slate-900 backdrop-blur-sm">
                   <MapPinIcon className="h-4 w-4 text-cyan-600" />
@@ -231,7 +231,7 @@ const pathname = usePathname()
               </div>
             </motion.div>
 
-            {/* Title & Description */}
+       
             <motion.div
               className="mb-8"
               initial={{ opacity: 0, y: 20 }}
@@ -253,7 +253,7 @@ const pathname = usePathname()
               </p>
             </motion.div>
 
-            {/* Itinerary --- day by day  */}
+          
             {pkg.itinerary && pkg.itinerary.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -299,7 +299,7 @@ const pathname = usePathname()
               </motion.div>
             )}
 
-            {/* What's Included */}
+       
             {pkg.included && pkg.included.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -339,7 +339,7 @@ const pathname = usePathname()
               </motion.div>
             )}
 
-            {/* What's Not Included */}
+          
             {pkg.excluded && pkg.excluded.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -410,7 +410,7 @@ const pathname = usePathname()
 
 
 
-          {/* Right ---- Booking Card */}
+      {/*right side*/}
           <motion.div
             className="md:col-span-1"
             initial={{ opacity: 0, x: 20 }}
@@ -428,7 +428,7 @@ const pathname = usePathname()
               </CardHeader>
 
               <CardContent className="space-y-6 p-6">
-                {/* Price Display */}
+             {/* Price Display */}
                 <div className="rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
                   <p className="mb-2 text-sm font-semibold text-slate-600 dark:text-slate-400">
                     Starting from
@@ -467,7 +467,7 @@ const pathname = usePathname()
                   )}
                 </div>
 
-                {/* Package Dates */}
+           {/* Package Dates */}
                 <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
                   <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                     <Calendar className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />

@@ -2,46 +2,18 @@
 
 import { useEffect, useState } from "react"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import {
-  fetchPackagesStart,
-  fetchPackagesSuccess,
-  fetchPackagesError,
-} from "@/redux/slices/packagesSlice"
+import {fetchPackagesStart, fetchPackagesSuccess, fetchPackagesError,} from "@/redux/slices/packagesSlice"
 import { api } from "@/lib/api"
 import type { Package } from "@/lib/types"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import {Card,CardContent,CardHeader,CardTitle,} from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,} from "@/components/ui/table"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Trash2, Edit2, Plus, Loader2, AlertCircle } from "lucide-react"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select"
 import { motion } from "framer-motion"
 import Swal from "sweetalert2"
 
@@ -119,7 +91,7 @@ export default function AdminPackages() {
       dispatch(fetchPackagesStart())
       try {
         const [packagesRes, typesRes] = await Promise.all([
-          api.getPackages(),       // backend → { statusCode, success, message, meta, data }
+          api.getPackages(),     
           api.getPackageTypes(),
         ])
 
@@ -179,7 +151,7 @@ export default function AdminPackages() {
     itinerary: parseCommaList(formData.itinerary),
     images: parseCommaList(formData.images),
   })
-
+// Create/Update
   const handleSave = async () => {
     try {
       setIsSaving(true)
@@ -232,7 +204,7 @@ export default function AdminPackages() {
       setIsSaving(false)
     }
   }
-
+// Delete Confirmation
   const handleDelete = async (id: string, title: string) => {
     const result = await Swal.fire({
       title: "Delete Package",
@@ -287,7 +259,7 @@ export default function AdminPackages() {
       }
     }
   }
-
+// Edit Dialog 
   const handleEdit = (pkg: Package) => {
     setEditingId(pkg._id)
     setFormData({
@@ -343,7 +315,7 @@ export default function AdminPackages() {
           </h1>
           <p className="text-muted-foreground mt-1">Manage travel packages and deals</p>
         </div>
-    {/*Create Pack*/}
+{/*Create Pack*/}
         <Dialog
           open={isDialogOpen}
           onOpenChange={(open) => {
@@ -701,7 +673,7 @@ export default function AdminPackages() {
         </Dialog>
       </motion.div>
 
-      {/*Alert*/}
+
       {error && (
         <motion.div
           className="p-4 bg-destructive/10 border border-destructive/20 rounded-2xl text-destructive flex items-start gap-3 backdrop-blur"
@@ -716,7 +688,7 @@ export default function AdminPackages() {
         </motion.div>
       )}
 
-      {/*  Table Card */}
+   {/*  Table Card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
