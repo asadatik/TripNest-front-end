@@ -46,29 +46,10 @@ type PackageTypeOption = {
   name: string
 }
 
-const emptyForm: PackageFormState = {
-  title: "",
-  summary: "",
-  description: "",
-  destination: "",
-  costFrom: "",
-  currency: "USD",
-  durationDays: "",
-  capacity: "",
-  startDate: "",
-  endDate: "",
-  departureLocation: "",
-  arrivalLocation: "",
-  minAge: "",
-  maxAge: "",
-  tags: "",
-  included: "",
-  excluded: "",
-  amenities: "",
-  itinerary: "",
-  packageType: "",
-  images: "",
+const emptyForm: PackageFormState = { title: "", summary: "", description: "", destination: "", costFrom: "",currency: "USD",durationDays: "", capacity: "", startDate: "",endDate: "",
+  departureLocation: "",arrivalLocation: "",minAge: "",maxAge: "",tags: "",included: "",excluded: "",amenities: "",itinerary: "",packageType: "", images: "",
 }
+
 
 export default function AdminPackages() {
   const dispatch = useAppDispatch()

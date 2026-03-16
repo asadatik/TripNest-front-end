@@ -30,7 +30,7 @@ export default function PackagesPage() {
       },
   )
 
-  // items সবসময় array হিসেবে force করা
+  // items always array
   const items = Array.isArray(rawItems) ? rawItems : []
 
   const [packageTypes, setPackageTypes] = useState<any[]>([])
@@ -71,14 +71,14 @@ export default function PackagesPage() {
           err?.response?.data?.message ||
           (err instanceof Error ? err.message : "Failed to fetch packages")
         dispatch(fetchPackagesError(errorMessage))
-        // console.error("🚨 Error fetching packages:", errorMessage)
+
       }
     }
 
     fetchData()
   }, [dispatch, page, limit])
 
-  // Filtered packages (current page এর ভিতরে)
+// Filter and search logic
   const filteredPackages = useMemo(() => {
     return items.filter((pkg) => {
       const matchesType = !selectedTypeId || pkg.packageType === selectedTypeId

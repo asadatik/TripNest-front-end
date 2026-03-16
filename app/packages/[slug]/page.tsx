@@ -19,7 +19,7 @@ export default function PackageDetailPage() {
   const router = useRouter()
 
 
-const pathname = usePathname()
+  const pathname = usePathname()
 
 
   const { user } = useAppSelector((state) => state.auth)
@@ -125,10 +125,10 @@ const pathname = usePathname()
   // Handle book Now button click
   const handleBookNow = async () => {
 
-  if (!user) {
+    if (!user) {
       router.replace(`/auth/login?redirect=${encodeURIComponent(pathname)}`)
-    return
-  }
+      return
+    }
 
 
     if (!pkg?._id) return
@@ -170,7 +170,7 @@ const pathname = usePathname()
 
   return (
     <div className="min-h-[calc(100vh-theme(space.16))] bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/40 py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 lg:py-16">
- 
+
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute right-0 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/20 via-blue-500/10 to-transparent blur-3xl"
@@ -185,17 +185,17 @@ const pathname = usePathname()
           }}
         />
       </div>
-{/* main content */}
+      {/* main content */}
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
-          className="grid gap-8 md:grid-cols-3"
+          className="grid gap-8 md:grid-cols-3 items-start"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-     {/* left side */}
+          {/* left side */}
           <div className="md:col-span-2">
-      {/* Hero Image */}
+            {/* Hero Image */}
             <motion.div
               className="group relative mb-8 aspect-video overflow-hidden rounded-3xl border-2 border-slate-200 bg-gradient-to-br from-slate-200 to-slate-300 shadow-2xl dark:border-slate-800 dark:from-slate-800 dark:to-slate-900"
               whileHover={{ scale: 1.02 }}
@@ -208,13 +208,13 @@ const pathname = usePathname()
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-    
+
               <div className="absolute right-4 top-4 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 px-4 py-2 text-sm font-bold text-white shadow-lg">
                 <Star className="h-4 w-4 fill-white" />
                 Featured Package
               </div>
 
-           
+
               <div className="absolute bottom-0 left-0 right-0 flex flex-wrap gap-3 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <div className="flex items-center gap-2 rounded-full border border-white/30 bg-white/90 px-4 py-2 text-sm font-semibold text-slate-900 backdrop-blur-sm">
                   <MapPinIcon className="h-4 w-4 text-cyan-600" />
@@ -231,7 +231,7 @@ const pathname = usePathname()
               </div>
             </motion.div>
 
-       
+
             <motion.div
               className="mb-8"
               initial={{ opacity: 0, y: 20 }}
@@ -253,7 +253,7 @@ const pathname = usePathname()
               </p>
             </motion.div>
 
-          
+
             {pkg.itinerary && pkg.itinerary.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -299,7 +299,7 @@ const pathname = usePathname()
               </motion.div>
             )}
 
-       
+
             {pkg.included && pkg.included.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -339,7 +339,7 @@ const pathname = usePathname()
               </motion.div>
             )}
 
-          
+
             {pkg.excluded && pkg.excluded.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -410,197 +410,199 @@ const pathname = usePathname()
 
 
 
-      {/*right side*/}
+          {/*right side*/}
           <motion.div
             className="md:col-span-1"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <Card className="sticky top-24 overflow-hidden border-2 border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900">
-              <CardHeader className="border-b border-slate-200 bg-gradient-to-r from-cyan-50 to-blue-50 dark:border-slate-800 dark:from-cyan-950/30 dark:to-blue-950/30">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-lg">
-                    <Shield className="h-5 w-5" />
-                  </div>
-                  <CardTitle className="text-xl">Book This Package</CardTitle>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-6 p-6">
-             {/* Price Display */}
-                <div className="rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
-                  <p className="mb-2 text-sm font-semibold text-slate-600 dark:text-slate-400">
-                    Starting from
-                  </p>
-                  <div className="flex items-baseline gap-2">
-                    <p className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500">
-                      {pkg.costFrom.toLocaleString()}
-                    </p>
-                    <span className="text-lg font-semibold text-slate-600 dark:text-slate-400">
-                      {pkg.currency}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    per person
-                  </p>
-                </div>
-
-                {/* Number of People */}
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">
-                    Number of people
-                  </label>
-                  <Input
-                    type="number"
-                    min={1}
-                    max={pkg.availableSeats || undefined}
-                    value={pax}
-                    onChange={(e) => setPax(Number(e.target.value) || 1)}
-                    className="border-2 border-slate-200 text-base dark:border-slate-700"
-                  />
-                  {pkg.availableSeats !== undefined && (
-                    <p className="mt-2 flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
-                      <Info className="h-3 w-3" />
-                      {pkg.availableSeats} seats available
-                    </p>
-                  )}
-                </div>
-
-           {/* Package Dates */}
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
-                  <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                    <Calendar className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
-                    Package Dates
-                  </div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
-                    {new Date(pkg.startDate).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}{" "}
-                    -{" "}
-                    {new Date(pkg.endDate).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </p>
-                </div>
-
-           
-                <div className="space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                    <Navigation className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                    Departure & Arrival
-                  </div>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-start gap-2 text-slate-600 dark:text-slate-400">
-                      <span className="font-medium text-slate-700 dark:text-slate-300">
-                        From:
-                      </span>
-                      <span className="flex-1">{pkg.departureLocation}</span>
+            <div className="sticky top-24 self-start">
+              <Card className=" overflow-hidden border-2 border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+                <CardHeader className="border-b border-slate-200 bg-gradient-to-r from-cyan-50 to-blue-50 dark:border-slate-800 dark:from-cyan-950/30 dark:to-blue-950/30">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-lg">
+                      <Shield className="h-5 w-5" />
                     </div>
-                    <div className="flex items-start gap-2 text-slate-600 dark:text-slate-400">
-                      <span className="font-medium text-slate-700 dark:text-slate-300">
-                        To:
-                      </span>
-                      <span className="flex-1">{pkg.arrivalLocation}</span>
-                    </div>
+                    <CardTitle className="text-xl">Book This Package</CardTitle>
                   </div>
-                </div>
+                </CardHeader>
 
-           
-                <AnimatePresence>
-                  {bookingError && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/50 dark:text-red-300"
-                    >
-                      {bookingError}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <CardContent className="space-y-6 p-6">
+                  {/* Price Display */}
+                  <div className="rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
+                    <p className="mb-2 text-sm font-semibold text-slate-600 dark:text-slate-400">
+                      Starting from
+                    </p>
+                    <div className="flex items-baseline gap-2">
+                      <p className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500">
+                        {pkg.costFrom.toLocaleString()}
+                      </p>
+                      <span className="text-lg font-semibold text-slate-600 dark:text-slate-400">
+                        {pkg.currency}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      per person
+                    </p>
+                  </div>
 
-         
-                <div className="space-y-3">
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button
-                      size="lg"
-                      className="group relative w-full overflow-hidden rounded-xl bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 py-6 text-base font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:shadow-cyan-500/40 disabled:cursor-not-allowed disabled:opacity-60"
-                      onClick={handleBookNow}
-                      disabled={isBooking || isAdmin || isOutOfStock}
-                    >
-                      {isAdmin ? (
-                        "Admins cannot book packages"
-                      ) : isOutOfStock ? (
-                        "No seats available"
-                      ) : isBooking ? (
-                        <>
-                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                          Redirecting to payment...
-                        </>
-                      ) : (
-                        <span className="flex items-center justify-center gap-2">
-                          Book Now
-                          <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  {/* Number of People */}
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                      Number of people
+                    </label>
+                    <Input
+                      type="number"
+                      min={1}
+                      max={pkg.availableSeats || undefined}
+                      value={pax}
+                      onChange={(e) => setPax(Number(e.target.value) || 1)}
+                      className="border-2 border-slate-200 text-base dark:border-slate-700"
+                    />
+                    {pkg.availableSeats !== undefined && (
+                      <p className="mt-2 flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+                        <Info className="h-3 w-3" />
+                        {pkg.availableSeats} seats available
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Package Dates */}
+                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+                    <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                      <Calendar className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
+                      Package Dates
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      {new Date(pkg.startDate).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}{" "}
+                      -{" "}
+                      {new Date(pkg.endDate).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </p>
+                  </div>
+
+
+                  <div className="space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                      <Navigation className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                      Departure & Arrival
+                    </div>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start gap-2 text-slate-600 dark:text-slate-400">
+                        <span className="font-medium text-slate-700 dark:text-slate-300">
+                          From:
                         </span>
-                      )}
+                        <span className="flex-1">{pkg.departureLocation}</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-slate-600 dark:text-slate-400">
+                        <span className="font-medium text-slate-700 dark:text-slate-300">
+                          To:
+                        </span>
+                        <span className="flex-1">{pkg.arrivalLocation}</span>
+                      </div>
+                    </div>
+                  </div>
 
+
+                  <AnimatePresence>
+                    {bookingError && (
                       <motion.div
-                        className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 via-blue-700 to-purple-700"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "0%" }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    </Button>
-                  </motion.div>
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/50 dark:text-red-300"
+                      >
+                        {bookingError}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
 
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full rounded-xl border-2 border-slate-300 bg-white py-6 font-semibold transition-all hover:border-cyan-500 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-cyan-400 dark:hover:bg-slate-800"
-                    onClick={() => router.push("/about")}
-                  >
-                    Contact Us
-                  </Button>
+                  <div className="space-y-3">
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      <Button
+                        size="lg"
+                        className="group relative w-full overflow-hidden rounded-xl bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 py-6 text-base font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:shadow-cyan-500/40 disabled:cursor-not-allowed disabled:opacity-60"
+                        onClick={handleBookNow}
+                        disabled={isBooking || isAdmin || isOutOfStock}
+                      >
+                        {isAdmin ? (
+                          "Admins cannot book packages"
+                        ) : isOutOfStock ? (
+                          "No seats available"
+                        ) : isBooking ? (
+                          <>
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            Redirecting to payment...
+                          </>
+                        ) : (
+                          <span className="flex items-center justify-center gap-2">
+                            Book Now
+                            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                          </span>
+                        )}
 
-                  {isAdmin && (
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="flex items-center gap-1.5 text-xs text-amber-600 dark:text-amber-400"
+                        <motion.div
+                          className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-600 via-blue-700 to-purple-700"
+                          initial={{ x: "-100%" }}
+                          whileHover={{ x: "0%" }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </Button>
+                    </motion.div>
+
+
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="w-full rounded-xl border-2 border-slate-300 bg-white py-6 font-semibold transition-all hover:border-cyan-500 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-cyan-400 dark:hover:bg-slate-800"
+                      onClick={() => router.push("/about")}
                     >
-                      <Info className="h-3 w-3" />
-                      You are logged in as admin. Booking is available only for normal users.
-                    </motion.p>
-                  )}
-                </div>
+                      Contact Us
+                    </Button>
 
-             
-                <div className="space-y-3 border-t border-slate-200 pt-6 dark:border-slate-800">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-slate-600 dark:text-slate-400">
-                      Age Range:
-                    </span>
-                    <span className="font-semibold text-slate-900 dark:text-white">
-                      {pkg.minAge}-{pkg.maxAge} years
-                    </span>
+                    {isAdmin && (
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="flex items-center gap-1.5 text-xs text-amber-600 dark:text-amber-400"
+                      >
+                        <Info className="h-3 w-3" />
+                        You are logged in as admin. Booking is available only for normal users.
+                      </motion.p>
+                    )}
                   </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-slate-600 dark:text-slate-400">
-                      Package Type:
-                    </span>
-                    <span className="font-semibold text-slate-900 dark:text-white">
-                      {(pkg.packageType as any)?.name ?? "N/A"}
-                    </span>
+
+
+                  <div className="space-y-3 border-t border-slate-200 pt-6 dark:border-slate-800">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="font-medium text-slate-600 dark:text-slate-400">
+                        Age Range:
+                      </span>
+                      <span className="font-semibold text-slate-900 dark:text-white">
+                        {pkg.minAge}-{pkg.maxAge} years
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="font-medium text-slate-600 dark:text-slate-400">
+                        Package Type:
+                      </span>
+                      <span className="font-semibold text-slate-900 dark:text-white">
+                        {(pkg.packageType as any)?.name ?? "N/A"}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </motion.div>
         </motion.div>
       </div>
