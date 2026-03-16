@@ -1,7 +1,7 @@
 # TripNest Frontend
 
 Live URL:  https://trip-nest-front-end.vercel.app
-Backend Repo/URL: https://trip-nest-back-end.vercel.app
+Backend Repo/URL: https://github.com/asadatik/TripNest-Backend
 
 TripNest is a travel booking platform where users can browse curated travel packages, book trips, pay via Stripe, and manage their bookings from a modern dashboard.
 
